@@ -1,0 +1,216 @@
+2025-03-07 13:10:06 - root - INFO - Verbose logging enabled
+2025-03-07 13:10:06 - __main__ - INFO - Using input text provided as command-line argument
+2025-03-07 13:10:06 - __main__ - DEBUG - Input text: 'The intersection of Islam and Meditation/Awareness techniques'
+2025-03-07 13:10:06 - __main__ - INFO - Starting research process
+2025-03-07 13:10:06 - __main__ - INFO - Output will be written to: __the_intersection_of_islam.md
+2025-03-07 13:10:06 - __main__ - INFO - Max iterations: 1
+2025-03-07 13:10:06 - __main__ - INFO - Confidence threshold: 0.8
+2025-03-07 13:10:06 - __main__ - INFO - Max cost: $5.00
+2025-03-07 13:10:06 - __main__ - INFO - Using custom prompts: True
+2025-03-07 13:10:06 - __main__ - INFO - Using controller termination: True
+2025-03-07 13:10:06 - __main__ - INFO - Using batch queries: True
+2025-03-07 13:10:06 - iterative_research_tool.core.perplexity_client - INFO - Initialized PerplexityClient with model: sonar
+2025-03-07 13:10:06 - iterative_research_tool.core.prompt_manager - INFO - Using prompts from: /Users/sohailmohammad/iterative_research_tool/prompts
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - Initializing document from markdown content
+2025-03-07 13:10:06 - iterative_research_tool.core.research - DEBUG - Extracted original query from document title: 'The intersection of Islam and Meditation/Awareness techniques'
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - [1/5] Document initialized
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - Starting research cycle
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - [1/5] Starting iteration 1/1
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - Using original query for iteration 1: The intersection of Islam and Meditation/Awareness techniques...
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - Using direct query: The intersection of Islam and Meditation/Awareness techniques
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - Starting Perplexity research for iteration 1
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - [2/5] Starting research phase with Perplexity
+2025-03-07 13:10:06 - iterative_research_tool.core.research - INFO - Researching query: The intersection of Islam and Meditation/Awareness techniques...
+2025-03-07 13:10:06 - iterative_research_tool.core.perplexity_client - DEBUG - Calling Perplexity API for deep research with model sonar
+2025-03-07 13:10:06 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.perplexity.ai:443
+2025-03-07 13:10:17 - urllib3.connectionpool - DEBUG - https://api.perplexity.ai:443 "POST /chat/completions HTTP/1.1" 200 None
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Raw API response status: 200
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Raw API response headers: {'Date': 'Fri, 07 Mar 2025 19:10:17 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': '__cf_bm=MY3WkGuR9cfHENV4B_G8J2Mblv_s55k_6lTnrn4oyhw-1741374617-1.0.1.1-n5JteKRPfS25kSUv4o.Me2OTwFMS3J9tQeAFxHBqnu.AaEvZ6l2hVUlUMGwflEExxqAhFMtznuir4gyPoWTaq.yQ8RpG8nl6FAqFCCxp6.k; path=/; expires=Fri, 07-Mar-25 19:40:17 GMT; domain=.perplexity.ai; HttpOnly; Secure; SameSite=None', 'Strict-Transport-Security': 'max-age=15552000; includeSubDomains; preload', 'Server': 'cloudflare', 'CF-RAY': '91cc641be9f72d45-DFW', 'Content-Encoding': 'gzip'}
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Parsed API response data: {
+  "id": "9927f6ae-8990-4192-a8da-e92dec23639f",
+  "model": "sonar",
+  "created": 1741374617,
+  "usage": {
+    "prompt_tokens": 63,
+    "completion_tokens": 637,
+    "total_tokens": 700
+  },
+  "citations": [
+    "https://iqibla.com/blogs/blog/meditation-as-a-form-of-worship-in-islam",
+    "https://www.brisbaneactcentre.com.au/category/meditation/",
+    "https://aboutislam.net/family-life/self-development/5-meditation-practices-in-islam/",
+    "https://neuralbuddhist.com/category/meditation/",
+ ...
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Extracted content preview: ## The Intersection of Islam and Meditation/Awareness Techniques
+
+Islam incorporates various forms o...
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Found 5 citations
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Processing sources: ['https://iqibla.com/blogs/blog/meditation-as-a-form-of-worship-in-islam', 'https://www.brisbaneactcentre.com.au/category/meditation/', 'https://aboutislam.net/family-life/self-development/5-meditation-practices-in-islam/', 'https://neuralbuddhist.com/category/meditation/', 'https://yaqeeninstitute.org/read/paper/how-to-be-a-mindful-muslim-an-exercise-in-islamic-meditation']
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Sources are URLs, converting to standard format
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Returning result with keys: ['text', 'sources']
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Got response from _make_api_call_with_retries with keys: ['text', 'sources']
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Perplexity deep research API call: 700 tokens, $0.0007 cost
+2025-03-07 13:10:17 - iterative_research_tool.core.perplexity_client - DEBUG - Final response from deep_research has keys: ['text', 'sources', 'usage']
+2025-03-07 13:10:17 - iterative_research_tool.core.research - DEBUG - Perplexity call cost: $0.0120 (token: $0.0070, search: $0.0050), Total so far: $0.0120
+2025-03-07 13:10:17 - iterative_research_tool.core.research - INFO - Research complete with 5 citations
+2025-03-07 13:10:17 - iterative_research_tool.core.research - INFO - Confidence score: 0.80
+2025-03-07 13:10:17 - iterative_research_tool.core.research - INFO - [3/5] Completed research phase with Perplexity
+2025-03-07 13:10:17 - iterative_research_tool.core.research - INFO - Starting Claude enhancement for iteration 1
+2025-03-07 13:10:17 - iterative_research_tool.core.research - INFO - [4/5] Starting enhancement phase with Claude
+2025-03-07 13:10:17 - iterative_research_tool.core.research - DEBUG - Document content being passed to Claude (first 500 chars):
+# The intersection of Islam and Meditation/Awareness techniques
+
+## The intersection of Islam and Meditation/Awareness techniques
+
+## The Intersection of Islam and Meditation/Awareness Techniques
+
+Islam incorporates various forms of meditation and awareness techniques that are deeply rooted in its spiritual practices. These practices aim to enhance spiritual awareness, foster a deeper connection with Allah, and promote mental and emotional well-being.
+
+### Key Practices
+
+1. **Dhikr (Remembrance ...
+2025-03-07 13:10:17 - iterative_research_tool.core.research - DEBUG - Document content length: 3335 characters
+2025-03-07 13:10:17 - iterative_research_tool.core.research - DEBUG - Document sections count: 1
+2025-03-07 13:10:17 - iterative_research_tool.core.research - DEBUG - Section 1 title: The intersection of Islam and Meditation/Awareness techniques
+2025-03-07 13:10:17 - iterative_research_tool.core.research - DEBUG - Section 1 content preview: ## The Intersection of Islam and Meditation/Awareness Techniques
+
+Islam incorporates various forms o...
+2025-03-07 13:10:17 - iterative_research_tool.core.research - WARNING - Prompt template doesn't have expected structure, using old method
+2025-03-07 13:10:17 - iterative_research_tool.core.prompt_manager - DEBUG - Formatting prompt 'perplexity_to_claude_prompt' with parameters: ['document_content']
+2025-03-07 13:10:17 - iterative_research_tool.core.prompt_manager - DEBUG - Template content: SYSTEM PROMPT:
+You are a research enhancement specialist working with factual information retrieved from Perplexity's Deep Research API. Your task is to transform this raw research into a more comprehensive, insightful, and valuable document.
+
+PROCESS THE RESEARCH WITH THESE SPECIFIC ACTIONS:
+
+1. ANALYSIS & STRUCTURE:
+   - Identify the key topics, claims, and insights in the research
+   - Organize information into a logical hierarchy with clear sections
+   - Create meaningful connections between...
+2025-03-07 13:10:17 - iterative_research_tool.core.prompt_manager - ERROR - Missing required parameter for prompt perplexity_to_claude_prompt: \n     "research_questions"
+2025-03-07 13:10:17 - iterative_research_tool.core.prompt_manager - ERROR - Parameter '\n     "research_questions"' not found in template but reported missing. Template issue?
+2025-03-07 13:10:17 - iterative_research_tool.core.research - DEBUG - Claude prompt preview (first 300 chars):
+SYSTEM PROMPT:
+You are a research enhancement specialist working with factual information retrieved from Perplexity's Deep Research API. Your task is to transform this raw research into a more comprehensive, insightful, and valuable document.
+
+PROCESS THE RESEARCH WITH THESE SPECIFIC ACTIONS:
+
+1. AN...
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Claude generate_content called with:
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Prompt length: 2226
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Prompt preview (first 500 chars): SYSTEM PROMPT:
+You are a research enhancement specialist working with factual information retrieved from Perplexity's Deep Research API. Your task is to transform this raw research into a more comprehensive, insightful, and valuable document.
+
+PROCESS THE RESEARCH WITH THESE SPECIFIC ACTIONS:
+
+1. ANALYSIS & STRUCTURE:
+   - Identify the key topics, claims, and insights in the research
+   - Organize information into a logical hierarchy with clear sections
+   - Create meaningful connections between...
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Prompt last 500 chars: examples or applications
+
+2. Research Extension Section (20% of response)
+   - Title: "FURTHER RESEARCH DIRECTIONS"
+   - List each question with a brief explanation of its importance
+   - Format as JSON within triple backticks for machine parsing:
+   ```json
+   {
+     "research_questions": [
+       {
+         "question": "Specific question text",
+         "importance": "Brief explanation of significance",
+         "expected_insights": "What we might learn"
+       },
+       ...
+     ]
+   }
+   ```
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Max tokens: 4000
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Temperature: 0.2
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Extracted system prompt (first 200 chars): You are a research enhancement specialist working with factual information retrieved from Perplexity's Deep Research API. Your task is to transform this raw research into a more comprehensive, insight...
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Extracted user content (first 200 chars): PROCESS THE RESEARCH WITH THESE SPECIFIC ACTIONS:
+
+1. ANALYSIS & STRUCTURE:
+   - Identify the key topics, claims, and insights in the research
+   - Organize information into a logical hierarchy with c...
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Calling Claude API with claude-3-7-sonnet-20250219
+2025-03-07 13:10:17 - iterative_research_tool.core.claude_client - DEBUG - Using system prompt: True
+2025-03-07 13:10:17 - anthropic._base_client - DEBUG - Request options: {'method': 'post', 'url': '/v1/messages', 'timeout': Timeout(connect=5.0, read=600, write=600, pool=600), 'files': None, 'json_data': {'max_tokens': 4000, 'messages': [{'role': 'user', 'content': 'PROCESS THE RESEARCH WITH THESE SPECIFIC ACTIONS:\n\n1. ANALYSIS & STRUCTURE:\n   - Identify the key topics, claims, and insights in the research\n   - Organize information into a logical hierarchy with clear sections\n   - Create meaningful connections between related concepts\n   - Ensure progressive disclosure of information (fundamentals first)\n\n2. ENHANCEMENT (MANDATORY):\n   - Elaborate on complex concepts with plain-language explanations\n   - Add illustrative examples that demonstrate practical applications\n   - Include analogies or metaphors that clarify difficult ideas\n   - Identify and resolve contradictions or inconsistencies\n   - Synthesize information across multiple sections when relevant\n\n3. CRITICAL EVALUATION:\n   - Assess the strength of evidence for key claims\n   - Note limitations, uncertainties, or areas with incomplete information\n   - Highlight consensus views vs. emerging or controversial perspectives\n   - Consider alternative interpretations of the evidence\n\n4. FURTHER RESEARCH DIRECTIONS (MANDATORY):\n   - Identify 3-5 specific questions for further investigation\n   - Prioritize questions that would address gaps or uncertainties\n   - Frame questions to be specific, answerable, and consequential\n   - Explain why each question matters and what insights it might yield\n\nOUTPUT FORMAT:\n1. Enhanced Document (80% of response)\n   - Properly formatted with headers, subheaders\n   - Include citations where available\n   - Use bullet points for lists of examples or applications\n\n2. Research Extension Section (20% of response)\n   - Title: "FURTHER RESEARCH DIRECTIONS"\n   - List each question with a brief explanation of its importance\n   - Format as JSON within triple backticks for machine parsing:\n   ```json\n   {\n     "research_questions": [\n       {\n         "question": "Specific question text",\n         "importance": "Brief explanation of significance",\n         "expected_insights": "What we might learn"\n       },\n       ...\n     ]\n   }\n   ```'}], 'model': 'claude-3-7-sonnet-20250219', 'system': "You are a research enhancement specialist working with factual information retrieved from Perplexity's Deep Research API. Your task is to transform this raw research into a more comprehensive, insightful, and valuable document.", 'temperature': 0.2}}
+2025-03-07 13:10:17 - anthropic._base_client - DEBUG - Sending HTTP Request: POST https://api.anthropic.com/v1/messages
+2025-03-07 13:10:17 - httpcore.connection - DEBUG - connect_tcp.started host='api.anthropic.com' port=443 local_address=None timeout=5.0 socket_options=[(65535, 8, True), (6, 257, 60), (6, 258, 5)]
+2025-03-07 13:10:17 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1104901f0>
+2025-03-07 13:10:17 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10fe4c8c0> server_hostname='api.anthropic.com' timeout=5.0
+2025-03-07 13:10:17 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1104902b0>
+2025-03-07 13:10:17 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-03-07 13:10:17 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-03-07 13:10:17 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-03-07 13:10:17 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-03-07 13:10:17 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-03-07 13:10:20 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Fri, 07 Mar 2025 19:10:20 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'anthropic-ratelimit-requests-limit', b'50'), (b'anthropic-ratelimit-requests-remaining', b'49'), (b'anthropic-ratelimit-requests-reset', b'2025-03-07T19:10:19Z'), (b'anthropic-ratelimit-input-tokens-limit', b'20000'), (b'anthropic-ratelimit-input-tokens-remaining', b'20000'), (b'anthropic-ratelimit-input-tokens-reset', b'2025-03-07T19:10:19Z'), (b'anthropic-ratelimit-output-tokens-limit', b'8000'), (b'anthropic-ratelimit-output-tokens-remaining', b'8000'), (b'anthropic-ratelimit-output-tokens-reset', b'2025-03-07T19:10:20Z'), (b'anthropic-ratelimit-tokens-limit', b'28000'), (b'anthropic-ratelimit-tokens-remaining', b'28000'), (b'anthropic-ratelimit-tokens-reset', b'2025-03-07T19:10:19Z'), (b'request-id', b'req_011QeD33dRTixfASD6qzjCuP'), (b'anthropic-organization-id', b'e4f53b5a-039d-4d29-8a54-ef0d50c598ee'), (b'via', b'1.1 google'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Robots-Tag', b'none'), (b'Server', b'cloudflare'), (b'CF-RAY', b'91cc64616e98b795-DFW'), (b'Content-Encoding', b'gzip')])
+2025-03-07 13:10:20 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-07 13:10:20 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-03-07 13:10:20 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-03-07 13:10:20 - httpcore.http11 - DEBUG - response_closed.started
+2025-03-07 13:10:20 - httpcore.http11 - DEBUG - response_closed.complete
+2025-03-07 13:10:20 - anthropic._base_client - DEBUG - HTTP Response: POST https://api.anthropic.com/v1/messages "200 OK" Headers({'date': 'Fri, 07 Mar 2025 19:10:20 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'anthropic-ratelimit-requests-limit': '50', 'anthropic-ratelimit-requests-remaining': '49', 'anthropic-ratelimit-requests-reset': '2025-03-07T19:10:19Z', 'anthropic-ratelimit-input-tokens-limit': '20000', 'anthropic-ratelimit-input-tokens-remaining': '20000', 'anthropic-ratelimit-input-tokens-reset': '2025-03-07T19:10:19Z', 'anthropic-ratelimit-output-tokens-limit': '8000', 'anthropic-ratelimit-output-tokens-remaining': '8000', 'anthropic-ratelimit-output-tokens-reset': '2025-03-07T19:10:20Z', 'anthropic-ratelimit-tokens-limit': '28000', 'anthropic-ratelimit-tokens-remaining': '28000', 'anthropic-ratelimit-tokens-reset': '2025-03-07T19:10:19Z', 'request-id': 'req_011QeD33dRTixfASD6qzjCuP', 'anthropic-organization-id': 'e4f53b5a-039d-4d29-8a54-ef0d50c598ee', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'x-robots-tag': 'none', 'server': 'cloudflare', 'cf-ray': '91cc64616e98b795-DFW', 'content-encoding': 'gzip'})
+2025-03-07 13:10:20 - anthropic._base_client - DEBUG - request_id: req_011QeD33dRTixfASD6qzjCuP
+2025-03-07 13:10:20 - iterative_research_tool.core.claude_client - DEBUG - Claude API call: 494 input tokens, 130 output tokens, $0.0034 cost
+2025-03-07 13:10:20 - iterative_research_tool.core.claude_client - DEBUG - Claude response preview (first 500 chars): I'll process the research according to your instructions. However, I notice that you haven't provided the raw research content for me to enhance. Please share the research material from Perplexity's Deep Research API that you'd like me to transform into a comprehensive document.
+
+Once you provide the research content, I'll:
+1. Analyze and structure it logically
+2. Enhance it with explanations, examples, and analogies
+3. Critically evaluate the claims and evidence
+4. Identify specific questions f...
+2025-03-07 13:10:20 - iterative_research_tool.core.research - DEBUG - Claude response preview (first 300 chars):
+I'll process the research according to your instructions. However, I notice that you haven't provided the raw research content for me to enhance. Please share the research material from Perplexity's Deep Research API that you'd like me to transform into a comprehensive document.
+
+Once you provide th...
+2025-03-07 13:10:20 - iterative_research_tool.core.research - DEBUG - Claude response focuses on topic: True
+2025-03-07 13:10:20 - iterative_research_tool.core.loop_controller - DEBUG - Extracting research questions from response (length: 616)
+2025-03-07 13:10:20 - iterative_research_tool.core.loop_controller - DEBUG - Response preview: I'll process the research according to your instructions. However, I notice that you haven't provided the raw research content for me to enhance. Please share the research material from Perplexity's Deep Research API that you'd like me to transform into a comprehensive document.  Once you provide the research content, I'll: 1. Analyze and structure it logically 2. Enhance it with explanations, examples, and analogies 3. Critically evaluate the claims and evidence 4. Identify specific questions f...
+2025-03-07 13:10:20 - iterative_research_tool.core.loop_controller - WARNING - No JSON blocks found in triple backticks
+2025-03-07 13:10:20 - iterative_research_tool.core.loop_controller - INFO - Trying alternative JSON extraction method
+2025-03-07 13:10:20 - iterative_research_tool.core.loop_controller - INFO - Using fallback question extraction method
+2025-03-07 13:10:20 - iterative_research_tool.core.loop_controller - WARNING - Could not extract any research questions using any method
+2025-03-07 13:10:20 - iterative_research_tool.core.research - ERROR - Error enhancing document with Claude: name 'DocumentParser' is not defined
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Preparing for deeper research with batch queries
+2025-03-07 13:10:20 - iterative_research_tool.core.prompt_manager - DEBUG - Formatting prompt 'claude_to_perplexity_deeper_prompt' with parameters: ['research_questions']
+2025-03-07 13:10:20 - iterative_research_tool.core.prompt_manager - DEBUG - Template content: SYSTEM PROMPT:
+You are a research query expansion specialist. Your role is to transform research questions identified by a previous analysis into optimal queries for Perplexity's Deep Research API.
+PROCESS EACH RESEARCH QUESTION:
+
+QUERY REFINEMENT:
+
+Extract each research question from the input
+Analyze the question for key concepts and relationships
+Transform into a direct, specific query optimized for information retrieval
+Add context from the original research where it helps clarify the questi...
+2025-03-07 13:10:20 - iterative_research_tool.core.prompt_manager - ERROR - Missing required parameter for prompt claude_to_perplexity_deeper_prompt: \n  "queries"
+2025-03-07 13:10:20 - iterative_research_tool.core.prompt_manager - ERROR - Parameter '\n  "queries"' not found in template but reported missing. Template issue?
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Calling Claude to generate optimized queries from research questions
+2025-03-07 13:10:20 - iterative_research_tool.core.claude_client - DEBUG - Claude generate called with:
+2025-03-07 13:10:20 - iterative_research_tool.core.claude_client - DEBUG - System prompt length: 0
+2025-03-07 13:10:20 - iterative_research_tool.core.claude_client - DEBUG - User prompt preview (first 300 chars): SYSTEM PROMPT:
+You are a research query expansion specialist. Your role is to transform research questions identified by a previous analysis into optimal queries for Perplexity's Deep Research API.
+PROCESS EACH RESEARCH QUESTION:
+
+QUERY REFINEMENT:
+
+Extract each research question from the input
+Anal...
+2025-03-07 13:10:20 - iterative_research_tool.core.claude_client - DEBUG - Max tokens: 4000
+2025-03-07 13:10:20 - iterative_research_tool.core.claude_client - DEBUG - Temperature: 0.2
+2025-03-07 13:10:20 - iterative_research_tool.core.claude_client - ERROR - Error calling Claude API: 'ClaudeClient' object has no attribute 'api_key'
+2025-03-07 13:10:20 - iterative_research_tool.core.research - ERROR - Error during deeper research workflow: 'ClaudeClient' object has no attribute 'api_key'
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Falling back to document without deeper research
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Verifying final document content
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Research complete after 1 iterations
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Completed 4/5 steps. Research completed in 1 iterations
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Final document: 1 sections
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - API calls: 1 Perplexity, 0 Claude
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Total cost: $0.01
+2025-03-07 13:10:20 - iterative_research_tool.core.research - INFO - Final average confidence score: 0.80
+2025-03-07 13:10:20 - __main__ - INFO - Enhanced document written to __the_intersection_of_islam.md
+2025-03-07 13:10:20 - __main__ - INFO - Version history written to __the_intersection_of_islam_version_history.md
+2025-03-07 13:10:20 - httpcore.connection - DEBUG - close.started
+2025-03-07 13:10:20 - httpcore.connection - DEBUG - close.complete

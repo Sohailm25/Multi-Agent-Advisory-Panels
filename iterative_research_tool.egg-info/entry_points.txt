@@ -1,0 +1,2 @@
+[console_scripts]
+iterative-research = iterative_research_tool.cli:main
