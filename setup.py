@@ -41,12 +41,13 @@ setup(
         "anthropic>=0.9.0",
         "requests>=2.25.0",
         "pydantic>=1.10.0,<2.0.0",  # Use v1 for compatibility
-        "colorama>=0.4.4",
+        "colorama>=0.4.4",  # For terminal colors
         "markdown>=3.3.0",
         "tiktoken>=0.4.0",  # For token counting
         "tenacity>=8.0.0",  # For retries
         "regex>=2022.1.18",  # For advanced regex in prompt extraction
         "python-dotenv>=0.21.0",  # For loading environment variables
+        "langgraph>=0.0.19",  # For orchestration flows
     ],
     entry_points={
         "console_scripts": [

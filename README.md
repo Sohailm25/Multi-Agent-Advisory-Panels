@@ -10,6 +10,7 @@ A command-line tool that creates exhaustive, textbook-quality research documents
 - **Educational Resources**: Generate teaching materials, study guides, or textbook-like content
 - **Competitive Intelligence**: Research industry trends, competitor strategies, or market analyses
 - **Technical Documentation**: Create detailed documentation for products, services, or technologies
+- **Strategic Planning**: Generate comprehensive research plans with LangGraph orchestration
 
 ## Features
 
@@ -23,6 +24,9 @@ A command-line tool that creates exhaustive, textbook-quality research documents
 - **Custom Prompts**: Use specialized prompts for enhanced research workflow
 - **Intelligent Loop Control**: Automatically determine when to stop research based on diminishing returns
 - **Deeper Research**: Generate follow-up questions for more comprehensive coverage
+- **Strategic Planning**: Generate detailed research plans using LangGraph orchestration
+- **Terminal Visualization**: View the LangGraph execution flow in real-time in your terminal
+- **Feedback Collection**: Provide feedback on generated plans to improve future results
 
 ## Prerequisites
 
@@ -103,6 +107,37 @@ iterative-research research --input-text "Your research topic here"
 
 # Or with the shorthand
 iterative-research research -x "The intersection of Islam and meditation techniques"
+```
+
+### Strategic Planning
+
+```bash
+# Generate a strategic research plan
+iterative-research strategic-planner "How does quantum computing impact cryptography?"
+
+# Input query from console
+iterative-research strategic-planner --input-text
+
+# Or with the shorthand
+iterative-research strategic-planner -x
+
+# Save the plan to a file
+iterative-research strategic-planner "Impact of climate change on agriculture" --output-file research-plan.md
+
+# Use a custom prompt directory
+iterative-research strategic-planner "AI ethics in healthcare" --prompts-directory ./my-prompts
+
+# Specify Claude model
+iterative-research strategic-planner "Renewable energy trends" --claude-model claude-3-7-opus-20250619
+
+# Disable terminal visualization
+iterative-research strategic-planner "Blockchain applications" --no-visualize
+
+# Disable feedback collection
+iterative-research strategic-planner "Machine learning in medicine" --no-feedback
+
+# Specify a custom feedback file
+iterative-research strategic-planner "Future of transportation" --feedback-file ./my-feedback.txt
 ```
 
 ### Advanced Usage with Custom Prompts

@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 from iterative_research_tool.core.config import ConfigManager, ToolConfig
 from iterative_research_tool.core.logging_utils import setup_logging, ProgressLogger
 from iterative_research_tool.core.research import IterativeResearchTool, CostLimitExceededError
+from iterative_research_tool.core.strategic_planner import StrategicPlanner
 
 
 logger = logging.getLogger(__name__)
@@ -140,6 +141,49 @@ def create_parser() -> argparse.ArgumentParser:
     research_parser.add_argument(
         "--max-batch-size", type=int,
         help="Maximum number of queries to run in a batch"
+    )
+    
+    # Strategic Planner command
+    planner_parser = subparsers.add_parser("strategic-planner", help="Generate a strategic research plan")
+    planner_parser.add_argument(
+        "query", nargs="?", default=None,
+        help="Research query to plan for"
+    )
+    planner_parser.add_argument(
+        "--input-text", "-x", nargs="?", const=True, default=False, metavar="TEXT",
+        help="Input query directly. If no text is provided, reads from console"
+    )
+    planner_parser.add_argument(
+        "--output-file", "-o",
+        help="Output file path (defaults to stdout)"
+    )
+    planner_parser.add_argument(
+        "--config-path",
+        help="Path to config file"
+    )
+    planner_parser.add_argument(
+        "--claude-model",
+        help="Claude model to use for planning"
+    )
+    planner_parser.add_argument(
+        "--prompts-directory", "-p",
+        help="Directory containing prompt templates"
+    )
+    planner_parser.add_argument(
+        "--verbose", action="store_true",
+        help="Enable verbose output"
+    )
+    planner_parser.add_argument(
+        "--no-visualize", action="store_true",
+        help="Disable terminal visualization"
+    )
+    planner_parser.add_argument(
+        "--no-feedback", action="store_true",
+        help="Disable feedback collection"
+    )
+    planner_parser.add_argument(
+        "--feedback-file",
+        help="Path to the feedback file"
     )
     
     # Version command
@@ -397,6 +441,88 @@ def handle_research_command(args: argparse.Namespace) -> int:
         return 1
 
 
+def handle_strategic_planner_command(args: argparse.Namespace) -> int:
+    """Handle the strategic-planner command.
+    
+    Args:
+        args: Command-line arguments
+        
+    Returns:
+        Exit code (0 for success, non-zero for error)
+    """
+    # Load configuration
+    config_path = args.config_path
+    config_manager = ConfigManager(config_path)
+    config = config_manager.load_config()
+    
+    # Set up logging
+    log_level = logging.DEBUG if args.verbose else logging.INFO
+    setup_logging(log_level)
+    
+    # Get Claude API key
+    claude_api_key = os.getenv("CLAUDE_API_KEY") or config.claude_api_key
+    if not claude_api_key:
+        logger.error("Claude API key not found. Please set it in the configuration or environment.")
+        return 1
+    
+    # Get Claude model
+    claude_model = args.claude_model or os.getenv("CLAUDE_MODEL") or config.claude_model
+    if not claude_model:
+        claude_model = "claude-3-7-sonnet-20250219"  # Default model
+    
+    # Get prompt directory
+    prompt_dir = args.prompts_directory or os.getenv("PROMPTS_DIRECTORY") or config.prompts_directory
+    
+    # Get visualization and feedback options
+    visualize = not args.no_visualize
+    collect_feedback = not args.no_feedback
+    feedback_file = args.feedback_file
+    
+    # Get query
+    query = args.query
+    if args.input_text is True:
+        # Read from console
+        print("Enter your research query (Ctrl+D or Ctrl+Z on a new line to finish):")
+        query = sys.stdin.read().strip()
+    elif args.input_text:
+        # Use provided text
+        query = args.input_text
+    
+    if not query:
+        logger.error("No query provided. Please provide a query.")
+        return 1
+    
+    try:
+        # Create and run the strategic planner
+        planner = StrategicPlanner(
+            claude_api_key=claude_api_key, 
+            claude_model=claude_model,
+            prompt_dir=prompt_dir,
+            visualize=visualize,
+            collect_feedback=collect_feedback,
+            feedback_file=feedback_file
+        )
+        result = planner.run(query)
+        
+        # Output the result
+        if args.output_file:
+            output_path = Path(args.output_file)
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write(result)
+            logger.info(f"Strategic plan written to {output_path}")
+        else:
+            print("\n" + result)
+        
+        return 0
+    
+    except Exception as e:
+        logger.error(f"Error running strategic planner: {str(e)}")
+        if args.verbose:
+            import traceback
+            traceback.print_exc()
+        return 1
+
+
 def handle_version_command(args: argparse.Namespace) -> int:
     """Handle the version command.
     
@@ -440,6 +566,8 @@ def main() -> int:
             return handle_config_command(args)
         elif args.command == "research":
             return handle_research_command(args)
+        elif args.command == "strategic-planner":
+            return handle_strategic_planner_command(args)
         elif args.command == "version":
             return handle_version_command(args)
         else:
