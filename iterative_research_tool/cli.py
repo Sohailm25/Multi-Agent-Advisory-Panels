@@ -5,6 +5,7 @@ import sys
 import argparse
 import logging
 import tempfile
+import json
 from pathlib import Path
 from typing import Optional, Tuple
 from dotenv import load_dotenv
@@ -13,6 +14,7 @@ from iterative_research_tool.core.config import ConfigManager, ToolConfig
 from iterative_research_tool.core.logging_utils import setup_logging, ProgressLogger
 from iterative_research_tool.core.research import IterativeResearchTool, CostLimitExceededError
 from iterative_research_tool.core.strategic_planner import StrategicPlanner
+from iterative_research_tool.core.user_memory import UserMemory
 
 
 logger = logging.getLogger(__name__)
@@ -184,6 +186,18 @@ def create_parser() -> argparse.ArgumentParser:
     planner_parser.add_argument(
         "--feedback-file",
         help="Path to the feedback file"
+    )
+    planner_parser.add_argument(
+        "--no-memory", action="store_true",
+        help="Disable user memory tracking"
+    )
+    planner_parser.add_argument(
+        "--memory-file",
+        help="Path to the user memory file"
+    )
+    planner_parser.add_argument(
+        "--show-memory", action="store_true",
+        help="Show the current user memory before running"
     )
     
     # Version command
@@ -478,6 +492,31 @@ def handle_strategic_planner_command(args: argparse.Namespace) -> int:
     collect_feedback = not args.no_feedback
     feedback_file = args.feedback_file
     
+    # Get memory options
+    use_memory = not args.no_memory
+    memory_file = args.memory_file
+    
+    # Show memory if requested
+    if args.show_memory and use_memory:
+        user_memory = UserMemory(memory_file=memory_file, claude_api_key=claude_api_key)
+        memory_file_path = user_memory.get_memory_file_path()
+        
+        try:
+            with open(memory_file_path, "r", encoding="utf-8") as f:
+                memory_content = json.load(f)
+                
+            print(f"\n=== User Memory ({memory_file_path}) ===")
+            print(json.dumps(memory_content, indent=2))
+            print("=" * 40)
+            
+            if not args.query and not args.input_text:
+                return 0  # Exit if only showing memory
+                
+        except FileNotFoundError:
+            print(f"\nNo memory file found at {memory_file_path}. A new one will be created.")
+        except json.JSONDecodeError:
+            print(f"\nError parsing memory file at {memory_file_path}. A new one will be created.")
+    
     # Get query
     query = args.query
     if args.input_text is True:
@@ -500,7 +539,9 @@ def handle_strategic_planner_command(args: argparse.Namespace) -> int:
             prompt_dir=prompt_dir,
             visualize=visualize,
             collect_feedback=collect_feedback,
-            feedback_file=feedback_file
+            feedback_file=feedback_file,
+            use_memory=use_memory,
+            memory_file=memory_file
         )
         result = planner.run(query)
         

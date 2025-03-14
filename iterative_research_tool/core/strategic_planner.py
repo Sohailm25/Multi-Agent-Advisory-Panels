@@ -18,12 +18,16 @@ from anthropic import Anthropic
 # Visualization imports
 from iterative_research_tool.core.visualization import TerminalVisualizer, FeedbackCollector
 
+# User memory imports
+from iterative_research_tool.core.user_memory import UserMemory
+
 logger = logging.getLogger(__name__)
 
 # Define the state schema
 class PlannerState(BaseModel):
     """State for the strategic planner graph."""
     query: str = Field(description="The user's query or question")
+    user_context: Optional[str] = Field(default=None, description="Context about the user from memory")
     plan: Optional[str] = Field(default=None, description="The generated strategic plan")
     thoughts: List[str] = Field(default_factory=list, description="Thinking process")
     response: Optional[str] = Field(default=None, description="Final response to the user")
@@ -40,7 +44,9 @@ class StrategicPlanner:
         prompt_dir: Optional[str] = None,
         visualize: bool = True,
         collect_feedback: bool = True,
-        feedback_file: Optional[str] = None
+        feedback_file: Optional[str] = None,
+        use_memory: bool = True,
+        memory_file: Optional[str] = None
     ):
         """Initialize the strategic planner.
         
@@ -51,6 +57,8 @@ class StrategicPlanner:
             visualize: Whether to visualize the execution in the terminal
             collect_feedback: Whether to collect feedback on the generated plan
             feedback_file: Path to the feedback file
+            use_memory: Whether to use user memory
+            memory_file: Path to the memory file
         """
         self.claude_client = Anthropic(api_key=claude_api_key)
         self.claude_model = claude_model
@@ -66,6 +74,14 @@ class StrategicPlanner:
             save_feedback=collect_feedback,
             feedback_file=feedback_file
         ) if collect_feedback else None
+        
+        # Set up user memory
+        self.use_memory = use_memory
+        self.user_memory = UserMemory(
+            memory_file=memory_file,
+            claude_api_key=claude_api_key,
+            claude_model=claude_model
+        ) if use_memory else None
         
         # Build the graph
         self.graph = self._build_graph()
@@ -100,7 +116,7 @@ class StrategicPlanner:
             if prompt_path.exists():
                 logger.info(f"Loading prompt template from {prompt_path}")
                 with open(prompt_path, "r", encoding="utf-8") as f:
-                    return f.read() + "\n\nResearch Query: {query}\n\n"
+                    return f.read() + "\n\n{user_context}\n\nResearch Query: {query}\n\n"
         
         # If prompt file not found, use the default prompt
         logger.warning(f"Prompt file {prompt_filename} not found in any of the prompt directories. Using default prompt.")
@@ -116,6 +132,8 @@ Your task is to analyze the given research query and develop a comprehensive str
 
 Think step-by-step and be thorough in your analysis. Your plan should be detailed enough that someone could follow it to conduct high-quality research on the topic.
 
+{user_context}
+
 Research Query: {query}
 
 Strategic Research Plan:
@@ -127,19 +145,23 @@ Strategic Research Plan:
         graph = StateGraph(PlannerState)
         
         # Add nodes
+        graph.add_node("load_user_context", self._load_user_context)
         graph.add_node("generate_thoughts", self._generate_thoughts)
         graph.add_node("create_plan", self._create_plan)
         graph.add_node("format_response", self._format_response)
         graph.add_node("collect_feedback", self._collect_feedback)
+        graph.add_node("update_user_memory", self._update_user_memory)
         
         # Add edges
+        graph.add_edge("load_user_context", "generate_thoughts")
         graph.add_edge("generate_thoughts", "create_plan")
         graph.add_edge("create_plan", "format_response")
         graph.add_edge("format_response", "collect_feedback")
-        graph.add_edge("collect_feedback", END)
+        graph.add_edge("collect_feedback", "update_user_memory")
+        graph.add_edge("update_user_memory", END)
         
         # Set the entry point
-        graph.set_entry_point("generate_thoughts")
+        graph.set_entry_point("load_user_context")
         
         # Add event callbacks for visualization
         if self.visualize:
@@ -169,17 +191,46 @@ Strategic Research Plan:
             node_name = event_data["node_name"]
             self.visualizer.show_node_complete(node_name)
     
+    def _load_user_context(self, state: PlannerState) -> PlannerState:
+        """Load user context from memory."""
+        logger.info("Loading user context from memory")
+        
+        if not self.use_memory or not self.user_memory:
+            state.user_context = ""
+            return state
+            
+        try:
+            # Get context from user memory
+            user_context = self.user_memory.get_context_for_query(state.query)
+            state.user_context = user_context
+            
+            if self.visualize:
+                self.visualizer.show_thought(f"Loaded user context:\n{user_context}")
+                
+            return state
+            
+        except Exception as e:
+            logger.error(f"Error loading user context: {e}")
+            state.user_context = ""
+            return state
+    
     def _generate_thoughts(self, state: PlannerState) -> PlannerState:
         """Generate initial thoughts about the query."""
         logger.info(f"Generating thoughts for query: {state.query}")
         
         try:
             # Generate thoughts using Claude
+            system_prompt = "You are a strategic research planner. Think step by step about the query to understand its components and requirements."
+            
+            # Add user context to system prompt if available
+            if state.user_context:
+                system_prompt += f"\n\nUser Context:\n{state.user_context}"
+            
             message = self.claude_client.messages.create(
                 model=self.claude_model,
                 max_tokens=1000,
                 temperature=0.7,
-                system="You are a strategic research planner. Think step by step about the query to understand its components and requirements.",
+                system=system_prompt,
                 messages=[
                     {"role": "user", "content": f"I need to research: {state.query}\n\nWhat are the key components, challenges, and approaches I should consider? Think step by step."}
                 ]
@@ -208,13 +259,21 @@ Strategic Research Plan:
             
         try:
             # Generate the plan using Claude with the strategic planner prompt
+            system_prompt = "You are a strategic research planner. Create a detailed, structured research plan."
+            
+            # Format the prompt with user context
+            formatted_prompt = self.prompt_template.format(
+                query=state.query,
+                user_context=state.user_context or ""
+            )
+            
             message = self.claude_client.messages.create(
                 model=self.claude_model,
                 max_tokens=2000,
                 temperature=0.5,
-                system="You are a strategic research planner. Create a detailed, structured research plan.",
+                system=system_prompt,
                 messages=[
-                    {"role": "user", "content": self.prompt_template.format(query=state.query)}
+                    {"role": "user", "content": formatted_prompt}
                 ]
             )
             
@@ -266,6 +325,33 @@ Strategic Research Plan:
             logger.error(f"Error collecting feedback: {str(e)}")
             # Don't set state.error here as we don't want to fail the whole process
             # just because feedback collection failed
+            return state
+    
+    def _update_user_memory(self, state: PlannerState) -> PlannerState:
+        """Update user memory with the interaction."""
+        logger.info("Updating user memory")
+        
+        if not self.use_memory or not self.user_memory:
+            return state
+            
+        try:
+            # Add interaction to user memory
+            self.user_memory.add_interaction(
+                query=state.query,
+                response=state.response or "",
+                feedback=state.feedback
+            )
+            
+            if self.visualize:
+                memory_file = self.user_memory.get_memory_file_path()
+                self.visualizer.show_thought(f"Updated user memory at: {memory_file}")
+                
+            return state
+            
+        except Exception as e:
+            logger.error(f"Error updating user memory: {str(e)}")
+            # Don't set state.error here as we don't want to fail the whole process
+            # just because memory update failed
             return state
     
     def run(self, query: str) -> str:

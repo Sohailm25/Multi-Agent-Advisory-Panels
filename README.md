@@ -11,6 +11,7 @@ A command-line tool that creates exhaustive, textbook-quality research documents
 - **Competitive Intelligence**: Research industry trends, competitor strategies, or market analyses
 - **Technical Documentation**: Create detailed documentation for products, services, or technologies
 - **Strategic Planning**: Generate comprehensive research plans with LangGraph orchestration
+- **Personal Growth**: Track user goals, struggles, and cognitive patterns over time for personalized advice
 
 ## Features
 
@@ -27,6 +28,7 @@ A command-line tool that creates exhaustive, textbook-quality research documents
 - **Strategic Planning**: Generate detailed research plans using LangGraph orchestration
 - **Terminal Visualization**: View the LangGraph execution flow in real-time in your terminal
 - **Feedback Collection**: Provide feedback on generated plans to improve future results
+- **User Memory**: Builds a detailed profile of the user over time, tracking goals, struggles, and cognitive patterns
 
 ## Prerequisites
 
@@ -138,7 +140,31 @@ iterative-research strategic-planner "Machine learning in medicine" --no-feedbac
 
 # Specify a custom feedback file
 iterative-research strategic-planner "Future of transportation" --feedback-file ./my-feedback.txt
+
+# Disable user memory tracking
+iterative-research strategic-planner "Quantum physics basics" --no-memory
+
+# Specify a custom memory file
+iterative-research strategic-planner "Career development" --memory-file ./my-memory.json
+
+# View current user memory
+iterative-research strategic-planner --show-memory
 ```
+
+### User Memory
+
+The tool builds a detailed profile of the user over time, tracking:
+
+- **Goals**: What the user is trying to achieve
+- **Hard Truths**: Difficult realities the user needs to acknowledge
+- **Struggles**: Challenges the user is facing
+- **Mental Blocks**: Psychological barriers holding the user back
+- **Cognitive Biases**: Patterns of thinking that may affect judgment
+- **Strengths**: Areas where the user excels
+- **Interests**: Topics the user is passionate about
+- **Values**: Core principles important to the user
+
+This profile is automatically updated with each interaction and used to provide more personalized strategic plans. The memory is stored in a JSON file at `~/.config/iterative_research_tool/user_memory.json` by default.
 
 ### Advanced Usage with Custom Prompts
 
