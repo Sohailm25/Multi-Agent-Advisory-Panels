@@ -272,53 +272,52 @@ Speak with the wisdom and perspective that comes from temporal distance.
 
 This unique agent concept addresses the common strategic planning failure of discounting future impacts and could be implemented as a specialized node in your LangGraph system[^2][^3].
 
-## Conclusion and Implementation Guidance
+User Query → [Constraint Mapper] →
+  → [Resource Constraint Agent] →
+  → [Regulatory Constraint Agent] →
+  → [Time Constraint Agent] →
+  → [Cognitive Constraint Agent] →
+  → [Social Constraint Agent] →
+  → [Constraint Synthesis] → [Constraint-Aware Strategy]
 
-These multi-agent advisory panels represent just a starting point for what's possible with LangGraph. The implementation would benefit from hierarchical oversight models as described in the search results, where governor agents manage workflows and ensure alignment across specialized agents[^1].
+You analyze cognitive constraints affecting strategy implementation. Your role is to:
+- Identify potential cognitive biases influencing current plans
+- Assess attention, willpower, and decision fatigue factors
+- Evaluate complexity and cognitive load of proposed solutions
+- Determine if there are learning curves that need accommodation
+- Suggest modifications that work with human psychology rather than against it
 
-For most effective implementation, consider using LangGraph's handoff capability where each agent can decide which other agent needs to be involved next, as demonstrated in the search results[^7][^8]. This creates truly dynamic workflows rather than static processing pipelines.
+Remember that even brilliant strategies fail when they ignore cognitive limitations. Always ask: "What cognitive resources does this strategy demand, and are they sustainable?"
 
-Your next step should be selecting one panel design that best addresses your immediate needs, implementing a minimal version with 2-3 agents, and gradually expanding based on performance. Which advisory panel aligns most closely with the strategic advice you're looking to generate?
 
-<div style="text-align: center">⁂</div>
+## Temporal Perspective Panel
 
-[^1]: https://www.salesforce.com/blog/responsibly-manage-multi-agent-systems/
+User Query → [Past Pattern Analyst] →
+  → [Present Reality Assessor] →
+  → [Near-Future Transition Architect] →
+  → [Long-Term Vision Keeper] →
+  → [Temporal Integration] → Strategy
 
-[^2]: https://docs.typingmind.com/ai-agent-tips/supercharge-team-productivity-with-multi-agent-workflows
+## Contrarian Challenge System Panel
+User Query → [Initial Strategy Developer] →
+  → [Devil's Advocate] →
+  → [Status Quo Defender] →
+  → [Radical Alternative Explorer] →
+  → [Synthesis Diplomat] →
+  → [Resilient Strategy]
 
-[^3]: https://openreview.net/forum?id=JtGPIZpOrz
+## implementation energy panel
+User Query → [Energy Mapping Agent] →
+  → [Enthusiasm Sustainability Engineer] →
+  → [Recovery Design Specialist] →
+  → [Momentum Architecture Agent] →
+  → [Energy-Optimized Strategy]
 
-[^4]: https://council.aimresearch.co/is-your-ai-strategy-stuck-on-prompt-engineering-how-multi-agent-systems-can-transform-your-business/
+## product development panel
 
-[^5]: https://www.reddit.com/r/PromptEngineering/comments/1g370j9/how_do_you_create_prompts_for_a_multiagent_system/
-
-[^6]: https://docsbot.ai/prompts/productivity/multi-agent-assistant
-
-[^7]: https://www.youtube.com/watch?v=bwrAsnU2P88
-
-[^8]: https://langchain-ai.github.io/langgraph/how-tos/multi-agent-network/
-
-[^9]: https://springsapps.com/knowledge/everything-you-need-to-know-about-multi-ai-agents-in-2024-explanation-examples-and-challenges
-
-[^10]: https://www.linkedin.com/pulse/day-15-multi-agent-prompting-creating-conversations-between-gupta-zfxqe
-
-[^11]: https://arxiv.org/html/2502.04780v1
-
-[^12]: https://www.willowtreeapps.com/craft/multi-agent-ai-systems-when-to-expand
-
-[^13]: https://docs.covalent.xyz/docs/cloud/tutorials-cloud/multi_agent/
-
-[^14]: https://langchain-ai.github.io/langgraph/concepts/multi_agent/
-
-[^15]: https://arxiv.org/html/2407.02736v1
-
-[^16]: https://www.rootstrap.com/blog/how-to-build-multi-agent-app-for-automating-dependency-security-using-langgraph-and-node-js
-
-[^17]: https://www.utsa.edu/entrepreneurship/documents/external_res/12083324-3-Advisory-Board-Member-Agreement.pdf
-
-[^18]: https://www.forbes.com/sites/lanceeliot/2025/03/01/prompt-engineering-for-advanced-multi-agent-ai-prompting/
-
-[^19]: https://llm-multiagent-ft.github.io
-
-[^20]: https://www.dailydoseofds.com/p/building-a-multi-agent-financial-analyst/
-
+User Query → [User Need Interpreter] →
+  → [Technology Feasibility Assessor] →
+  → [UX Architecture Agent] →
+  → [Business Model Analyzer] →
+  → [Go-to-Market Strategist] →
+  → [Product Strategy]

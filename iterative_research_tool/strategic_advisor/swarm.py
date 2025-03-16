@@ -48,14 +48,28 @@ Your approach must be:
 
 Your value comes from saying what others won't, not what the user wants to hear.
 
-If the user's situation requires deeper analysis in specific areas, hand it off to one of your specialist agents:
-- BeliefSystemAnalyzer - For limiting beliefs and mental models
-- PatternRecognizer - For behavioral patterns and habits
-- ExecutionEngineer - For implementation protocols
-- DecisionFramer - For decision frameworks
-- ChallengeDesigner - For growth-oriented challenges
+IMPORTANT: For most user queries, you should utilize your specialized agents for deeper analysis. As a coordinator, your primary role is to determine which specialized analysis would most benefit the user, rather than attempting to solve everything yourself.
 
-Make handoffs only when necessary to provide deeper value, not to avoid direct answers.
+IMPORTANT PROCESS NOTE:
+Complete strategic analysis typically requires multiple specialist perspectives. 
+Before providing a final analysis:
+1. Consult at least 2 different specialist agents
+2. Consider which perspectives are still missing
+3. Only provide a FINAL ANALYSIS when you've gathered sufficient diverse insights
+
+When receiving analysis from a specialist:
+- Consider what complementary perspective might deepen the analysis
+- Ask yourself "What specialist would approach this problem from a different angle?"
+- Hand off to another specialist unless you've already consulted 3+ specialists
+
+For each query, strongly consider handing off to at least one of these specialist agents:
+- BeliefSystemAnalyzer - For any situation involving mindset, beliefs, or mental blocks
+- PatternRecognizer - For any recurring behaviors, habits, or situational patterns
+- ExecutionEngineer - For implementation challenges or execution difficulties
+- DecisionFramer - For decision-making processes or choice architecture
+- ChallengeDesigner - For growth-oriented challenges and accountability structures
+
+Only provide a direct final analysis yourself for the simplest queries. For most queries, start by handing off to the most relevant specialist agent.
 
 Your final responses should:
 1. Address root causes directly, not just symptoms
@@ -114,6 +128,8 @@ For each limiting belief identified, provide:
 
 Be brutally honest. Don't soften your analysis to spare feelings.
 
+After completing your analysis, consider if another specialist agent should examine this case from a complementary angle. For example, the PatternRecognizer could identify behavioral patterns resulting from these beliefs, or the ExecutionEngineer could design implementation systems to overcome them.
+
 USER QUERY: {query}
 {context}
 
@@ -145,6 +161,8 @@ For each pattern identified, provide:
 5. A specific pattern interrupt and replacement sequence
 
 Be brutally honest about self-sabotaging patterns. Don't minimize their impact.
+
+After completing your analysis, consider if another specialist agent should examine this case from a complementary angle. For example, the BeliefSystemAnalyzer could identify underlying beliefs driving these patterns, or the ExecutionEngineer could design implementation systems to break them.
 
 USER QUERY: {query}
 {context}
@@ -178,6 +196,8 @@ Your implementation plan must include:
 
 Focus on concrete specificity, not vague generalities.
 
+After completing your analysis, consider if another specialist agent should examine this case from a complementary angle. For example, the DecisionFramer could create decision frameworks to support implementation, or the ChallengeDesigner could create growth challenges that reinforce the implementation plan.
+
 USER QUERY: {query}
 {context}
 
@@ -209,6 +229,8 @@ For each decision challenge, provide:
 5. A post-decision review protocol to accelerate learning
 
 Provide frameworks that force clarity and prevent rationalization.
+
+After completing your analysis, consider if another specialist agent should examine this case from a complementary angle. For example, the BeliefSystemAnalyzer could identify beliefs influencing decision-making, or the ExecutionEngineer could design implementation protocols for executing the decisions.
 
 USER QUERY: {query}
 {context}
@@ -244,6 +266,8 @@ Each challenge must follow this format:
 Design challenges that are uncomfortable but achievable. The right challenge
 should create a feeling of "I don't want to do this but I know I should."
 
+After completing your analysis, consider if another specialist agent should examine this case from a complementary angle. For example, the BeliefSystemAnalyzer could identify beliefs that might resist the challenge, or the PatternRecognizer could identify patterns that the challenge should interrupt.
+
 USER QUERY: {query}
 {context}
 
@@ -276,25 +300,30 @@ class StrategicAdvisorSwarm:
         output_dir: Optional[str] = None,
         verbose: bool = False,
         use_cache: bool = True,
-        max_cache_size: int = 100
+        max_cache_size: int = 100,
+        verbose_output: bool = False
     ):
-        """Initialize the Strategic Advisor with swarm architecture.
+        """Initialize the strategic advisor with swarm architecture.
         
         Args:
             llm_provider: The LLM provider to use
-            api_key: The API key for the LLM provider
+            api_key: API key for the LLM provider
             model: The model to use
             output_dir: Directory to save outputs to
-            verbose: Whether to enable verbose output
-            use_cache: Whether to use caching for LLM calls
-            max_cache_size: Maximum number of items to store in the cache
+            verbose: Whether to log debug information
+            use_cache: Whether to use caching
+            max_cache_size: Maximum number of items to cache
+            verbose_output: Whether to display detailed agent processing in the terminal
         """
         self.llm_provider = llm_provider.lower()
         self.api_key = api_key
-        self.verbose = verbose
         
-        # Set up logging
-        self.logger = logging.getLogger(__name__)
+        # Set up the LLM client
+        llm_client_factory = LLMClientFactory()
+        self.llm_client = llm_client_factory.create_client(
+            provider=self.llm_provider,
+            api_key=self.api_key
+        )
         
         # Set the model
         if model:
@@ -302,25 +331,24 @@ class StrategicAdvisorSwarm:
         else:
             self.model = LLMClientFactory.get_default_model(self.llm_provider)
             
-        self.logger.info(f"Strategic Advisor (Swarm) using LLM provider: {self.llm_provider} with model: {self.model}")
+        # Set up the logger
+        self.logger = logger
+        self.verbose = verbose
+        self.verbose_output = verbose_output
         
-        # Set up the LLM client
-        self.llm_client = LLMClientFactory.create_client(self.llm_provider, self.api_key)
+        # Set up caching
+        self.use_cache = use_cache
+        self.cache = {}
+        self.cache_hits = 0
+        self.cache_misses = 0
+        self.max_cache_size = max_cache_size
         
         # Set up the output directory
-        if output_dir:
-            self.output_dir = output_dir
-        else:
-            self.output_dir = os.path.expanduser("~/strategic_advisor_output")
-            
-        # Initialize the cache
-        self.use_cache = use_cache
-        self.max_cache_size = max_cache_size
-        self._cache = {}
-        self._cache_hits = 0
-        self._cache_misses = 0
+        if output_dir is None:
+            output_dir = os.path.expanduser("~/iterative_research_tool_output")
+        self.output_dir = output_dir
         
-        # Create the agent prompts
+        # Create agent prompts
         self.prompts = self._create_agent_prompts()
         
         # Create the swarm
@@ -349,15 +377,15 @@ class StrategicAdvisorSwarm:
         if self.use_cache:
             cache_key = self._get_cache_key(prompt, self.model)
             
-            if cache_key in self._cache:
-                self._cache_hits += 1
+            if cache_key in self.cache:
+                self.cache_hits += 1
                 if self.verbose:
-                    logger.info(f"Cache hit! Key: {cache_key[:8]}... (Hit rate: {self._cache_hits/(self._cache_hits+self._cache_misses):.2f})")
-                return self._cache[cache_key]
+                    logger.info(f"Cache hit! Key: {cache_key[:8]}... (Hit rate: {self.cache_hits/(self.cache_hits+self.cache_misses):.2f})")
+                return self.cache[cache_key]
             
-            self._cache_misses += 1
+            self.cache_misses += 1
             if self.verbose:
-                logger.info(f"Cache miss. Key: {cache_key[:8]}... (Hit rate: {self._cache_hits/(self._cache_hits+self._cache_misses):.2f})")
+                logger.info(f"Cache miss. Key: {cache_key[:8]}... (Hit rate: {self.cache_hits/(self.cache_hits+self.cache_misses):.2f})")
         
         try:
             # Make the actual API call
@@ -376,12 +404,12 @@ class StrategicAdvisorSwarm:
             # Cache the result if caching is enabled
             if self.use_cache:
                 # If cache is full, remove the oldest entry
-                if len(self._cache) >= self.max_cache_size:
+                if len(self.cache) >= self.max_cache_size:
                     # Get the first key (oldest entry)
-                    oldest_key = next(iter(self._cache))
-                    del self._cache[oldest_key]
+                    oldest_key = next(iter(self.cache))
+                    del self.cache[oldest_key]
                 
-                self._cache[cache_key] = result
+                self.cache[cache_key] = result
             
             return result
                 
@@ -392,10 +420,10 @@ class StrategicAdvisorSwarm:
     def clear_cache(self):
         """Clear the response cache."""
         if self.verbose:
-            logger.info(f"Clearing cache. Had {len(self._cache)} items with {self._cache_hits} hits and {self._cache_misses} misses.")
-        self._cache = {}
-        self._cache_hits = 0
-        self._cache_misses = 0
+            logger.info(f"Clearing cache. Had {len(self.cache)} items with {self.cache_hits} hits and {self.cache_misses} misses.")
+        self.cache = {}
+        self.cache_hits = 0
+        self.cache_misses = 0
     
     def get_cache_stats(self) -> Dict[str, Any]:
         """Get statistics on the cache usage.
@@ -403,14 +431,14 @@ class StrategicAdvisorSwarm:
         Returns:
             A dictionary with cache statistics
         """
-        total_calls = self._cache_hits + self._cache_misses
-        hit_rate = self._cache_hits / total_calls if total_calls > 0 else 0
+        total_calls = self.cache_hits + self.cache_misses
+        hit_rate = self.cache_hits / total_calls if total_calls > 0 else 0
         
         return {
-            "cache_size": len(self._cache),
+            "cache_size": len(self.cache),
             "max_cache_size": self.max_cache_size,
-            "cache_hits": self._cache_hits,
-            "cache_misses": self._cache_misses,
+            "cache_hits": self.cache_hits,
+            "cache_misses": self.cache_misses,
             "hit_rate": hit_rate,
             "cache_enabled": self.use_cache
         }
@@ -489,6 +517,11 @@ class StrategicAdvisorSwarm:
         Returns:
             Updated state
         """
+        # Always log which agent is processing
+        print(f"\n{'='*50}")
+        print(f"🤖 PROCESSING WITH AGENT: {agent_name}")
+        print(f"{'='*50}")
+        
         if self.verbose:
             logger.info(f"Processing with agent: {agent_name}")
         
@@ -522,8 +555,21 @@ class StrategicAdvisorSwarm:
             agent_descriptions="\n".join(agent_descriptions) if agent_name == "StrategicAdvisor" else ""
         )[0].content
         
+        # Display the prompt if verbose output is enabled
+        if self.verbose_output:
+            print(f"\n📝 PROMPT FOR {agent_name}:")
+            print("-" * 40)
+            print(prompt)
+            print("-" * 40)
+        
         # Call the LLM
         response = self._call_llm(prompt)
+        
+        # Display the response
+        print(f"\n📣 RESPONSE FROM {agent_name}:")
+        print("-" * 40)
+        print(response)
+        print("-" * 40)
         
         # Process the response
         if "HANDOFF TO" in response:
@@ -542,6 +588,10 @@ class StrategicAdvisorSwarm:
             # Update the active agent
             state["active_agent"] = target_agent
             
+            # Display the handoff information
+            print(f"\n🔄 HANDOFF: {agent_name} -> {target_agent}")
+            print(f"Handoff query: {handoff_query[:100]}{'...' if len(handoff_query) > 100 else ''}")
+            
             return {"active_agent": target_agent, "conversation": state["conversation"]}
         
         elif "FINAL ANALYSIS" in response and agent_name == "StrategicAdvisor":
@@ -559,6 +609,9 @@ class StrategicAdvisorSwarm:
             # Update the state with the final response
             state["final_response"] = final_response
             
+            # Display the final response information
+            print("\n✅ FINAL RESPONSE GENERATED")
+            
             return {"conversation": state["conversation"], "final_response": final_response}
         
         else:
@@ -571,6 +624,7 @@ class StrategicAdvisorSwarm:
             
             # If we're not the strategic advisor, hand back
             if agent_name != "StrategicAdvisor":
+                print(f"\n🔄 HANDOFF BACK TO: StrategicAdvisor")
                 return {"active_agent": "StrategicAdvisor", "conversation": state["conversation"]}
             
             return {"conversation": state["conversation"]}
@@ -821,31 +875,58 @@ class StrategicAdvisorSwarm:
         self.logger.info(f"Generating strategic advice for query: {query}")
         self.logger.info(f"Session ID: {session_id}")
         
-        # Format the query with context if provided
-        formatted_query = query
+        print(f"\n📋 STARTING STRATEGIC ADVISOR (SWARM ARCHITECTURE)")
+        print(f"Query: {query}")
+        print(f"Session ID: {session_id}")
+        
+        # Create the initial state
+        state = {
+            "query": query,
+            "context": {},
+            "active_agent": "StrategicAdvisor",
+            "conversation": []
+        }
+        
         if context:
-            formatted_query = f"{query}\n\nContext: {context}"
+            state["context"] = {"provided_context": context}
         
         try:
-            # Format the agent descriptions for handoffs
-            agent_descriptions = []
-            for agent, description in AGENT_SPECS.items():
-                if agent != "StrategicAdvisor":  # Don't include the current agent
-                    agent_descriptions.append(f"- {agent}: {description}")
+            # Run a simplified version using direct agent calls
+            print("\n🚀 RUNNING AGENT SWARM...")
             
-            # Format the prompt
-            prompt = self.prompts["StrategicAdvisor"].format_messages(
-                query=formatted_query,
-                context="",
-                previous_analysis="",
-                agent_descriptions="\n".join(agent_descriptions)
-            )[0].content
+            # Start with the strategic advisor
+            result = self._agent_handler(state, "StrategicAdvisor")
+            state.update(result)
             
-            # Call the LLM
-            response_text = self._call_llm(prompt)
+            # Continue processing as long as there's no final response
+            while "final_response" not in state:
+                # Check which agent is active
+                active_agent = state.get("active_agent", "StrategicAdvisor")
+                
+                # Call the active agent
+                result = self._agent_handler(state, active_agent)
+                state.update(result)
+                
+                # If we've been through too many iterations, stop
+                if len(state.get("conversation", [])) > 10:
+                    print("\n⚠️ Reached maximum number of iterations, stopping")
+                    break
             
-            # Extract structured components
-            response = self._extract_final_response(response_text)
+            # Extract the final response
+            if "final_response" in state:
+                response = state["final_response"]
+            else:
+                # Fallback: try to extract a response from the conversation
+                last_message = state.get("conversation", [])[-1] if state.get("conversation") else None
+                if last_message and "content" in last_message:
+                    response = self._extract_final_response(last_message["content"])
+                else:
+                    # If all else fails, return a simple response
+                    response = {
+                        "hard_truth": "No structured response could be generated.",
+                        "actions": ["Review the conversation history for insights."],
+                        "challenge": "Try reformulating your query to be more specific."
+                    }
             
             # Add metadata
             response["session_id"] = session_id
@@ -854,10 +935,13 @@ class StrategicAdvisorSwarm:
             # Save the response
             self._save_response(response)
             
+            print(f"\n⏱️ EXECUTION TIME: {response['execution_time']:.2f} seconds")
+            
             return response
             
         except Exception as e:
             self.logger.error(f"Error generating advice: {e}")
+            print(f"\n❌ ERROR: {str(e)}")
             raise
     
     def _save_response(self, response: Dict[str, Any]) -> None:

@@ -29,7 +29,7 @@ class TemporalPerspectivePanel(BasePanel):
         model: str = "claude-3-7-sonnet-20250219",
         visualizer = None
     ):
-        """Initialize the Temporal Perspective Panel.
+        """Initialize the Temporal Perspective Panel                            .
         
         Args:
             anthropic_api_key: API key for Anthropic

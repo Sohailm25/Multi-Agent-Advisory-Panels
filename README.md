@@ -9,6 +9,7 @@ The Multi-Agent Advisory Planner is a comprehensive system that combines special
 Key features:
 - Multiple specialized advisory panels
 - Support for multiple LLM providers (Anthropic, OpenAI, Perplexity)
+- Multiple agentic architectures (Panels, Swarm, Custom)
 - Time travel functionality to explore alternative scenarios
 - Customizable panel creation
 - Stateful memory across sessions
@@ -24,8 +25,79 @@ cd research_cli_tool
 ```
 
 2. Install dependencies:
+
+You have several installation options depending on your needs:
+
 ```bash
+# Basic installation (includes only the Anthropic provider by default)
 pip install -e .
+
+# Install with all LLM providers (recommended for most users)
+pip install -e ".[all]"
+
+# Complete installation with all providers and development tools
+pip install -e ".[complete]"
+
+# Installation with just a specific additional provider
+pip install -e ".[openai]"     # For OpenAI
+pip install -e ".[perplexity]" # For Perplexity
+```
+
+> **Note:** The quotes around ".[all]" are important in some shells (like zsh) to prevent glob expansion.
+
+The recommended option for most users is `pip install -e ".[all]"`, which installs all LLM providers at once, ensuring you won't encounter missing dependency errors when switching between providers.
+
+**LLM Provider Packages:**
+- Anthropic: Uses the `anthropic` package
+- OpenAI: Uses the `openai` package
+- Perplexity: Uses the `PerplexiPy` package
+
+If you ever encounter missing dependencies when running the tool, you can use the `--install-deps` flag to automatically install the required packages for the specified provider:
+
+```bash
+panels --llm-provider perplexity --install-deps
+```
+
+3. Set up your API keys:
+```bash
+# For Anthropic (default)
+echo "ANTHROPIC_API_KEY=your_api_key_here" > .env
+
+# For OpenAI (optional)
+echo "OPENAI_API_KEY=your_api_key_here" >> .env
+
+# For Perplexity (optional)
+echo "PERPLEXITY_API_KEY=your_api_key_here" >> .env
+```
+
+## Global Command Installation
+
+After installing the package with any of the installation options above, you can use the global `panels` command from anywhere in your terminal:
+
+```bash
+# Now you can use the 'panels' command from any directory
+panels "What strategic approach should I take for expanding my business internationally?"
+```
+
+The `panels` command works exactly the same as the longer `python -m iterative_research_tool.cli` command, with all the same options and parameters.
+
+For convenience, operations like listing available panels and displaying panel information don't require an API key:
+
+```bash
+# List all available panels (no API key needed)
+panels --list-panels
+
+# Show information about a specific panel (no API key needed)
+panels --panel-info cognitive-diversity
+```
+
+Additional examples:
+```bash
+# Using a specific panel
+panels --panel cognitive-diversity "What strategic approach should I take?"
+
+# Using a specific LLM provider
+panels --llm-provider openai "How should I approach this problem?"
 ```
 
 ## Project Structure
@@ -42,105 +114,106 @@ The project is organized into the following directories:
 - `archive/`: Archived files that are no longer actively used
 - `my_custom_panels/`: Example directory for custom panel implementations
 
-3. Set up your API keys:
-```bash
-# For Anthropic (default)
-echo "ANTHROPIC_API_KEY=your_api_key_here" > .env
-
-# For OpenAI (optional)
-echo "OPENAI_API_KEY=your_api_key_here" >> .env
-
-# For Perplexity (optional)
-echo "PERPLEXITY_API_KEY=your_api_key_here" >> .env
-```
-
 ## Usage
 
-### Basic Usage
+### Global Command Installation
 
-Run the CLI with a query:
+The tool can be installed globally, making the `panels` command available from any terminal location:
+
 ```bash
-python -m iterative_research_tool.cli "What strategic approach should I take for expanding my business internationally?"
+# From the project directory
+pip install -e .
 ```
 
-### Selecting an LLM Provider
+After installation, you can use the `panels` command from any terminal location:
 
-Choose a specific LLM provider:
 ```bash
-python -m iterative_research_tool.cli --llm-provider openai "What strategic approach should I take for expanding my business internationally?"
+# List all available panels (no API key needed)
+panels --list-panels
+
+# Show information about a specific panel (no API key needed)
+panels --panel-info cognitive-diversity
+
+# Run a panel with a query
+panels --panel cognitive-diversity --llm-provider anthropic --api-key your_api_key "Your query here"
+
+# Run a panel with a query and specified output directory
+panels --panel cognitive-diversity --output-dir /path/to/output --llm-provider anthropic --api-key your_api_key "Your query here"
 ```
 
-Available LLM providers:
-- `anthropic` (default): Uses Anthropic's Claude models
-- `openai`: Uses OpenAI's GPT models
-- `perplexity`: Uses Perplexity's models
+### Strategic Advisor Commands
 
-You can also specify a model:
+The tool provides specialized strategic advisor architectures for generating advice:
+
+1. **Swarm Architecture** - Utilizes a swarm of specialized agents to generate strategic advice:
+
 ```bash
-python -m iterative_research_tool.cli --llm-provider openai --model gpt-4o "What strategic approach should I take for expanding my business internationally?"
+# Important: Always put your query in quotes to ensure it's captured correctly
+panels strat-swarm "What is the best way for me to be more involved in the masjid?" --llm-provider anthropic --api-key your_api_key
+
+# Or using the module directly
+python -m iterative_research_tool.cli strat-swarm "What is the best way for me to lose weight?" --llm-provider anthropic --api-key your_api_key
+
+# Save output to a specific file
+panels strat-swarm "What is the best way to start a podcast?" --output-file my_advice.json --llm-provider anthropic --api-key your_api_key
+
+# Show detailed agent processing steps, prompts, and responses
+panels strat-swarm "How can I improve my leadership skills?" --show-agent-details --llm-provider anthropic --api-key your_api_key
 ```
 
-If you need to install dependencies for a specific provider:
+2. **Custom Architecture** - Uses a custom-designed architecture for strategic advice:
+
 ```bash
-python -m iterative_research_tool.cli --llm-provider openai --install-deps
+# Important: Always put your query in quotes to ensure it's captured correctly
+panels strat-custom "How can I improve my public speaking skills?" --llm-provider anthropic --api-key your_api_key
+
+# Or using the module directly
+python -m iterative_research_tool.cli strat-custom "How can I improve my public speaking skills?" --llm-provider anthropic --api-key your_api_key
+
+# Show detailed agent processing steps, prompts, and responses
+panels strat-custom "How can I improve my public speaking skills?" --show-agent-details --llm-provider anthropic --api-key your_api_key
 ```
 
-### Selecting a Panel
+### Viewing Agent Processing Details
 
-Choose a specific advisory panel:
+To see the detailed processing steps of each agent in the strategic advisor architectures:
+
 ```bash
-python -m iterative_research_tool.cli --panel cognitive-diversity "What strategic approach should I take for expanding my business internationally?"
+# For the swarm architecture
+panels strat-swarm "Your query here" --show-agent-details --llm-provider anthropic --api-key your_api_key
+
+# For the custom architecture
+panels strat-custom "Your query here" --show-agent-details --llm-provider anthropic --api-key your_api_key
 ```
 
-Available panels:
-- `cognitive-diversity`: Provides diverse perspectives from different cognitive styles
-- `decision-intelligence`: Analyzes decisions from multiple angles
-- `future-scenarios`: Explores potential future scenarios and implications
-- `personal-development`: Provides guidance for personal and professional growth
-- `stakeholder-impact`: Analyzes impacts on different stakeholders
-- `constraint-analysis`: Identifies constraints and turns them into opportunities
-- `temporal-perspective`: Analyzes problems across different time horizons
-- `contrarian-challenge`: Tests strategies by challenging assumptions
-- `implementation-energy`: Optimizes strategies for sustainable implementation
-- `product-development`: Provides product strategy advice
+This will show:
+- Each agent as it processes the query
+- Handoffs between agents
+- The prompt used for each agent (when using --show-agent-details with the --verbose flag)
+- The response from each agent
+- The final assembled response
 
-### Listing Available Panels
+Using this feature helps you understand how the strategic advice is generated and verify that the agent handoff architecture is functioning correctly.
 
-List all available panels:
+### Panel-Based Approach (Original)
+
+This is the original method using specialized cognitive panels:
+
 ```bash
-python -m iterative_research_tool.cli --list-panels
+# Running with a specific panel
+python -m iterative_research_tool.cli --panel cognitive-diversity --llm-provider anthropic --api-key your_api_key "Your query here"
+
+# Or using the global command
+panels --panel cognitive-diversity --llm-provider anthropic --api-key your_api_key "Your query here"
 ```
 
-### Getting Panel Information
+### Troubleshooting Command Issues
 
-Get detailed information about a specific panel:
-```bash
-python -m iterative_research_tool.cli --panel-info cognitive-diversity
-```
-
-### Time Travel
-
-Explore alternative scenarios:
-```bash
-python -m iterative_research_tool.cli --alternative "What if I focused on the Asian market instead?" 
-```
-
-Show available checkpoints:
-```bash
-python -m iterative_research_tool.cli --show-checkpoints
-```
-
-Travel to a specific checkpoint:
-```bash
-python -m iterative_research_tool.cli --time-travel initial
-```
-
-### Saving Output
-
-Save the plan to a file:
-```bash
-python -m iterative_research_tool.cli --output-file my_plan.json "What strategic approach should I take for expanding my business internationally?"
-```
+If you experience issues with query capture:
+- Always enclose your query in quotes: `"Your query here"`
+- Place the query in the correct position based on the command you're using
+- For `--panel` approach, the query is the last argument
+- For `strat-swarm` and `strat-custom`, the query comes immediately after the command
 
 ## LLM Provider Configuration
 
@@ -153,64 +226,4 @@ The tool supports multiple LLM providers, each with their own API keys and model
 
 ### OpenAI
 - Environment variable: `OPENAI_API_KEY`
-- Default model: `gpt-4o`
-- Installation: `pip install openai`
-
-### Perplexity
-- Environment variable: `PERPLEXITY_API_KEY`
-- Default model: `sonar-medium-online`
-- Installation: `pip install perplexity-python`
-
-You can specify the provider and model at runtime:
-```bash
-python -m iterative_research_tool.cli --llm-provider openai --model gpt-4 "Your query here"
-```
-
-Or use the `--api-key` flag to override the environment variable:
-```bash
-python -m iterative_research_tool.cli --llm-provider perplexity --api-key your_api_key_here "Your query here"
-```
-
-## Panel Factory Pattern
-
-The system uses a Panel Factory Pattern to dynamically discover and instantiate panels. This allows for easy extension with custom panels. The key benefits include:
-
-- Automatic discovery of all available panels
-- Dynamic instantiation without hardcoded dependencies
-- Support for custom panels in external directories
-- Consistent interface across all panels
-
-## Creating Custom Panels
-
-You can extend the system by creating your own custom panels tailored to your specific needs. We provide a comprehensive guide and template for creating custom panels:
-
-- [Custom Panel Creation Guide](README_CUSTOM_PANELS.md)
-- [Custom Panel Template](custom_panel_template.py)
-
-To use a custom panel:
-
-1. Create your panel following the guide
-2. Place it in a directory
-3. Run the CLI with your custom panel:
-
-```bash
-python -m iterative_research_tool.cli --custom-panel-path my_custom_panels/ --panel my-custom-panel "Your query here"
-```
-
-## Architecture
-
-The Multi-Agent Advisory Planner is built with a modular architecture:
-
-- `strategic_planner.py`: Coordinates the overall planning process
-- `panels/`: Contains the specialized advisory panels
-- `core/`: Contains core functionality and utilities
-- `cli.py`: Provides the command-line interface
-- `core/llm_client.py`: Provides a unified interface for different LLM providers
-
-## Contributing
-
-Contributions are welcome! Please check the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+- Default model: `

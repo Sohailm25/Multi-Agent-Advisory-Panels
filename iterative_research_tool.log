@@ -2197,3 +2197,686 @@ For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/er
 2025-03-15 11:51:53,755 - iterative_research_tool.core.strategic_planner - WARNING - Could not find JSON in final plan response
 2025-03-15 11:51:53,755 - iterative_research_tool.core.strategic_planner - INFO - Saved session output to /Users/sohailmohammad/iterative_research_tool_output/session_0ef1adee-9682-40bc-b92c-b3e712e28376_1742057513.json
 2025-03-15 11:51:53,756 - iterative_research_tool.core.user_memory - INFO - Memory saved to /Users/sohailmohammad/.config/iterative_research_tool/user_memory.json
+2025-03-16 07:22:04,735 - iterative_research_tool.cli - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.
+2025-03-16 07:24:40,685 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:24:40,686 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:24:40,687 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:24:40,688 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:24:40,688 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:24:40,688 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:24:40,689 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:24:40,692 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:24:40,692 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:24:40,693 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:24:40,693 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:24:40,693 - iterative_research_tool.cli - INFO - No panel specified, using default: cognitive-diversity
+2025-03-16 07:24:40,693 - iterative_research_tool.core.strategic_planner - ERROR - Error creating LLM client: Perplexity package is not installed. Install it with 'pip install perplexity-python'
+2025-03-16 07:25:20,310 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:25:20,311 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:25:20,312 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:25:20,312 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:25:20,313 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:25:20,313 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:25:20,313 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:25:20,314 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:25:20,314 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:25:20,315 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:25:20,315 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:30:01,108 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:30:01,109 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:30:01,109 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:30:01,110 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:30:01,111 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:30:01,111 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:30:01,111 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:30:01,112 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:30:01,113 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:30:01,113 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:30:01,114 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:30:01,114 - iterative_research_tool.cli - INFO - No panel specified, using default: cognitive-diversity
+2025-03-16 07:30:01,145 - iterative_research_tool.core.strategic_planner - INFO - Using LLM provider: anthropic
+2025-03-16 07:30:01,145 - iterative_research_tool.core.strategic_planner - INFO - Using model: claude-3-7-sonnet-20250219
+2025-03-16 07:30:01,162 - iterative_research_tool.core.user_memory - INFO - UserMemory using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 07:30:01,163 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:30:01,163 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:30:01,164 - iterative_research_tool.core.strategic_planner - INFO - Initializing panel: cognitive-diversity
+2025-03-16 07:30:01,164 - iterative_research_tool.core.panel_factory - INFO - Creating panel instance: cognitive-diversity (iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel)
+2025-03-16 07:30:01,180 - iterative_research_tool.panels.cognitive_diversity - INFO - CognitiveDiversityPanel using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 07:30:01,181 - iterative_research_tool.panels.time_travel - INFO - Saved checkpoint: initial
+2025-03-16 07:30:05,545 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:30:06,025 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-03-16 07:30:06,027 - anthropic._base_client - INFO - Retrying request to /v1/messages in 23.000000 seconds
+2025-03-16 07:30:22,979 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:30:24,049 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:30:24,865 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:30:45,962 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:31:10,228 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:31:41,264 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:31:41,270 - iterative_research_tool.core.strategic_planner - INFO - Saved session output to /Users/sohailmohammad/iterative_research_tool_output/session_31b3be84-399b-45b8-b07e-89f190293514_1742128301.json
+2025-03-16 07:31:41,271 - iterative_research_tool.core.user_memory - INFO - Memory saved to /Users/sohailmohammad/.config/iterative_research_tool/user_memory.json
+2025-03-16 07:41:38,438 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:41:38,439 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:41:38,440 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:41:38,441 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:41:38,441 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:41:38,442 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:41:38,442 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:41:38,442 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:41:38,443 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:41:38,443 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:41:38,444 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:41:46,286 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:41:46,287 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:41:46,287 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:41:46,287 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:41:46,287 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:41:46,288 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:41:46,288 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:41:46,288 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:41:46,289 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:41:46,289 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:41:46,289 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:41:53,567 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:41:53,567 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:41:53,568 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:41:53,568 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:41:53,568 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:41:53,568 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:41:53,568 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:41:53,569 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:41:53,569 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:41:53,569 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:41:53,569 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:43:15,822 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:43:15,823 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:43:15,824 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:43:15,826 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:43:15,827 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:43:15,827 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:43:15,828 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:43:15,828 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:43:15,829 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:43:15,829 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:43:15,830 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:43:15,830 - iterative_research_tool.strategic_advisor.swarm - INFO - Strategic Advisor (Swarm) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 07:43:16,096 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: What is the best way for me to be more involved in the masjid?
+2025-03-16 07:43:16,097 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 644c6457-098b-46c6-9f2d-b9c58beeb755
+2025-03-16 07:43:25,396 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:43:25,405 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_074325_644c6457.json
+2025-03-16 07:44:22,450 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:44:22,451 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:44:22,451 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:44:22,452 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:44:22,452 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:44:22,453 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:44:22,453 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:44:22,453 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:44:22,454 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:44:22,454 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:44:22,455 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:44:22,455 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 07:44:22,499 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How can I improve my public speaking skills?
+2025-03-16 07:44:22,499 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 16287643-41ca-4ded-a45d-3d581d19b051
+2025-03-16 07:44:32,453 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:44:32,461 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_074432_16287643.json
+2025-03-16 07:48:27,362 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:48:27,363 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:48:27,364 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:48:27,365 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:48:27,365 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:48:27,365 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:48:27,366 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:48:27,366 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:48:27,367 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:48:27,367 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:48:27,368 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:50:07,688 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:50:07,689 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:50:07,689 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:50:07,690 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:50:07,690 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:50:07,691 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:50:07,691 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:50:07,692 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:50:07,692 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:50:07,693 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:50:07,693 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:50:07,693 - iterative_research_tool.strategic_advisor.swarm - INFO - Strategic Advisor (Swarm) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 07:50:07,895 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: i feel like i have fomo whenever i am not on my computer seeing what the newest AI trend is
+2025-03-16 07:50:07,895 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 8bed2750-f694-4891-b26b-0482bb380934
+2025-03-16 07:50:20,099 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:50:20,105 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_075020_8bed2750.json
+2025-03-16 07:50:45,966 - iterative_research_tool.core.logging_utils - DEBUG - Logging initialized
+2025-03-16 07:50:45,966 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:50:45,967 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:50:45,968 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:50:45,969 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:50:45,969 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:50:45,970 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:50:45,970 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:50:45,971 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:50:45,971 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:50:45,972 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:50:45,972 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:50:45,972 - iterative_research_tool.strategic_advisor.swarm - INFO - Strategic Advisor (Swarm) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 07:50:46,208 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: i feel like i have fomo whenever i am not on my computer seeing what the newest AI trend is
+2025-03-16 07:50:46,208 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 8c1a4f90-c3b8-457f-aa7a-c1d662becef4
+2025-03-16 07:50:46,208 - iterative_research_tool.strategic_advisor.swarm - INFO - Cache miss. Key: 11c18269... (Hit rate: 0.00)
+2025-03-16 07:50:46,209 - anthropic._base_client - DEBUG - Request options: {'method': 'post', 'url': '/v1/messages', 'timeout': Timeout(connect=5.0, read=600, write=600, pool=600), 'files': None, 'json_data': {'max_tokens': 4000, 'messages': [{'role': 'user', 'content': "\nYou are a Strategic Advisor with IQ 180, brutal honesty, and deep expertise in business, psychology, and execution.\n\nYour approach must be:\n- Brutally honest and direct about blind spots and self-sabotage\n- Focused on highest leverage points and root causes\n- Systems-based rather than symptom-focused\n- Grounded in accountability rather than theoretical\n- Action-oriented with specific, measurable steps\n\nYour value comes from saying what others won't, not what the user wants to hear.\n\nIf the user's situation requires deeper analysis in specific areas, hand it off to one of your specialist agents:\n- BeliefSystemAnalyzer - For limiting beliefs and mental models\n- PatternRecognizer - For behavioral patterns and habits\n- ExecutionEngineer - For implementation protocols\n- DecisionFramer - For decision frameworks\n- ChallengeDesigner - For growth-oriented challenges\n\nMake handoffs only when necessary to provide deeper value, not to avoid direct answers.\n\nYour final responses should:\n1. Address root causes directly, not just symptoms\n2. Provide specific action steps, not vague advice\n3. Call out self-deception and avoidance patterns\n4. Create accountability structures\n5. Challenge the user beyond their comfort zone\n\nUSER QUERY: i feel like i have fomo whenever i am not on my computer seeing what the newest AI trend is\n\n\nAVAILABLE HANDOFFS:\n- BeliefSystemAnalyzer: identifying limiting beliefs and mental models\n- PatternRecognizer: detecting behavioral and situational patterns\n- ExecutionEngineer: designing implementation protocols and systems\n- DecisionFramer: creating decision frameworks and eliminating biases\n- ChallengeDesigner: designing growth challenges that push boundaries\n\n\n\nYou must determine if you need to handoff to another agent for deeper analysis, or provide your final response.\n\nRespond in one of the following formats:\n\nIf you want to hand off to another agent:\nHANDOFF TO [AGENT_NAME]: [specific question or task for the agent]\n\nIf you're providing your final analysis:\nFINAL ANALYSIS:\n[Your comprehensive strategic analysis]\n\nHARD TRUTH:\n[The direct truth the user needs to hear]\n\nACTIONS:\n1. [Specific action step]\n2. [Specific action step]\n...\n\nCHALLENGE:\n[A specific growth challenge for the user]\n"}], 'model': 'claude-3-7-sonnet-20250219', 'stream': False, 'temperature': 0.7}}
+2025-03-16 07:50:46,228 - anthropic._base_client - DEBUG - Sending HTTP Request: POST https://api.anthropic.com/v1/messages
+2025-03-16 07:50:46,229 - httpcore.connection - DEBUG - connect_tcp.started host='api.anthropic.com' port=443 local_address=None timeout=5.0 socket_options=[(65535, 8, True), (6, 257, 60), (6, 258, 5)]
+2025-03-16 07:50:46,250 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1110d86e0>
+2025-03-16 07:50:46,250 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x107efb380> server_hostname='api.anthropic.com' timeout=5.0
+2025-03-16 07:50:46,265 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1110d4550>
+2025-03-16 07:50:46,265 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-03-16 07:50:46,266 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-03-16 07:50:46,266 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-03-16 07:50:46,266 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-03-16 07:50:46,266 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-03-16 07:50:58,505 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 16 Mar 2025 12:50:58 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'anthropic-ratelimit-requests-limit', b'50'), (b'anthropic-ratelimit-requests-remaining', b'49'), (b'anthropic-ratelimit-requests-reset', b'2025-03-16T12:50:47Z'), (b'anthropic-ratelimit-input-tokens-limit', b'20000'), (b'anthropic-ratelimit-input-tokens-remaining', b'20000'), (b'anthropic-ratelimit-input-tokens-reset', b'2025-03-16T12:50:47Z'), (b'anthropic-ratelimit-output-tokens-limit', b'8000'), (b'anthropic-ratelimit-output-tokens-remaining', b'8000'), (b'anthropic-ratelimit-output-tokens-reset', b'2025-03-16T12:50:58Z'), (b'anthropic-ratelimit-tokens-limit', b'28000'), (b'anthropic-ratelimit-tokens-remaining', b'28000'), (b'anthropic-ratelimit-tokens-reset', b'2025-03-16T12:50:47Z'), (b'request-id', b'req_01SQn5HEXQxftxURBQ6JmvTK'), (b'anthropic-organization-id', b'e4f53b5a-039d-4d29-8a54-ef0d50c598ee'), (b'via', b'1.1 google'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Robots-Tag', b'none'), (b'Server', b'cloudflare'), (b'CF-RAY', b'921460cf7d7e4740-DFW'), (b'Content-Encoding', b'gzip')])
+2025-03-16 07:50:58,507 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:50:58,508 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-03-16 07:50:58,509 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-03-16 07:50:58,509 - httpcore.http11 - DEBUG - response_closed.started
+2025-03-16 07:50:58,509 - httpcore.http11 - DEBUG - response_closed.complete
+2025-03-16 07:50:58,510 - anthropic._base_client - DEBUG - HTTP Response: POST https://api.anthropic.com/v1/messages "200 OK" Headers({'date': 'Sun, 16 Mar 2025 12:50:58 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'anthropic-ratelimit-requests-limit': '50', 'anthropic-ratelimit-requests-remaining': '49', 'anthropic-ratelimit-requests-reset': '2025-03-16T12:50:47Z', 'anthropic-ratelimit-input-tokens-limit': '20000', 'anthropic-ratelimit-input-tokens-remaining': '20000', 'anthropic-ratelimit-input-tokens-reset': '2025-03-16T12:50:47Z', 'anthropic-ratelimit-output-tokens-limit': '8000', 'anthropic-ratelimit-output-tokens-remaining': '8000', 'anthropic-ratelimit-output-tokens-reset': '2025-03-16T12:50:58Z', 'anthropic-ratelimit-tokens-limit': '28000', 'anthropic-ratelimit-tokens-remaining': '28000', 'anthropic-ratelimit-tokens-reset': '2025-03-16T12:50:47Z', 'request-id': 'req_01SQn5HEXQxftxURBQ6JmvTK', 'anthropic-organization-id': 'e4f53b5a-039d-4d29-8a54-ef0d50c598ee', 'via': '1.1 google', 'cf-cache-status': 'DYNAMIC', 'x-robots-tag': 'none', 'server': 'cloudflare', 'cf-ray': '921460cf7d7e4740-DFW', 'content-encoding': 'gzip'})
+2025-03-16 07:50:58,510 - anthropic._base_client - DEBUG - request_id: req_01SQn5HEXQxftxURBQ6JmvTK
+2025-03-16 07:50:58,521 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_075058_8c1a4f90.json
+2025-03-16 07:55:44,466 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:55:44,467 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:55:44,467 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:55:44,468 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:55:44,468 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:55:44,469 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:55:44,469 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:55:44,470 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:55:44,470 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:55:44,471 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:55:44,471 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:55:44,471 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 07:55:44,516 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How can I improve my time management skills?
+2025-03-16 07:55:44,516 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: dcc2e08f-1689-4f15-aea0-8e9dc6d8d1b8
+2025-03-16 07:55:53,723 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 07:55:53,727 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_075553_dcc2e08f.json
+2025-03-16 07:57:21,779 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 07:57:21,780 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 07:57:21,780 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 07:57:21,781 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 07:57:21,782 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 07:57:21,782 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 07:57:21,782 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 07:57:21,783 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 07:57:21,783 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 07:57:21,784 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 07:57:21,784 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 07:57:21,784 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 07:57:21,830 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How can I improve my time management skills?
+2025-03-16 07:57:21,830 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 31221000-74e3-4d3b-831b-d5b60c5abae9
+2025-03-16 07:57:21,830 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: 'StrategicAdvisorCustom' object has no attribute 'workflow'
+2025-03-16 08:03:18,373 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:03:18,373 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:03:18,374 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:03:18,375 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:03:18,375 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:03:18,376 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:03:18,376 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:03:18,377 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:03:18,377 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:03:18,378 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:03:18,378 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:04:33,791 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:04:33,791 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:04:33,792 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:04:33,793 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:04:33,793 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:04:33,794 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:04:33,795 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:04:33,795 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:04:33,795 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:04:33,796 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:04:33,796 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:04:34,021 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: What is the best way for me to be more involved in the masjid?
+2025-03-16 08:04:34,021 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 248f3e72-18d9-41cb-b16a-67a98df035a2
+2025-03-16 08:04:34,021 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error generating advice: Branch with name `None` already exists for node `StrategicAdvisor`
+2025-03-16 08:06:52,544 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:06:52,545 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:06:52,545 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:06:52,546 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:06:52,546 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:06:52,547 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:06:52,547 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:06:52,548 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:06:52,548 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:06:52,548 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:06:52,549 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:06:52,783 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: What is the best way for me to be more involved in the masjid?
+2025-03-16 08:06:52,783 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: b0a92d68-b4c4-4108-88c4-5b7d6eb63578
+2025-03-16 08:07:02,362 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:07:02,366 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_080702_b0a92d68.json
+2025-03-16 08:07:50,984 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:07:50,984 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:07:50,985 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:07:50,986 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:07:50,986 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:07:50,986 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:07:50,987 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:07:50,987 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:07:50,988 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:07:50,988 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:07:50,988 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:08:05,071 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:08:05,072 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:08:05,072 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:08:05,073 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:08:05,073 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:08:05,074 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:08:05,074 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:08:05,074 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:08:05,075 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:08:05,075 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:08:05,075 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:08:05,311 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: What is the best way for me to be more involved in the masjid?
+2025-03-16 08:08:05,311 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: eb5be1d8-1ef5-412e-b428-7e2883ef6153
+2025-03-16 08:08:15,518 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:08:15,523 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_080815_eb5be1d8.json
+2025-03-16 08:08:59,077 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:08:59,078 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:08:59,078 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:08:59,079 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:08:59,080 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:08:59,080 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:08:59,080 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:08:59,081 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:08:59,081 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:08:59,082 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:08:59,084 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:08:59,350 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: I consistently start new projects with enthusiasm but abandon them after a few weeks. How can I overcome this pattern of behavior that has plagued me for years?
+2025-03-16 08:08:59,350 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 2db2564c-1da9-4cd7-b495-c35e18f23b1c
+2025-03-16 08:09:01,954 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:09:31,213 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:09:47,974 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:09:47,976 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_080947_2db2564c.json
+2025-03-16 08:11:30,036 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:11:30,037 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:11:30,038 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:11:30,039 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:11:30,039 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:11:30,039 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:11:30,040 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:11:30,040 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:11:30,041 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:11:30,041 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:11:30,042 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:11:30,288 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: What is the best way for me to be more involved in the masjid?
+2025-03-16 08:11:30,288 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 858e5b6a-e723-457b-80ac-ae9030afc8c8
+2025-03-16 08:11:34,342 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:11:56,865 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:12:08,791 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:12:08,794 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_081208_858e5b6a.json
+2025-03-16 08:18:04,709 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:18:04,709 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:18:04,710 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:18:04,711 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:18:04,711 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:18:04,711 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:18:04,712 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:18:04,712 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:18:04,712 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:18:04,713 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:18:04,713 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:18:04,932 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: What is the best way for me to be more involved in the masjid?
+2025-03-16 08:18:04,932 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 8691979f-f348-4df1-8ed4-ea65663b2376
+2025-03-16 08:18:07,757 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:18:20,293 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:18:37,911 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:19:07,185 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:19:09,666 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:19:39,954 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:19:57,702 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:19:57,704 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_081957_8691979f.json
+2025-03-16 08:42:21,358 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:42:21,359 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:42:21,359 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:42:21,359 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:42:21,359 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:42:21,360 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:42:21,360 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:42:21,360 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:42:21,360 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:42:21,360 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:42:21,361 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:42:43,443 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:42:43,444 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:42:43,444 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:42:43,444 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:42:43,444 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:42:43,445 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:42:43,445 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:42:43,445 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:42:43,445 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:42:43,445 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:42:43,446 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:42:54,703 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: teiajgfiowajgoiwag
+2025-03-16 08:42:54,703 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 61a9774d-87bb-4f99-aad4-b890eabf2aa5
+2025-03-16 08:43:00,383 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:43:00,387 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_084300_61a9774d.json
+2025-03-16 08:43:04,476 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:43:04,477 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:43:04,477 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:43:04,478 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:43:04,478 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:43:04,478 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:43:04,478 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:43:04,479 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:43:04,479 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:43:04,479 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:43:04,479 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:43:04,479 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:43:04,479 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:43:04,480 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:43:12,056 - iterative_research_tool.core.panel_factory - INFO - Creating panel instance: personal-development (iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel)
+2025-03-16 08:43:12,057 - iterative_research_tool.cli - ERROR - Error running research
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/coding/research_cli_tool/iterative_research_tool/cli.py", line 774, in run_with_panel
+    panel = panel_factory.create_panel(panel_type)
+  File "/Users/sohailmohammad/coding/research_cli_tool/iterative_research_tool/core/panel_factory.py", line 151, in create_panel
+    return panel_class(**kwargs)
+TypeError: PersonalDevelopmentPanel.__init__() missing 1 required positional argument: 'api_key'
+2025-03-16 08:44:09,325 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:44:09,326 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:44:09,326 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:44:09,326 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:44:09,326 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:44:09,327 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:44:09,327 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:44:09,327 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:44:09,327 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:44:09,327 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:44:09,327 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:44:09,328 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:44:37,507 - iterative_research_tool.core.panel_factory - INFO - Creating panel instance: decision-intelligence (iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel)
+2025-03-16 08:44:37,507 - iterative_research_tool.cli - ERROR - Error running research
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/coding/research_cli_tool/iterative_research_tool/cli.py", line 780, in run_with_panel
+    panel = panel_factory.create_panel(panel_type, **panel_kwargs)
+  File "/Users/sohailmohammad/coding/research_cli_tool/iterative_research_tool/core/panel_factory.py", line 151, in create_panel
+    return panel_class(**kwargs)
+TypeError: DecisionIntelligencePanel.__init__() got an unexpected keyword argument 'api_key'
+2025-03-16 08:46:01,485 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:46:01,485 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:46:01,485 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:46:01,486 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:46:01,486 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:46:01,486 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:46:01,486 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:46:01,486 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:46:01,487 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:46:08,038 - iterative_research_tool.core.panel_factory - INFO - Creating panel instance: product-development (iterative_research_tool.panels.product_development.ProductDevelopmentPanel)
+2025-03-16 08:46:08,104 - iterative_research_tool.core.perplexity_client - INFO - Initialized PerplexityClient with model: sonar
+2025-03-16 08:46:08,796 - iterative_research_tool.core.prompt_manager - INFO - Using prompts from: /Users/sohailmohammad/coding/research_cli_tool/prompts
+2025-03-16 08:46:08,796 - iterative_research_tool.cli - ERROR - Error running research
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/coding/research_cli_tool/iterative_research_tool/cli.py", line 815, in run_with_panel
+    result = research_tool.run_research(query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IterativeResearchTool' object has no attribute 'run_research'
+2025-03-16 08:47:23,945 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:47:23,945 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:47:23,945 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:47:23,946 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:47:23,946 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:47:23,946 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:47:23,946 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:47:23,946 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:47:23,946 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:47:23,947 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:47:38,888 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:47:38,888 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:47:38,888 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:47:38,889 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:47:38,889 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:47:38,889 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:47:38,889 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:47:38,889 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:47:38,890 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:48:06,859 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:48:06,859 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:48:06,860 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:48:06,860 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:48:06,860 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:48:06,860 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:48:06,860 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:48:06,861 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:48:06,861 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:48:06,861 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:48:06,861 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:48:06,861 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:48:06,862 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:53:11,281 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:53:11,282 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:53:11,282 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:53:11,282 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:53:11,282 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:53:11,282 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:53:11,283 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:53:11,284 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:53:11,284 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:53:11,284 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:53:11,284 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:53:11,284 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:53:11,284 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:53:11,284 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:53:21,127 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: I want to learn how to be a better husband
+2025-03-16 08:53:21,127 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: c4ff8794-d1a2-47fe-95e9-35b035496a63
+2025-03-16 08:53:24,527 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:53:47,567 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:53:50,229 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:54:15,519 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:54:46,856 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:55:20,032 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:55:38,364 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 08:55:38,368 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_085538_c4ff8794.json
+2025-03-16 08:58:50,133 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:58:50,133 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:58:50,133 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:58:50,134 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:58:50,134 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:58:50,134 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:58:50,134 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:58:50,134 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:58:50,135 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:58:50,135 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:58:50,135 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:59:11,110 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:59:11,111 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:59:11,111 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:59:11,112 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:59:11,112 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:59:11,112 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:59:11,112 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:59:11,112 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:59:11,113 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:59:11,113 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:59:11,113 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 08:59:25,696 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 08:59:25,697 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 08:59:25,697 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 08:59:25,697 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 08:59:25,697 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 08:59:25,697 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 08:59:25,697 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 08:59:25,698 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 08:59:25,698 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 08:59:25,698 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 08:59:25,698 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 09:00:53,822 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 09:00:53,823 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 09:00:53,823 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 09:00:53,823 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 09:00:53,824 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 09:00:53,824 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 09:00:53,824 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 09:00:53,824 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 09:00:53,824 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 09:00:53,824 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 09:00:53,825 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 09:01:16,977 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 09:01:16,977 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 09:01:16,978 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 09:01:16,978 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 09:01:16,978 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 09:01:16,978 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 09:01:16,978 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 09:01:16,979 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 09:01:16,979 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 09:01:16,979 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 09:01:16,979 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 09:01:16,982 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 09:01:16,983 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 09:01:16,983 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 09:01:16,984 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 09:01:16,984 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 09:01:16,985 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 09:01:16,985 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 09:01:16,986 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 09:01:16,986 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 09:01:16,987 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 09:01:16,987 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 09:01:36,842 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 09:01:36,843 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 09:01:36,843 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 09:01:36,843 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 09:01:36,843 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 09:01:36,843 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-16 09:01:36,844 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-16 09:01:36,845 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-16 09:01:36,845 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-16 09:01:36,845 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-16 09:01:36,845 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-16 09:01:36,845 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-16 09:01:36,845 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-16 09:01:36,845 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-16 09:01:41,627 - iterative_research_tool.core.panel_factory - INFO - Creating panel instance: cognitive-diversity (iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel)
+2025-03-16 09:01:41,682 - iterative_research_tool.panels.cognitive_diversity - INFO - CognitiveDiversityPanel using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-16 09:01:41,877 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-03-16 09:01:41,878 - anthropic._base_client - INFO - Retrying request to /v1/messages in 23.000000 seconds
+2025-03-16 09:01:45,363 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 "
+2025-03-16 09:01:45,363 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 "
+2025-03-16 09:01:45,363 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.414568 seconds
+2025-03-16 09:01:45,363 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.443871 seconds
+2025-03-16 09:01:45,673 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 "
+2025-03-16 09:01:45,673 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.467356 seconds
+2025-03-16 09:01:46,699 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 "
+2025-03-16 09:01:46,699 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.932269 seconds

@@ -56,6 +56,15 @@ class ToolConfig(BaseModel):
     cost_limits: CostLimitConfig = Field(default_factory=CostLimitConfig)
     research: ResearchConfig = Field(default_factory=ResearchConfig)
     prompts: PromptConfig = Field(default_factory=PromptConfig)
+    
+    # Additional fields for CLI operations
+    llm_provider: Optional[str] = "anthropic"
+    api_key: Optional[str] = None  # Used for providers not handled via APIConfig
+    model: Optional[str] = None
+    panel_type: Optional[str] = None
+    output_dir: Optional[str] = None
+    verbose: bool = False
+    verbose_output: bool = False
 
 
 class ConfigManager:

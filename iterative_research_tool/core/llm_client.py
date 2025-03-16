@@ -18,11 +18,44 @@ except ImportError:
     openai = None
 
 try:
-    from perplexity import Perplexity
+    from perplexipy import PerplexityClient
 except ImportError:
-    Perplexity = None
+    PerplexityClient = None
 
 logger = logging.getLogger(__name__)
+
+def check_module_availability(module_name: str, provider_name: str) -> None:
+    """
+    Checks if a required module is available and provides helpful installation instructions if not.
+    
+    Args:
+        module_name: The name of the module to check
+        provider_name: The name of the LLM provider
+        
+    Raises:
+        ImportError: If the module is not installed, with a helpful error message
+    """
+    module_map = {
+        "anthropic": Anthropic,
+        "openai": openai,
+        "perplexity": PerplexityClient
+    }
+    
+    install_commands = {
+        "anthropic": "pip install anthropic",
+        "openai": "pip install openai",
+        "perplexity": "pip install PerplexiPy"
+    }
+    
+    if module_map.get(module_name) is None:
+        error_message = (
+            f"{provider_name} package is not installed. You can install it with:\n\n"
+            f"    {install_commands.get(module_name, f'pip install {module_name}')}\n\n"
+            f"Or install all LLM provider dependencies at once with:\n\n"
+            f"    pip install -e .[all]\n\n"
+            f"You can also run the command with the --install-deps flag to automatically install the required dependencies."
+        )
+        raise ImportError(error_message)
 
 class LLMClient(ABC):
     """Abstract base class for LLM clients."""
@@ -69,8 +102,8 @@ class AnthropicClient(LLMClient):
         Args:
             api_key: Anthropic API key
         """
-        if Anthropic is None:
-            raise ImportError("Anthropic package is not installed. Install it with 'pip install anthropic'")
+        # Check if the Anthropic package is installed
+        check_module_availability("anthropic", "Anthropic")
             
         self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
         if not self.api_key:
@@ -135,8 +168,8 @@ class OpenAIClient(LLMClient):
         Args:
             api_key: OpenAI API key
         """
-        if openai is None:
-            raise ImportError("OpenAI package is not installed. Install it with 'pip install openai'")
+        # Check if the OpenAI package is installed
+        check_module_availability("openai", "OpenAI")
             
         self.api_key = api_key or os.environ.get("OPENAI_API_KEY")
         if not self.api_key:
@@ -201,14 +234,14 @@ class PerplexityClient(LLMClient):
         Args:
             api_key: Perplexity API key
         """
-        if Perplexity is None:
-            raise ImportError("Perplexity package is not installed. Install it with 'pip install perplexity-python'")
+        # Check if the Perplexity package is installed
+        check_module_availability("perplexity", "Perplexity")
             
         self.api_key = api_key or os.environ.get("PERPLEXITY_API_KEY")
         if not self.api_key:
             raise ValueError("Perplexity API key is required")
             
-        self.client = Perplexity(api_key=self.api_key)
+        self.client = PerplexityClient(api_key=self.api_key)
     
     def create_message(self, 
                       model: str, 
@@ -230,32 +263,75 @@ class PerplexityClient(LLMClient):
             Perplexity's response
         """
         try:
-            response = self.client.chat.completions.create(
-                model=model,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                messages=messages,
-                stream=stream
-            )
-            return response
+            # Convert messages to a single prompt for Perplexity
+            prompt = self._messages_to_prompt(messages)
+            
+            if stream:
+                # Use streamable query method for streaming responses
+                return self.client.queryStreamable(
+                    prompt,
+                    model=model,
+                    max_tokens=max_tokens,
+                    temperature=temperature
+                )
+            else:
+                # Use regular query method for non-streaming responses
+                return self.client.query(
+                    prompt,
+                    model=model,
+                    max_tokens=max_tokens,
+                    temperature=temperature
+                )
         except Exception as e:
             logger.error(f"Error calling Perplexity API: {str(e)}")
             raise
     
     def get_available_models(self) -> List[str]:
         """
-        Get a list of available Perplexity models.
+        Get a list of available models from Perplexity.
         
         Returns:
-            List of available Perplexity model names
+            List of available model names
         """
-        # Hardcoded list of common Perplexity models
+        # Return the available models for Perplexity
+        # As of current version, these are the supported models
         return [
-            "sonar-medium-online",
             "sonar-small-online",
+            "sonar-medium-online",
+            "sonar-large-online",
             "mixtral-8x7b-instruct",
-            "llama-3-70b-instruct",
+            "llama-3-8b-instruct",
+            "llama-3-70b-instruct"
         ]
+    
+    def _messages_to_prompt(self, messages: List[Dict[str, str]]) -> str:
+        """
+        Convert a list of messages to a single prompt string compatible with Perplexity.
+        
+        Args:
+            messages: List of message dictionaries with 'role' and 'content' keys
+            
+        Returns:
+            A formatted prompt string
+        """
+        # Concatenate all messages into a single prompt
+        prompt_parts = []
+        
+        for message in messages:
+            role = message.get("role", "").lower()
+            content = message.get("content", "")
+            
+            if role == "system":
+                prompt_parts.append(f"System: {content}")
+            elif role == "user":
+                prompt_parts.append(f"User: {content}")
+            elif role == "assistant":
+                prompt_parts.append(f"Assistant: {content}")
+            else:
+                # Handle other roles or fallback
+                prompt_parts.append(f"{role.capitalize()}: {content}")
+                
+        return "\n\n".join(prompt_parts)
 
 class LLMClientFactory:
     """Factory for creating LLM clients."""

@@ -1,2 +1,4 @@
 [console_scripts]
 iterative-research = iterative_research_tool.cli:main
+panels = iterative_research_tool.cli:main
+panelsui = iterative_research_tool.cli:run_interactive_main

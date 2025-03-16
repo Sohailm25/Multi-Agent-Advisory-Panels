@@ -13,7 +13,7 @@ iterative-research config --init
 iterative-research config --claude-api-key YOUR_CLAUDE_API_KEY
 ```
 
-## Usage
+## Usage``
 
 ### Basic Usage
 

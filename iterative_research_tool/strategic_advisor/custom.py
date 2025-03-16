@@ -277,172 +277,312 @@ class StrategicAdvisorCustom:
         api_key: Optional[str] = None,
         model: Optional[str] = None,
         output_dir: Optional[str] = None,
-        verbose: bool = False
+        verbose: bool = False,
+        verbose_output: bool = False
     ):
-        """Initialize the Strategic Advisor with custom architecture.
+        """Initialize the strategic advisor with custom architecture.
         
         Args:
             llm_provider: The LLM provider to use
-            api_key: The API key for the LLM provider
+            api_key: API key for the LLM provider
             model: The model to use
             output_dir: Directory to save outputs to
-            verbose: Whether to enable verbose output
+            verbose: Whether to log debug information
+            verbose_output: Whether to display detailed agent processing in the terminal
         """
         self.llm_provider = llm_provider.lower()
         self.api_key = api_key
         self.verbose = verbose
+        self.verbose_output = verbose_output
         
-        # Set up logging
-        self.logger = logging.getLogger(__name__)
+        # Set up the LLM client
+        llm_client_factory = LLMClientFactory()
+        self.llm_client = llm_client_factory.create_client(
+            provider=self.llm_provider,
+            api_key=self.api_key
+        )
         
         # Set the model
         if model:
             self.model = model
         else:
             self.model = LLMClientFactory.get_default_model(self.llm_provider)
-            
-        self.logger.info(f"Strategic Advisor (Custom) using LLM provider: {self.llm_provider} with model: {self.model}")
         
-        # Set up the LLM client
-        self.llm_client = LLMClientFactory.create_client(self.llm_provider, self.api_key)
+        # Set up the logger
+        self.logger = logger
         
         # Set up the output directory
-        if output_dir:
-            self.output_dir = output_dir
-        else:
-            self.output_dir = os.path.expanduser("~/strategic_advisor_output")
-            
-        # Create the output directory if it doesn't exist
-        os.makedirs(self.output_dir, exist_ok=True)
+        if output_dir is None:
+            output_dir = os.path.expanduser("~/iterative_research_tool_output")
+        self.output_dir = output_dir
         
-        # Build the LangGraph state machine
-        self.graph = self._build_graph()
+        logger.info(f"Strategic Advisor (Custom) using LLM provider: {self.llm_provider} with model: {self.model}")
+        
+        # Initialize the state graph
+        self.workflow = self._build_graph()
         
     def _build_graph(self) -> StateGraph:
         """Build the LangGraph state machine for the custom architecture."""
         # Define node functions
         def chief_strategist(state: AdvisorState) -> Dict[str, Any]:
-            """Chief Strategist node that coordinates the entire process."""
-            if state["current_phase"] == "init":
-                # Initial analysis - determine if we need to start with diagnostic phase
-                return {"current_phase": "diagnostic"}
+            """Chief Strategist agent that coordinates the overall process.
             
-            elif state["current_phase"] == "complete":
-                # All phases complete, generate final response
+            Args:
+                state: The current state
+                
+            Returns:
+                Updated state
+            """
+            # Display the agent processing
+            print(f"\n{'='*50}")
+            print(f"🤖 PROCESSING WITH AGENT: Chief Strategist")
+            print(f"{'='*50}")
+            
+            # Check for iteration count to prevent infinite loops
+            if "iteration_count" not in state:
+                state = {**state, "iteration_count": 0}
+            else:
+                state = {**state, "iteration_count": state["iteration_count"] + 1}
+                
+            # Safety check for too many iterations
+            if state["iteration_count"] > 20:
+                self.logger.warning("Exceeded maximum iterations in Chief Strategist, forcing completion")
+                # Force completion with an error message
+                return {
+                    "current_phase": "complete",
+                    "response": {
+                        "hard_truth": "I'm having trouble processing your request due to its complexity or ambiguity.",
+                        "actions": [
+                            "Please provide a clearer, more specific query.",
+                            "Include more context or details about your situation.",
+                            "Break down complex questions into simpler parts."
+                        ],
+                        "challenge": {
+                            "description": "For better results, try to make your query more specific and concrete.",
+                            "question": "What specific aspect of your situation would you like advice on?"
+                        }
+                    }
+                }
+            
+            if state["current_phase"] == "start":
+                # Initial phase - start the diagnostic phase
+                return {
+                    "current_phase": "diagnostic",
+                    "phases": {
+                        **state["phases"],
+                        "diagnostic": {
+                            "complete": False,
+                            "beliefs": [],
+                            "patterns": [],
+                            "diagnosis": ""
+                        }
+                    },
+                    "iteration_count": state["iteration_count"]
+                }
+            
+            elif state["current_phase"] == "diagnostic" and state["phases"]["diagnostic"]["complete"]:
+                # Diagnostic phase complete - start the planning phase
+                return {
+                    "current_phase": "planning",
+                    "phases": {
+                        **state["phases"],
+                        "planning": {
+                            "complete": False,
+                            "execution": {},
+                            "decisions": {},
+                            "strategy": ""
+                        }
+                    },
+                    "iteration_count": state["iteration_count"]
+                }
+            
+            elif state["current_phase"] == "planning" and state["phases"]["planning"]["complete"]:
+                # Planning phase complete - start the challenge phase
+                return {
+                    "current_phase": "challenge",
+                    "phases": {
+                        **state["phases"],
+                        "challenge": {
+                            "complete": False,
+                            "challenge": {}
+                        }
+                    },
+                    "iteration_count": state["iteration_count"]
+                }
+            
+            elif state["current_phase"] == "challenge" and state["phases"]["challenge"]["complete"]:
+                # Challenge phase complete - generate the final response
+                query = state["user"]["query"]
+                context = json.dumps(state["user"]["context"]) if state["user"]["context"] else ""
+                
+                # Display the prompt creation
+                print("\n📝 CREATING FINAL RESPONSE PROMPT")
+                
+                # Format the prompt
                 prompt = FINAL_SYNTHESIS_PROMPT.format(
-                    query=state["user"]["query"],
+                    query=query,
                     diagnosis=state["phases"]["diagnostic"]["diagnosis"],
                     strategy=state["phases"]["planning"]["strategy"],
                     challenge=json.dumps(state["phases"]["challenge"]["challenge"])
                 )
                 
-                response = self._call_llm(prompt)
+                # Display the prompt if verbose output is enabled
+                if self.verbose_output:
+                    print(f"\n📝 PROMPT FOR FINAL RESPONSE:")
+                    print("-" * 40)
+                    print(prompt)
+                    print("-" * 40)
                 
-                # Extract the components (hard truth, actions, challenge)
-                response_parts = response.split("\n\n")
-                hard_truth = ""
-                actions = []
-                challenge = {}
+                # Call the LLM
+                response_text = self._call_llm(prompt)
                 
-                for part in response_parts:
-                    if "THE HARD TRUTH" in part.upper() or "HARD TRUTH" in part.upper():
-                        hard_truth = part.split(":", 1)[1].strip() if ":" in part else part
-                    elif "ACTIONABLE STEPS" in part.upper() or "ACTIONS" in part.upper():
-                        action_text = part.split(":", 1)[1].strip() if ":" in part else part
-                        actions = [a.strip() for a in action_text.split("\n") if a.strip()]
-                    elif "CHALLENGE" in part.upper() or "ASSIGNMENT" in part.upper():
-                        challenge_text = part.split(":", 1)[1].strip() if ":" in part else part
-                        challenge = {
-                            "name": "Strategic Challenge",
-                            "description": challenge_text,
-                            "timeframe": "24-72 hours"
-                        }
+                # Display the response
+                print(f"\n📣 FINAL RESPONSE:")
+                print("-" * 40)
+                print(response_text)
+                print("-" * 40)
+                
+                # Parse the response
+                response = self._parse_chief_strategist_response(response_text)
+                
+                # Display the final response completion
+                print("\n✅ FINAL RESPONSE GENERATED")
                 
                 return {
-                    "response": {
-                        "hard_truth": hard_truth,
-                        "actions": actions,
-                        "challenge": challenge
-                    }
+                    "current_phase": "complete",
+                    "response": response,
+                    "iteration_count": state["iteration_count"]
                 }
             
-            return {}
+            # Default - stay in the current phase with iteration count preserved
+            return {"iteration_count": state["iteration_count"]}
         
         def root_cause_diagnostician(state: AdvisorState) -> Dict[str, Any]:
-            """Root Cause Diagnostician node that coordinates the diagnostic phase."""
-            # If beliefs and patterns not analyzed yet, direct to analyzers
-            if not state["phases"]["diagnostic"].get("beliefs"):
-                return {"current_phase": "belief_analysis"}
+            """Root Cause Diagnostician agent that analyzes the root causes.
             
-            if not state["phases"]["diagnostic"].get("patterns"):
-                return {"current_phase": "pattern_analysis"}
+            Args:
+                state: The current state
+                
+            Returns:
+                Updated state
+            """
+            # Only process if we're in the diagnostic phase and it's not complete
+            if state["current_phase"] != "diagnostic" or state["phases"]["diagnostic"]["complete"]:
+                return {}
             
-            # Synthesize diagnosis
+            # Check if all diagnostic sub-agents have completed
+            diagnostic_phase = state["phases"]["diagnostic"]
+            if not diagnostic_phase["beliefs"] or not diagnostic_phase["patterns"]:
+                # Not all diagnostic sub-agents have completed
+                return {}
+            
+            # Display the agent processing
+            print(f"\n{'='*50}")
+            print(f"🤖 PROCESSING WITH AGENT: Root Cause Diagnostician")
+            print(f"{'='*50}")
+            
+            # Get the query and context
+            query = state["user"]["query"]
+            context = json.dumps(state["user"]["context"]) if state["user"]["context"] else ""
+            
+            # Get the belief and pattern analyses
+            beliefs = json.dumps(diagnostic_phase["beliefs"])
+            patterns = json.dumps(diagnostic_phase["patterns"])
+            
+            # Format the prompt
             prompt = ROOT_CAUSE_DIAGNOSTICIAN_PROMPT.format(
-                query=state["user"]["query"],
-                context=json.dumps(state["user"].get("context", {})),
-                beliefs=json.dumps(state["phases"]["diagnostic"]["beliefs"]),
-                patterns=json.dumps(state["phases"]["diagnostic"]["patterns"])
+                query=query,
+                context=context,
+                beliefs=beliefs,
+                patterns=patterns
             )
             
+            # Display the prompt if verbose output is enabled
+            if self.verbose_output:
+                print(f"\n📝 PROMPT FOR ROOT CAUSE DIAGNOSTICIAN:")
+                print("-" * 40)
+                print(prompt)
+                print("-" * 40)
+            
+            # Call the LLM
             diagnosis = self._call_llm(prompt)
+            
+            # Display the response
+            print(f"\n📣 RESPONSE FROM ROOT CAUSE DIAGNOSTICIAN:")
+            print("-" * 40)
+            print(diagnosis)
+            print("-" * 40)
+            
+            # Mark the diagnostic phase as complete
+            diagnostic_phase["diagnosis"] = diagnosis
+            diagnostic_phase["complete"] = True
+            
+            # Display the phase completion
+            print("\n✅ DIAGNOSTIC PHASE COMPLETE")
             
             return {
                 "phases": {
                     **state["phases"],
-                    "diagnostic": {
-                        **state["phases"]["diagnostic"],
-                        "complete": True,
-                        "diagnosis": diagnosis
-                    }
-                },
-                "current_phase": "planning"
+                    "diagnostic": diagnostic_phase
+                }
             }
         
         def belief_system_analyzer(state: AdvisorState) -> Dict[str, Any]:
-            """Belief System Analyzer node that identifies limiting beliefs."""
+            """Belief System Analyzer agent that identifies limiting beliefs.
+            
+            Args:
+                state: The current state
+                
+            Returns:
+                Updated state
+            """
+            # Only process if we're in the diagnostic phase and it's not complete
+            if state["current_phase"] != "diagnostic" or state["phases"]["diagnostic"]["complete"]:
+                return {}
+            
+            # Display the agent processing
+            print(f"\n{'='*50}")
+            print(f"🤖 PROCESSING WITH AGENT: Belief System Analyzer")
+            print(f"{'='*50}")
+            
+            # Get the query and context
+            query = state["user"]["query"]
+            context = json.dumps(state["user"]["context"]) if state["user"]["context"] else ""
+            
+            # Format the prompt
             prompt = BELIEF_SYSTEM_ANALYZER_PROMPT.format(
-                query=state["user"]["query"],
-                context=json.dumps(state["user"].get("context", {}))
+                query=query,
+                context=context
             )
             
-            analysis = self._call_llm(prompt)
+            # Display the prompt if verbose output is enabled
+            if self.verbose_output:
+                print(f"\n📝 PROMPT FOR BELIEF SYSTEM ANALYZER:")
+                print("-" * 40)
+                print(prompt)
+                print("-" * 40)
             
-            # Parse belief analysis into structured format
-            belief_lines = analysis.split("\n")
-            beliefs = []
-            current_belief = {}
+            # Call the LLM
+            belief_analysis = self._call_llm(prompt)
             
-            for line in belief_lines:
-                line = line.strip()
-                if line and line[0].isdigit() and ":" in line:
-                    if current_belief and "belief" in current_belief:
-                        beliefs.append(current_belief)
-                        current_belief = {}
-                    
-                    belief_text = line.split(":", 1)[1].strip()
-                    current_belief["belief"] = belief_text
-                
-                elif line.startswith("Upgraded belief:") or line.startswith("Upgraded Belief:"):
-                    current_belief["upgrade"] = line.split(":", 1)[1].strip()
+            # Display the response
+            print(f"\n📣 RESPONSE FROM BELIEF SYSTEM ANALYZER:")
+            print("-" * 40)
+            print(belief_analysis)
+            print("-" * 40)
             
-            # Add the last belief if exists
-            if current_belief and "belief" in current_belief:
-                beliefs.append(current_belief)
+            # Update the state with the belief analysis
+            diagnostic_phase = state["phases"]["diagnostic"]
+            diagnostic_phase["beliefs"] = [{"analysis": belief_analysis}]
             
-            # If no structured beliefs were extracted, create a simple one from the analysis
-            if not beliefs:
-                beliefs = [{"belief": "Extracted from analysis", "content": analysis}]
+            # Display the agent completion
+            print("\n✅ BELIEF SYSTEM ANALYSIS COMPLETE")
             
             return {
                 "phases": {
                     **state["phases"],
-                    "diagnostic": {
-                        **state["phases"]["diagnostic"],
-                        "beliefs": beliefs
-                    }
-                },
-                "current_phase": "diagnostic"  # Return to diagnostician
+                    "diagnostic": diagnostic_phase
+                }
             }
         
         def pattern_recognition_agent(state: AdvisorState) -> Dict[str, Any]:
@@ -694,7 +834,8 @@ class StrategicAdvisorCustom:
         workflow.add_conditional_edges(
             "chief_strategist",
             lambda state: {
-                "init": "root_cause_diagnostician",
+                "start": "root_cause_diagnostician",
+                "diagnostic": "root_cause_diagnostician",
                 "complete": END
             }.get(state["current_phase"], "chief_strategist")
         )
@@ -759,34 +900,97 @@ class StrategicAdvisorCustom:
             self.logger.error(f"Error calling LLM: {str(e)}")
             raise
     
+    def _validate_query(self, query: str) -> bool:
+        """Validate the query to ensure it's meaningful and can be processed.
+        
+        Args:
+            query: The query to validate
+            
+        Returns:
+            True if the query is valid, False otherwise
+        """
+        if not query or not query.strip():
+            return False
+            
+        # Check if query is too short (less than 3 words)
+        words = query.split()
+        if len(words) < 3:
+            return False
+            
+        # Check if query seems like random characters
+        # Count the percentage of non-alphabetic characters
+        alpha_count = sum(c.isalpha() or c.isspace() for c in query)
+        if alpha_count / len(query) < 0.7:  # Less than 70% alphabetic chars
+            return False
+            
+        # Check if query contains at least one word with more than 3 characters
+        if not any(len(word) > 3 for word in words):
+            return False
+            
+        return True
+    
     def generate_advice(self, query: str, context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-        """Generate strategic advice for the given query using the custom architecture.
+        """Generate strategic advice for a query.
         
         Args:
             query: The user's query
-            context: Optional context information
+            context: Optional context
             
         Returns:
-            The strategic advice with hard truth, actions, and challenge
+            A dictionary containing the strategic advice
         """
+        # Initialize session
         session_id = str(uuid.uuid4())
         start_time = time.time()
         
         self.logger.info(f"Generating strategic advice for query: {query}")
         self.logger.info(f"Session ID: {session_id}")
         
+        print(f"\n📋 STARTING STRATEGIC ADVISOR (CUSTOM ARCHITECTURE)")
+        print(f"Query: {query}")
+        print(f"Session ID: {session_id}")
+        
+        # Validate the query
+        if not self._validate_query(query):
+            self.logger.warning(f"Invalid query detected: {query}")
+            return {
+                "hard_truth": "I couldn't understand your query. It appears to be too short, contains mostly random characters, or lacks meaningful content.",
+                "actions": [
+                    "Please provide a clearer, more detailed query that describes what you're looking for advice about.",
+                    "Make sure your query is written in complete sentences and contains specific details about your situation.",
+                    "Try to ask a question that relates to a specific challenge, goal, or decision you're facing."
+                ],
+                "challenge": {
+                    "description": "The clearer and more specific you can be with your query, the better advice I can provide.",
+                    "question": "What specific situation, challenge, or decision would you like advice about?"
+                },
+                "session_id": session_id,
+                "execution_time": time.time() - start_time
+            }
+        
+        # Create the initial state
+        initial_state = {
+            "user": {
+                "query": query,
+                "context": context or {},
+                "history": []
+            },
+            "phases": {},
+            "current_phase": "start",
+            "response": {
+                "hard_truth": "",
+                "actions": [],
+                "challenge": {}
+            }
+        }
+        
         try:
-            # Format the chief strategist prompt
-            prompt = CHIEF_STRATEGIST_PROMPT.format(
-                query=query,
-                context=json.dumps(context) if context else ""
-            )
+            # Run the workflow with increased recursion limit
+            print("\n🚀 RUNNING CUSTOM AGENT WORKFLOW...")
+            end_state = self.workflow.invoke(initial_state, config={"recursion_limit": 50})
             
-            # Call the LLM
-            response_text = self._call_llm(prompt)
-            
-            # Parse the response
-            response = self._parse_chief_strategist_response(response_text)
+            # Extract the response
+            response = end_state["response"]
             
             # Add metadata
             response["session_id"] = session_id
@@ -795,10 +999,13 @@ class StrategicAdvisorCustom:
             # Save the response
             self._save_response(response, session_id)
             
+            print(f"\n⏱️ EXECUTION TIME: {response['execution_time']:.2f} seconds")
+            
             return response
             
         except Exception as e:
             self.logger.error(f"Error generating advice: {e}")
+            print(f"\n❌ ERROR: {str(e)}")
             raise
             
     def _parse_chief_strategist_response(self, response_text: str) -> Dict[str, Any]:

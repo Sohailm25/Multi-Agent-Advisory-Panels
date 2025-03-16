@@ -24,6 +24,22 @@ package_data = {
 # Get prompt files to include
 prompts = glob('prompts/*.md')
 
+# Define LLM provider dependencies separately for better organization
+anthropic_deps = ["anthropic>=0.8.0"]
+openai_deps = ["openai>=1.3.0"]
+perplexity_deps = ["PerplexiPy>=1.0.0"]
+
+# All LLM providers together
+all_llm_deps = anthropic_deps + openai_deps + perplexity_deps
+
+# Development dependencies
+dev_deps = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0",
+]
+
 setup(
     name="iterative_research_tool",
     version=version,
@@ -48,32 +64,30 @@ setup(
         "tiktoken>=0.4.0",
         "tenacity>=8.0.0",
         "regex>=2022.1.18",
+        "questionary>=2.0.0",
         
-        # Default LLM provider
+        # Default LLM provider - Anthropic is included by default
         "anthropic>=0.8.0",
     ],
     extras_require={
-        # Optional LLM providers
-        "openai": ["openai>=1.3.0"],
-        "perplexity": ["perplexity-python>=0.1.0"],
+        # Optional LLM providers - can be installed separately
+        "openai": openai_deps,
+        "perplexity": perplexity_deps,
         
-        # Install all LLM providers
-        "all": [
-            "openai>=1.3.0",
-            "perplexity-python>=0.1.0",
-        ],
+        # Install all LLM providers at once
+        "all": all_llm_deps,
         
-        # Development dependencies
-        "dev": [
-            "pytest>=7.0.0",
-            "black>=23.0.0",
-            "isort>=5.12.0",
-            "mypy>=1.0.0",
-        ],
+        # Complete installation with all providers and development tools
+        "complete": all_llm_deps + dev_deps,
+        
+        # Development dependencies only
+        "dev": dev_deps,
     },
     entry_points={
         "console_scripts": [
             "iterative-research=iterative_research_tool.cli:main",
+            "panels=iterative_research_tool.cli:main",
+            "panelsui=iterative_research_tool.cli:run_interactive_main",
         ],
     },
     classifiers=[
