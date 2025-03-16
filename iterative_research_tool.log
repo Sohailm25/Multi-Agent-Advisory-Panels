@@ -2885,3 +2885,9 @@ AttributeError: 'IterativeResearchTool' object has no attribute 'run_research'
 2025-03-16 09:18:22,436 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 9dd89546-4c83-4aa5-a471-6546db34cc05
 2025-03-16 09:18:25,327 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2025-03-16 09:18:37,055 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 09:18:51,593 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 09:19:18,523 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 09:19:21,394 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 09:20:00,405 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 09:21:15,026 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-16 09:21:15,030 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_092115_9dd89546.json

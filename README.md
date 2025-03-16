@@ -232,6 +232,189 @@ graph TD
     Synthesizer --> Results[Strategic Advice]
 ```
 
+### Individual Panel Workflows
+
+Each panel has its own unique workflow and agent structure:
+
+#### Cognitive Diversity Panel
+
+This panel leverages multiple cognitive styles to analyze problems from different perspectives.
+
+```mermaid
+graph TD
+    Query[User Query] --> CognitivePanel[Cognitive Diversity Panel]
+    CognitivePanel --> ParallelAgents[Run Agents in Parallel]
+    ParallelAgents --> SystemsThinker[Systems Thinker]
+    ParallelAgents --> FirstPrinciples[First Principles Thinker]
+    ParallelAgents --> Creative[Creative Thinker]
+    ParallelAgents --> Critical[Critical Thinker]
+    ParallelAgents --> Holistic[Holistic Thinker]
+    SystemsThinker --> Synthesizer[Results Synthesizer]
+    FirstPrinciples --> Synthesizer
+    Creative --> Synthesizer
+    Critical --> Synthesizer
+    Holistic --> Synthesizer
+    Synthesizer --> Output[Cognitive Diversity Analysis]
+```
+
+#### Constraint Analysis Panel
+
+This panel identifies and analyzes different types of constraints, turning perceived limitations into opportunities.
+
+```mermaid
+graph TD
+    Query[User Query] --> ConstraintPanel[Constraint Analysis Panel]
+    ConstraintPanel --> ConstraintIdentifier[Constraint Identifier]
+    ConstraintIdentifier --> ResourceAnalyst[Resource Constraints Analyst]
+    ConstraintIdentifier --> TechnicalAnalyst[Technical Constraints Analyst]
+    ConstraintIdentifier --> RegulatoryAnalyst[Regulatory Constraints Analyst]
+    ConstraintIdentifier --> MarketAnalyst[Market Constraints Analyst]
+    ConstraintIdentifier --> InternalAnalyst[Internal Constraints Analyst]
+    ResourceAnalyst --> Synthesizer[Constraint-Opportunity Synthesizer]
+    TechnicalAnalyst --> Synthesizer
+    RegulatoryAnalyst --> Synthesizer
+    MarketAnalyst --> Synthesizer
+    InternalAnalyst --> Synthesizer
+    Synthesizer --> Output[Constraint Analysis]
+```
+
+#### Contrarian Challenge Panel
+
+This panel deliberately takes contrary positions to stress-test ideas and uncover blind spots.
+
+```mermaid
+graph TD
+    Query[User Query] --> ContrarianPanel[Contrarian Challenge Panel]
+    ContrarianPanel --> AssumptionExplorer[Assumption Explorer]
+    AssumptionExplorer --> DevilsAdvocate[Devil's Advocate]
+    DevilsAdvocate --> AlternativeScenarios[Alternative Scenarios Generator]
+    AlternativeScenarios --> BlackSwan[Black Swan Identifier]
+    BlackSwan --> ContrarianSynthesizer[Contrarian Synthesizer]
+    ContrarianSynthesizer --> Rebuttal[Rebuttal Generator]
+    Rebuttal --> FinalSynth[Final Contrarian Synthesis]
+    FinalSynth --> Output[Contrarian Analysis]
+```
+
+#### Decision Intelligence Panel
+
+This panel applies decision theory to improve decision quality under uncertainty.
+
+```mermaid
+graph TD
+    Query[User Query] --> DecisionPanel[Decision Intelligence Panel]
+    DecisionPanel --> ProblemFramer[Problem Framer]
+    ProblemFramer --> OptionGenerator[Options Generator]
+    OptionGenerator --> CriteriaAnalyst[Decision Criteria Analyst]
+    CriteriaAnalyst --> ModelBuilder[Decision Model Builder]
+    ModelBuilder --> UncertaintyAnalyst[Uncertainty Analyst]
+    UncertaintyAnalyst --> AlternativesEvaluator[Alternatives Evaluator]
+    AlternativesEvaluator --> DecisionSynthesizer[Decision Synthesizer]
+    DecisionSynthesizer --> Output[Decision Analysis]
+```
+
+#### Future Scenarios Panel
+
+This panel explores possible futures to build robust plans that work across multiple scenarios.
+
+```mermaid
+graph TD
+    Query[User Query] --> FuturePanel[Future Scenarios Panel]
+    FuturePanel --> TrendIdentifier[Trend Identifier]
+    TrendIdentifier --> UncertaintyMap[Uncertainty Mapper]
+    UncertaintyMap --> ScenarioBuilder[Scenario Builder]
+    ScenarioBuilder --> Impacts[Impact Analyzer]
+    Impacts --> Signals[Early Signal Detector]
+    Signals --> Strategist[Robust Strategy Developer]
+    Strategist --> Synthesizer[Future Scenarios Synthesizer]
+    Synthesizer --> Output[Future Scenarios Analysis]
+```
+
+#### Implementation Energy Panel
+
+This panel evaluates how much energy and resources are needed to implement different strategies.
+
+```mermaid
+graph TD
+    Query[User Query] --> EnergyPanel[Implementation Energy Panel]
+    EnergyPanel --> RequirementsAnalyst[Requirements Analyst]
+    RequirementsAnalyst --> ResourceEstimator[Resource Estimator]
+    ResourceEstimator --> EffortEvaluator[Effort Evaluator]
+    EffortEvaluator --> TimelineAssessor[Timeline Assessor]
+    TimelineAssessor --> ConstraintAnalyst[Implementation Constraint Analyst]
+    ConstraintAnalyst --> TradeoffAnalyst[Tradeoff Analyst]
+    TradeoffAnalyst --> Synthesizer[Implementation Energy Synthesizer]
+    Synthesizer --> Output[Implementation Energy Analysis]
+```
+
+#### Personal Development Panel
+
+This panel provides personalized growth strategies tailored to individual goals and circumstances.
+
+```mermaid
+graph TD
+    Query[User Query] --> PersonalPanel[Personal Development Panel]
+    PersonalPanel --> GoalAnalyst[Goal Analyst]
+    GoalAnalyst --> StrengthsAnalyst[Strengths Analyst]
+    StrengthsAnalyst --> GapsAnalyst[Gap Analyst]
+    GapsAnalyst --> LearningPathDesigner[Learning Path Designer]
+    LearningPathDesigner --> HabitBuilder[Habit Builder]
+    HabitBuilder --> FeedbackLoop[Feedback Loop Designer]
+    FeedbackLoop --> Synthesizer[Personal Development Synthesizer]
+    Synthesizer --> Output[Personal Development Plan]
+```
+
+#### Product Development Panel
+
+This panel provides strategies for creating and refining products that meet market needs.
+
+```mermaid
+graph TD
+    Query[User Query] --> ProductPanel[Product Development Panel]
+    ProductPanel --> MarketAnalyst[Market Analyst]
+    MarketAnalyst --> UserAnalyst[User Needs Analyst]
+    UserAnalyst --> ConceptGenerator[Concept Generator]
+    ConceptGenerator --> RequirementsSpecifier[Requirements Specifier]
+    RequirementsSpecifier --> Prototyper[Prototyping Strategist]
+    Prototyper --> TestingStrategist[Testing Strategist]
+    TestingStrategist --> MVPDesigner[MVP Designer]
+    MVPDesigner --> Synthesizer[Product Development Synthesizer]
+    Synthesizer --> Output[Product Development Strategy]
+```
+
+#### Stakeholder Impact Panel
+
+This panel assesses how decisions affect different stakeholders and designs strategies for stakeholder management.
+
+```mermaid
+graph TD
+    Query[User Query] --> StakeholderPanel[Stakeholder Impact Panel]
+    StakeholderPanel --> StakeholderIdentifier[Stakeholder Identifier]
+    StakeholderIdentifier --> InterestAnalyst[Interests Analyst]
+    InterestAnalyst --> PowerAnalyst[Power/Influence Analyst]
+    PowerAnalyst --> ImpactAssessor[Impact Assessor]
+    ImpactAssessor --> ConflictIdentifier[Conflict Identifier]
+    ConflictIdentifier --> EngagementStrategist[Engagement Strategist]
+    EngagementStrategist --> Synthesizer[Stakeholder Impact Synthesizer]
+    Synthesizer --> Output[Stakeholder Impact Analysis]
+```
+
+#### Temporal Perspective Panel
+
+This panel analyzes issues across different time horizons to balance short-term and long-term considerations.
+
+```mermaid
+graph TD
+    Query[User Query] --> TemporalPanel[Temporal Perspective Panel]
+    TemporalPanel --> HistoricalAnalyst[Historical Analyst]
+    HistoricalAnalyst --> PresentAnalyst[Present Context Analyst]
+    PresentAnalyst --> ShortTermAnalyst[Short-term Analyst]
+    ShortTermAnalyst --> MidTermAnalyst[Mid-term Analyst]
+    MidTermAnalyst --> LongTermAnalyst[Long-term Analyst]
+    LongTermAnalyst --> TimeHorizonIntegrator[Time Horizon Integrator]
+    TimeHorizonIntegrator --> Synthesizer[Temporal Perspective Synthesizer]
+    Synthesizer --> Output[Temporal Perspective Analysis]
+```
+
 ### Strategic Advisor Commands
 
 The tool provides specialized strategic advisor architectures for generating advice:
