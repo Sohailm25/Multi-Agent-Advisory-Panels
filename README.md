@@ -1,280 +1,216 @@
-# Iterative Research Document Generator
+# Multi-Agent Advisory Planner
 
-A command-line tool that creates exhaustive, textbook-quality research documents through iterative AI enhancement. This tool leverages both Perplexity and Claude APIs to progressively improve document quality while minimizing hallucinations.
+A powerful CLI tool leveraging multiple specialized agent panels to provide strategic planning and decision-making support.
 
-## Use Cases
+## Overview
 
-- **Academic Research**: Generate comprehensive literature reviews and research summaries with proper citations
-- **Content Creation**: Create in-depth articles, blog posts, or educational materials on complex topics
-- **Knowledge Management**: Transform rough notes or outlines into structured, comprehensive documents
-- **Educational Resources**: Generate teaching materials, study guides, or textbook-like content
-- **Competitive Intelligence**: Research industry trends, competitor strategies, or market analyses
-- **Technical Documentation**: Create detailed documentation for products, services, or technologies
-- **Strategic Planning**: Generate comprehensive research plans with LangGraph orchestration
-- **Personal Growth**: Track user goals, struggles, and cognitive patterns over time for personalized advice
+The Multi-Agent Advisory Planner is a comprehensive system that combines specialized advisory panels, each composed of multiple AI agents with distinct roles. These panels work together to provide strategic advice, plan complex initiatives, analyze decisions, and explore future scenarios.
 
-## Features
-
-- **Document Enhancement**: Start with a basic markdown document and enhance it iteratively
-- **Fact-Grounded Research**: Uses Perplexity API to ground research in reliable sources
-- **Intelligent Restructuring**: Uses Claude to reorganize and improve document flow
-- **Citation Tracking**: All facts are tracked with their sources and reliability
-- **Confidence Scoring**: Each section receives a confidence score based on its citations
-- **Version History**: Maintains a history of document revisions
-- **Cost Control**: Monitor and limit API costs
-- **Custom Prompts**: Use specialized prompts for enhanced research workflow
-- **Intelligent Loop Control**: Automatically determine when to stop research based on diminishing returns
-- **Deeper Research**: Generate follow-up questions for more comprehensive coverage
-- **Strategic Planning**: Generate detailed research plans using LangGraph orchestration
-- **Terminal Visualization**: View the LangGraph execution flow in real-time in your terminal
-- **Feedback Collection**: Provide feedback on generated plans to improve future results
-- **User Memory**: Builds a detailed profile of the user over time, tracking goals, struggles, and cognitive patterns
-
-## Prerequisites
-
-- Python 3.9 or higher
-- Perplexity API key ([Get one here](https://docs.perplexity.ai/))
-- Claude API key from Anthropic ([Get one here](https://console.anthropic.com/))
+Key features:
+- Multiple specialized advisory panels
+- Support for multiple LLM providers (Anthropic, OpenAI, Perplexity)
+- Time travel functionality to explore alternative scenarios
+- Customizable panel creation
+- Stateful memory across sessions
+- Rich visualizations in the terminal
+- Comprehensive feedback collection
 
 ## Installation
 
+1. Clone the repository:
 ```bash
-# Clone the repository
-git clone https://github.com/example/iterative_research_tool.git
-cd iterative_research_tool
-
-# Install the package (with prompt setup)
-bash install.sh
-
-# Or install with a virtual environment
-bash install.sh --venv
+git clone https://github.com/yourusername/research_cli_tool.git
+cd research_cli_tool
 ```
 
-## Required Configuration
-
-Before using the tool, you **must** set up your API keys. You have two options:
-
-### Option 1: Environment Variables (.env file)
-
-Create a `.env` file in the project root with the following content:
-
-```
-PERPLEXITY_API_KEY=your-perplexity-key
-CLAUDE_API_KEY=your-claude-key
-PERPLEXITY_MODEL=sonar
-CLAUDE_MODEL=claude-3-7-sonnet-20250219
-PROMPTS_DIRECTORY=prompts
-```
-
-### Option 2: Configuration File
-
-Initialize a configuration file:
-
+2. Install dependencies:
 ```bash
-# Initialize configuration
-iterative-research config --init --perplexity-api-key YOUR_PERPLEXITY_KEY --claude-api-key YOUR_CLAUDE_KEY
+pip install -e .
 ```
 
-This will create a configuration file at `~/.config/iterative_research_tool/config.json`. You can also specify a custom path:
+## Project Structure
 
+The project is organized into the following directories:
+
+- `iterative_research_tool/`: Main package directory
+  - `core/`: Core functionality and utilities
+  - `panels/`: Panel implementations for different advisory contexts
+  - `strategic_advisor/`: Strategic advisor implementations (custom and swarm architectures)
+  - `prompts/`: Prompt templates used by the system
+- `tests/`: Test files for the project
+- `docs/`: Documentation files
+- `archive/`: Archived files that are no longer actively used
+- `my_custom_panels/`: Example directory for custom panel implementations
+
+3. Set up your API keys:
 ```bash
-iterative-research config --init --path ./config.json
+# For Anthropic (default)
+echo "ANTHROPIC_API_KEY=your_api_key_here" > .env
+
+# For OpenAI (optional)
+echo "OPENAI_API_KEY=your_api_key_here" >> .env
+
+# For Perplexity (optional)
+echo "PERPLEXITY_API_KEY=your_api_key_here" >> .env
 ```
 
 ## Usage
 
 ### Basic Usage
 
+Run the CLI with a query:
 ```bash
-# Enhance a document (edit in place)
-iterative-research research input.md
-
-# Specify an output file
-iterative-research research input.md --output-file enhanced.md
-
-# Limit cost
-iterative-research research input.md --max-cost 2.5
-
-# Set other parameters
-iterative-research research input.md --max-iterations 5 --confidence-threshold 0.7
-
-# Input research topic directly from console
-iterative-research research --input-text
-
-# Or using the shorthand
-iterative-research research -x
-
-# Provide text directly as a command-line argument
-iterative-research research --input-text "Your research topic here"
-
-# Or with the shorthand
-iterative-research research -x "The intersection of Islam and meditation techniques"
+python -m iterative_research_tool.cli "What strategic approach should I take for expanding my business internationally?"
 ```
 
-### Strategic Planning
+### Selecting an LLM Provider
 
+Choose a specific LLM provider:
 ```bash
-# Generate a strategic research plan
-iterative-research strategic-planner "How does quantum computing impact cryptography?"
-
-# Input query from console
-iterative-research strategic-planner --input-text
-
-# Or with the shorthand
-iterative-research strategic-planner -x
-
-# Save the plan to a file
-iterative-research strategic-planner "Impact of climate change on agriculture" --output-file research-plan.md
-
-# Use a custom prompt directory
-iterative-research strategic-planner "AI ethics in healthcare" --prompts-directory ./my-prompts
-
-# Specify Claude model
-iterative-research strategic-planner "Renewable energy trends" --claude-model claude-3-7-opus-20250619
-
-# Disable terminal visualization
-iterative-research strategic-planner "Blockchain applications" --no-visualize
-
-# Disable feedback collection
-iterative-research strategic-planner "Machine learning in medicine" --no-feedback
-
-# Specify a custom feedback file
-iterative-research strategic-planner "Future of transportation" --feedback-file ./my-feedback.txt
-
-# Disable user memory tracking
-iterative-research strategic-planner "Quantum physics basics" --no-memory
-
-# Specify a custom memory file
-iterative-research strategic-planner "Career development" --memory-file ./my-memory.json
-
-# View current user memory
-iterative-research strategic-planner --show-memory
+python -m iterative_research_tool.cli --llm-provider openai "What strategic approach should I take for expanding my business internationally?"
 ```
 
-### User Memory
+Available LLM providers:
+- `anthropic` (default): Uses Anthropic's Claude models
+- `openai`: Uses OpenAI's GPT models
+- `perplexity`: Uses Perplexity's models
 
-The tool builds a detailed profile of the user over time, tracking:
-
-- **Goals**: What the user is trying to achieve
-- **Hard Truths**: Difficult realities the user needs to acknowledge
-- **Struggles**: Challenges the user is facing
-- **Mental Blocks**: Psychological barriers holding the user back
-- **Cognitive Biases**: Patterns of thinking that may affect judgment
-- **Strengths**: Areas where the user excels
-- **Interests**: Topics the user is passionate about
-- **Values**: Core principles important to the user
-
-This profile is automatically updated with each interaction and used to provide more personalized strategic plans. The memory is stored in a JSON file at `~/.config/iterative_research_tool/user_memory.json` by default.
-
-### Advanced Usage with Custom Prompts
-
+You can also specify a model:
 ```bash
-# Use the enhanced prompt-based workflow
-iterative-research research input.md --use-custom-prompts
-
-# Customize the prompt directory
-iterative-research research input.md --use-custom-prompts --prompts-directory ./my-prompts
-
-# Control batch query behavior
-iterative-research research input.md --use-custom-prompts --no-batch-queries
-
-# Adjust loop controller settings
-iterative-research research input.md --use-custom-prompts --min-new-info-rate 15.0
+python -m iterative_research_tool.cli --llm-provider openai --model gpt-4o "What strategic approach should I take for expanding my business internationally?"
 ```
 
-### Version History
-
-By default, the tool creates a version history file alongside the output file. You can disable this:
-
+If you need to install dependencies for a specific provider:
 ```bash
-iterative-research research input.md --no-version-history
+python -m iterative_research_tool.cli --llm-provider openai --install-deps
 ```
 
-Or specify a custom version history file:
+### Selecting a Panel
 
+Choose a specific advisory panel:
 ```bash
-iterative-research research input.md --version-history-file history.md
+python -m iterative_research_tool.cli --panel cognitive-diversity "What strategic approach should I take for expanding my business internationally?"
 ```
 
-## Advanced Configuration
+Available panels:
+- `cognitive-diversity`: Provides diverse perspectives from different cognitive styles
+- `decision-intelligence`: Analyzes decisions from multiple angles
+- `future-scenarios`: Explores potential future scenarios and implications
+- `personal-development`: Provides guidance for personal and professional growth
+- `stakeholder-impact`: Analyzes impacts on different stakeholders
+- `constraint-analysis`: Identifies constraints and turns them into opportunities
+- `temporal-perspective`: Analyzes problems across different time horizons
+- `contrarian-challenge`: Tests strategies by challenging assumptions
+- `implementation-energy`: Optimizes strategies for sustainable implementation
+- `product-development`: Provides product strategy advice
 
-Edit the configuration file manually to fine-tune settings:
+### Listing Available Panels
 
-- **API Keys**: Update your API keys
-- **Cost Limits**: Control maximum spending
-- **Research Settings**: Adjust iterations, thresholds, and models
-- **Output Settings**: Configure verbosity and version tracking
-
-## How It Works
-
-1. **Document Initialization**: Parses the input document structure
-2. **Research Phase**: Uses Perplexity to find factual information
-3. **Enhancement Phase**: Uses Claude to improve structure and clarity
-4. **Verification**: Cross-checks claims and calculates confidence scores
-5. **Iteration**: Repeats the process until quality thresholds are met
-6. **Output**: Produces enhanced document and version history
-
-## Key Files to Modify
-
-If you want to customize or extend the tool's functionality, these are the key files to edit:
-
-- **`.env`**: Environment variables including API keys and model names
-- **`iterative_research_tool/core/perplexity_client.py`**: Modify how the tool interacts with Perplexity API
-- **`iterative_research_tool/core/claude_client.py`**: Customize Claude API interactions
-- **`prompts/`**: Customize the prompt templates to adjust research behavior
-- **`iterative_research_tool/core/research.py`**: Main research logic and workflow
-- **`iterative_research_tool/cli/args.py`**: Command-line interface parameters
-
-## Common Errors and Solutions (FAQ)
-
-### API Key Issues
-
-**Error**: `Error: Anthropic API key not found`
-
-**Solution**: Ensure you've correctly set up your API keys in either the `.env` file or configuration file. Double-check for typos in the key or variable names.
-
-### Model Specification
-
-**Error**: `Error: Unknown model 'sonar-model-xyz'` 
-
-**Solution**: The model name is incorrect. Update your `.env` file to use one of the supported models:
-- For Perplexity: Use "sonar" or "llama-3-sonar-large-32k-online"
-- For Claude: Use "claude-3-7-sonnet-20250219" or another supported model version
-
-### Cost Limits
-
-**Error**: `CostLimitExceededError: Estimated cost $5.75 exceeds the maximum allowed cost $5.00`
-
-**Solution**: The operation would exceed your specified cost limit. Either:
-1. Increase the cost limit with `--max-cost 6.0` 
-2. Reduce the scope of your research by limiting iterations with `--max-iterations 2`
-
-### Topic Drift
-
-**Issue**: Claude generates content on an unrelated topic
-
-**Solution**: This can happen due to system prompt interference. Ensure your `.env` file correctly specifies the model and check that the system prompts in the `prompts/` directory are properly formatted.
-
-### Installation Problems
-
-**Error**: `ModuleNotFoundError: No module named 'anthropic'`
-
-**Solution**: Reinstall the package with all dependencies:
+List all available panels:
 ```bash
-pip uninstall -y iterative_research_tool
-pip install -e .
+python -m iterative_research_tool.cli --list-panels
 ```
 
-### Permission Errors
+### Getting Panel Information
 
-**Error**: `PermissionError: [Errno 13] Permission denied: '/path/to/output.md'`
+Get detailed information about a specific panel:
+```bash
+python -m iterative_research_tool.cli --panel-info cognitive-diversity
+```
 
-**Solution**: Ensure you have write permissions to the directory where you're saving the output file.
+### Time Travel
+
+Explore alternative scenarios:
+```bash
+python -m iterative_research_tool.cli --alternative "What if I focused on the Asian market instead?" 
+```
+
+Show available checkpoints:
+```bash
+python -m iterative_research_tool.cli --show-checkpoints
+```
+
+Travel to a specific checkpoint:
+```bash
+python -m iterative_research_tool.cli --time-travel initial
+```
+
+### Saving Output
+
+Save the plan to a file:
+```bash
+python -m iterative_research_tool.cli --output-file my_plan.json "What strategic approach should I take for expanding my business internationally?"
+```
+
+## LLM Provider Configuration
+
+The tool supports multiple LLM providers, each with their own API keys and models:
+
+### Anthropic (Default)
+- Environment variable: `ANTHROPIC_API_KEY`
+- Default model: `claude-3-7-sonnet-20250219`
+- Installation: `pip install anthropic`
+
+### OpenAI
+- Environment variable: `OPENAI_API_KEY`
+- Default model: `gpt-4o`
+- Installation: `pip install openai`
+
+### Perplexity
+- Environment variable: `PERPLEXITY_API_KEY`
+- Default model: `sonar-medium-online`
+- Installation: `pip install perplexity-python`
+
+You can specify the provider and model at runtime:
+```bash
+python -m iterative_research_tool.cli --llm-provider openai --model gpt-4 "Your query here"
+```
+
+Or use the `--api-key` flag to override the environment variable:
+```bash
+python -m iterative_research_tool.cli --llm-provider perplexity --api-key your_api_key_here "Your query here"
+```
+
+## Panel Factory Pattern
+
+The system uses a Panel Factory Pattern to dynamically discover and instantiate panels. This allows for easy extension with custom panels. The key benefits include:
+
+- Automatic discovery of all available panels
+- Dynamic instantiation without hardcoded dependencies
+- Support for custom panels in external directories
+- Consistent interface across all panels
+
+## Creating Custom Panels
+
+You can extend the system by creating your own custom panels tailored to your specific needs. We provide a comprehensive guide and template for creating custom panels:
+
+- [Custom Panel Creation Guide](README_CUSTOM_PANELS.md)
+- [Custom Panel Template](custom_panel_template.py)
+
+To use a custom panel:
+
+1. Create your panel following the guide
+2. Place it in a directory
+3. Run the CLI with your custom panel:
+
+```bash
+python -m iterative_research_tool.cli --custom-panel-path my_custom_panels/ --panel my-custom-panel "Your query here"
+```
+
+## Architecture
+
+The Multi-Agent Advisory Planner is built with a modular architecture:
+
+- `strategic_planner.py`: Coordinates the overall planning process
+- `panels/`: Contains the specialized advisory panels
+- `core/`: Contains core functionality and utilities
+- `cli.py`: Provides the command-line interface
+- `core/llm_client.py`: Provides a unified interface for different LLM providers
 
 ## Contributing
 
-Contributions are welcome! Feel free to submit pull requests for new features, improvements, or bug fixes.
+Contributions are welcome! Please check the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
 ## License
 
-MIT License 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 

@@ -2,6 +2,7 @@ README.md
 setup.py
 iterative_research_tool/__init__.py
 iterative_research_tool/cli.py
+iterative_research_tool/strategic_planner.py
 iterative_research_tool.egg-info/PKG-INFO
 iterative_research_tool.egg-info/SOURCES.txt
 iterative_research_tool.egg-info/dependency_links.txt
@@ -16,9 +17,20 @@ iterative_research_tool/core/logging_utils.py
 iterative_research_tool/core/loop_controller.py
 iterative_research_tool/core/markdown_utils.py
 iterative_research_tool/core/models.py
+iterative_research_tool/core/multi_agent_panels.py
 iterative_research_tool/core/perplexity_client.py
 iterative_research_tool/core/prompt_manager.py
 iterative_research_tool/core/research.py
+iterative_research_tool/core/strategic_planner.py
+iterative_research_tool/core/strategic_planner_simple.py
+iterative_research_tool/core/time_travel.py
+iterative_research_tool/core/user_memory.py
+iterative_research_tool/core/visualization.py
+iterative_research_tool/panels/__init__.py
+iterative_research_tool/panels/cognitive_diversity.py
+iterative_research_tool/panels/decision_intelligence.py
+iterative_research_tool/panels/future_scenarios.py
+iterative_research_tool/panels/time_travel.py
 iterative_research_tool/prompts/claude_to_perplexity_deeper_prompt.md
 iterative_research_tool/prompts/cli_input_prompt.md
 iterative_research_tool/prompts/loop_controller_prompt.md
@@ -27,3 +39,4 @@ prompts/claude_to_perplexity_deeper_prompt.md
 prompts/cli_input_prompt.md
 prompts/loop_controller_prompt.md
 prompts/perplexity_to_claude_prompt.md
+prompts/strategic_planner.md

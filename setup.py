@@ -38,17 +38,39 @@ setup(
     package_data=package_data,
     data_files=[('prompts', prompts)],
     install_requires=[
-        "anthropic>=0.9.0",
+        # Core dependencies
+        "langgraph>=0.0.19",
+        "python-dotenv>=1.0.0",
         "requests>=2.25.0",
-        "pydantic>=1.10.0,<2.0.0",  # Use v1 for compatibility
-        "colorama>=0.4.4",  # For terminal colors
+        "pydantic>=2.4.2,<3.0.0",
+        "colorama>=0.4.4",
         "markdown>=3.3.0",
-        "tiktoken>=0.4.0",  # For token counting
-        "tenacity>=8.0.0",  # For retries
-        "regex>=2022.1.18",  # For advanced regex in prompt extraction
-        "python-dotenv>=0.21.0",  # For loading environment variables
-        "langgraph>=0.0.19",  # For orchestration flows
+        "tiktoken>=0.4.0",
+        "tenacity>=8.0.0",
+        "regex>=2022.1.18",
+        
+        # Default LLM provider
+        "anthropic>=0.8.0",
     ],
+    extras_require={
+        # Optional LLM providers
+        "openai": ["openai>=1.3.0"],
+        "perplexity": ["perplexity-python>=0.1.0"],
+        
+        # Install all LLM providers
+        "all": [
+            "openai>=1.3.0",
+            "perplexity-python>=0.1.0",
+        ],
+        
+        # Development dependencies
+        "dev": [
+            "pytest>=7.0.0",
+            "black>=23.0.0",
+            "isort>=5.12.0",
+            "mypy>=1.0.0",
+        ],
+    },
     entry_points={
         "console_scripts": [
             "iterative-research=iterative_research_tool.cli:main",
@@ -59,10 +81,12 @@ setup(
         "Intended Audience :: Science/Research",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "License :: OSI Approved :: MIT License",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.9",
 ) 
