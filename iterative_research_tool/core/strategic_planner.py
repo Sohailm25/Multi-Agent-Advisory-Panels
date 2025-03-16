@@ -82,8 +82,9 @@ class StrategicPlanner:
         # Initialize time travel capability
         self.time_travel = TimeTravel()
         
-        # Initialize panel factory and discover panels
-        panel_factory.discover_panels(custom_panel_paths)
+        # Initialize panel factory with any custom panel paths
+        custom_panel_paths = [custom_panel_path] if custom_panel_path else []
+        panel_factory.discover_panels(custom_panel_paths, verbose=self.verbose)
         
         # Set up the panel based on the panel type
         self.panel_type = panel_type

@@ -23,13 +23,16 @@ class PanelFactory:
         """Initialize the panel factory."""
         self.panel_classes: Dict[str, Type[BasePanel]] = {}
         self.panel_modules = {}
+        self.verbose = False
         
-    def discover_panels(self, additional_paths: List[str] = None) -> None:
+    def discover_panels(self, additional_paths: List[str] = None, verbose: bool = False) -> None:
         """Discover and register all panel classes from the panels directory.
         
         Args:
             additional_paths: Optional list of additional directory paths to search for panels
+            verbose: Whether to log panel discovery details
         """
+        self.verbose = verbose
         from iterative_research_tool import panels
         
         # Register built-in panels
@@ -39,7 +42,8 @@ class PanelFactory:
         if additional_paths:
             for path in additional_paths:
                 if os.path.isdir(path):
-                    logger.info(f"Discovering panels in additional path: {path}")
+                    if self.verbose:
+                        logger.info(f"Discovering panels in additional path: {path}")
                     self._discover_panels_in_directory(path)
                 else:
                     logger.warning(f"Additional path does not exist: {path}")
@@ -50,7 +54,8 @@ class PanelFactory:
         Args:
             package: The Python package to search for panels
         """
-        logger.info(f"Discovering panels in package: {package.__name__}")
+        if self.verbose:
+            logger.info(f"Discovering panels in package: {package.__name__}")
         
         for _, module_name, is_pkg in pkgutil.iter_modules(package.__path__, package.__name__ + '.'):
             if not is_pkg and not module_name.endswith('__init__'):
@@ -102,7 +107,8 @@ class PanelFactory:
                 # Normalize the panel name to hyphenated format
                 panel_type = self._class_name_to_panel_type(name)
                 
-                logger.info(f"Registering panel: {panel_type} -> {obj.__module__}.{name}")
+                if self.verbose:
+                    logger.info(f"Registering panel: {panel_type} -> {obj.__module__}.{name}")
                 self.panel_classes[panel_type] = obj
                 self.panel_modules[panel_type] = module
     

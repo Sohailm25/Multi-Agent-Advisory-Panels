@@ -70,8 +70,8 @@ class InteractiveCLI:
         self.visualizer = Visualizer()
         self.config_manager = ConfigManager()
         
-        # Initialize panel factory
-        panel_factory.discover_panels()
+        # Make sure panel factory is initialized
+        panel_factory.discover_panels(verbose=False)
         
         # Store user selections
         self.selected_strategy = None

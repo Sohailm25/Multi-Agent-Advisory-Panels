@@ -221,18 +221,18 @@ def main() -> int:
     args = parser.parse_args()
     
     # Debug: Print all arguments
-    print("DEBUG - All arguments:")
-    for arg in vars(args):
-        print(f"  {arg}: {getattr(args, arg)}")
+    # print("DEBUG - All arguments:")
+    # for arg in vars(args):
+    #     print(f"  {arg}: {getattr(args, arg)}")
     
     # Additional debug for subcommands
-    if args.command:
-        print(f"DEBUG - Using command: {args.command}")
-        if args.command in ['strat-swarm', 'strat-custom']:
-            print(f"DEBUG - Command: {args.command}, Query: {args.query if hasattr(args, 'query') else 'None'}")
-            # Print the sys.argv to see what's actually being passed
-            import sys
-            print(f"DEBUG - sys.argv: {sys.argv}")
+    # if args.command:
+    #     print(f"DEBUG - Using command: {args.command}")
+    #     if args.command in ['strat-swarm', 'strat-custom']:
+    #         print(f"DEBUG - Command: {args.command}, Query: {args.query if hasattr(args, 'query') else 'None'}")
+    #         # Print the sys.argv to see what's actually being passed
+    #         import sys
+    #         print(f"DEBUG - sys.argv: {sys.argv}")
     
     # Set up logging
     setup_logging(args.verbose, "iterative_research_tool.log")
@@ -242,7 +242,7 @@ def main() -> int:
     
     # Initialize panel factory with custom panel paths
     custom_panel_paths = args.custom_panel_path or []
-    panel_factory.discover_panels(custom_panel_paths)
+    panel_factory.discover_panels(custom_panel_paths, args.verbose)
     
     # Run the interactive UI if requested
     if args.command == "panelsui":
@@ -872,96 +872,124 @@ def run_interactive_main():
     Returns:
         Exit code
     """
-    # Load environment variables
-    load_dotenv()
-    
-    # Set up logging
-    setup_logging(False, "iterative_research_tool.log")
-    
-    # Create visualizer
-    visualizer = Visualizer()
-    
-    # Make sure panel factory is initialized
-    panel_factory.discover_panels()
-    
-    # Check if interactive CLI is available
-    if run_interactive_cli is None:
-        visualizer.display_error(f"Failed to import interactive CLI: {INTERACTIVE_CLI_IMPORT_ERROR}")
-        return 1
-    
     try:
-        # Run the interactive CLI
-        selections = run_interactive_cli()
+        # Load environment variables
+        load_dotenv()
         
-        # Process the selections
-        if selections['strategy'] == 'panels':
-            # Run the panel-based approach
-            return run_with_panel(
-                query=selections['query'],
-                panel_type=selections['panel'],
-                llm_provider=selections['llm_provider'],
-                api_key=selections['api_key'],
-                model=selections['model'],
-                output_dir=None,  # Use default
-                output_file=None,  # Don't save to file by default
-                verbose=False,
-                verbose_output=False
-            )
-        elif selections['strategy'] == 'strat-custom':
-            # Run the custom strategic advisor
-            advisor = StrategicAdvisorCustom(
-                llm_provider=selections['llm_provider'],
-                api_key=selections['api_key'],
-                model=selections['model'],
-                output_dir=None,  # Use default
-                verbose=False,
-                verbose_output=False
-            )
+        # Set up logging
+        setup_logging(False, "iterative_research_tool.log")
+        
+        # Create visualizer
+        visualizer = Visualizer()
+        
+        # Make sure panel factory is initialized
+        panel_factory.discover_panels(verbose=False)
+        
+        # Check if interactive CLI is available
+        if run_interactive_cli is None:
+            visualizer.display_error(f"Failed to import interactive CLI: {INTERACTIVE_CLI_IMPORT_ERROR}")
+            return 1
+        
+        try:
+            # Run the interactive CLI
+            selections = run_interactive_cli()
             
-            # Generate the strategic advice
-            visualizer.display_message("Generating strategic advice...")
-            advice = advisor.generate_advice(selections['query'])
-            
-            # Display the results
-            visualizer.display_success("Strategic advice generated (Custom Architecture)")
-            
-            # Display a summary of the advice
-            display_strategic_advice(advice)
-            
-            return 0
-        elif selections['strategy'] == 'strat-swarm':
-            # Run the swarm strategic advisor
-            advisor = StrategicAdvisorSwarm(
-                llm_provider=selections['llm_provider'],
-                api_key=selections['api_key'],
-                model=selections['model'],
-                output_dir=None,  # Use default
-                verbose=False,
-                verbose_output=False
-            )
-            
-            # Generate the strategic advice
-            visualizer.display_message("Generating strategic advice...")
-            advice = advisor.generate_advice(selections['query'])
-            
-            # Display the results
-            visualizer.display_success("Strategic advice generated (Swarm Architecture)")
-            
-            # Display a summary of the advice
-            display_strategic_advice(advice)
-            
-            return 0
-        else:
-            visualizer.display_error(f"Unknown strategy: {selections['strategy']}")
+            # Process the selections
+            if selections['strategy'] == 'panels':
+                # Run the panel-based approach
+                return run_with_panel(
+                    query=selections['query'],
+                    panel_type=selections['panel'],
+                    llm_provider=selections['llm_provider'],
+                    api_key=selections['api_key'],
+                    model=selections['model'],
+                    output_dir=None,  # Use default
+                    output_file=None,  # Don't save to file by default
+                    verbose=False,
+                    verbose_output=False
+                )
+            elif selections['strategy'] == 'strat-custom':
+                # Run the custom strategic advisor
+                advisor = StrategicAdvisorCustom(
+                    llm_provider=selections['llm_provider'],
+                    api_key=selections['api_key'],
+                    model=selections['model'],
+                    output_dir=None,  # Use default
+                    verbose=False,
+                    verbose_output=False
+                )
+                
+                # Generate the strategic advice
+                visualizer.display_message("Generating strategic advice...")
+                advice = advisor.generate_advice(selections['query'])
+                
+                # Display the results
+                visualizer.display_success("Strategic advice generated (Custom Architecture)")
+                
+                # Display a summary of the advice
+                display_strategic_advice(advice)
+                
+                return 0
+            elif selections['strategy'] == 'strat-swarm':
+                # Run the swarm strategic advisor
+                advisor = StrategicAdvisorSwarm(
+                    llm_provider=selections['llm_provider'],
+                    api_key=selections['api_key'],
+                    model=selections['model'],
+                    output_dir=None,  # Use default
+                    verbose=False,
+                    verbose_output=False
+                )
+                
+                # Generate the strategic advice
+                visualizer.display_message("Generating strategic advice...")
+                advice = advisor.generate_advice(selections['query'])
+                
+                # Display the results
+                visualizer.display_success("Strategic advice generated (Swarm Architecture)")
+                
+                # Display a summary of the advice
+                display_strategic_advice(advice)
+                
+                return 0
+            else:
+                visualizer.display_error(f"Unknown strategy: {selections['strategy']}")
+                return 1
+                
+        except KeyboardInterrupt:
+            visualizer.display_message("\nOperation cancelled by user.")
+            return 1
+        except Exception as e:
+            visualizer.display_error(f"Error running interactive UI: {e}")
+            logger.exception("Error running interactive UI")
             return 1
             
-    except KeyboardInterrupt:
-        visualizer.display_message("\nOperation cancelled by user.")
+    except ImportError as e:
+        visualizer.display_error(f"Missing dependencies: {e}")
+        
+        # Ask if the user wants to install the missing dependencies
+        if not args.install_deps:  # Only prompt if --install-deps wasn't already used
+            visualizer.display_message("\nWould you like to install the missing dependencies? (y/n)")
+            response = input().lower()
+            
+            if response.startswith('y'):
+                # Install dependencies for the specific provider
+                if install_dependencies(llm_provider) or install_all_dependencies():
+                    visualizer.display_success("Dependencies installed successfully. Please run your command again.")
+                else:
+                    visualizer.display_error("Failed to install dependencies")
+        else:
+            visualizer.display_message("You can install the dependencies manually with:")
+            visualizer.display_message(f"  pip install -e .[{llm_provider}]")
+            visualizer.display_message("Or install all provider dependencies with:")
+            visualizer.display_message("  pip install -e .[all]")
+        
         return 1
-    except Exception as e:
-        visualizer.display_error(f"Error running interactive UI: {e}")
-        logger.exception("Error running interactive UI")
+    except ValueError as e:
+        visualizer.display_error(f"Error initializing: {e}")
         return 1
+        
+    return 0
 
 
 if __name__ == "__main__":

@@ -141,6 +141,97 @@ panels --panel cognitive-diversity --llm-provider anthropic --api-key your_api_k
 panels --panel cognitive-diversity --output-dir /path/to/output --llm-provider anthropic --api-key your_api_key "Your query here"
 ```
 
+### Interactive UI with PanelsUI
+
+The tool provides an interactive UI through the `panelsui` command, allowing you to easily select options through a menu-driven interface:
+
+```bash
+# Start the interactive UI (recommended for new users)
+panelsui
+```
+
+The interactive UI guides you through the following steps:
+1. Select your approach (Panel-based, Strategic Advisor Custom, or Strategic Advisor Swarm)
+2. Select the specific panel (if using Panel-based approach)
+3. Enter your query
+4. Choose the LLM provider (Anthropic, OpenAI, or Perplexity)
+5. Choose the specific model
+6. Enter your API key (or it will be read from environment variables if available)
+
+This is the easiest way to use the tool as it handles all the command-line parameters for you.
+
+### Available Panels and Architectures
+
+The tool offers multiple specialized panels and strategic advisor architectures:
+
+#### Panel Architecture Overview
+
+```mermaid
+graph TD
+    User[User Query] --> PanelFactory
+    PanelFactory --> Panels
+    Panels --> CD[Cognitive Diversity]
+    Panels --> CA[Constraint Analysis]
+    Panels --> CC[Contrarian Challenge]
+    Panels --> DI[Decision Intelligence]
+    Panels --> FS[Future Scenarios]
+    Panels --> IE[Implementation Energy]
+    Panels --> PD1[Personal Development]
+    Panels --> PD2[Product Development]
+    Panels --> SI[Stakeholder Impact]
+    Panels --> TP[Temporal Perspective]
+    CD --> Results[Results]
+    CA --> Results
+    CC --> Results
+    DI --> Results
+    FS --> Results
+    IE --> Results
+    PD1 --> Results
+    PD2 --> Results
+    SI --> Results
+    TP --> Results
+```
+
+#### Strategic Advisor Architectures
+
+**Custom Architecture**
+
+```mermaid
+graph TD
+    User[User Query] --> StrategicAdvisorCustom
+    StrategicAdvisorCustom --> ChiefStrategist
+    ChiefStrategist --> LongTermAnalyst
+    ChiefStrategist --> FirstPrinciplesAnalyst
+    ChiefStrategist --> ImplementationAnalyst
+    ChiefStrategist --> FeasibilityAnalyst
+    LongTermAnalyst --> ChiefStrategist
+    FirstPrinciplesAnalyst --> ChiefStrategist
+    ImplementationAnalyst --> ChiefStrategist
+    FeasibilityAnalyst --> ChiefStrategist
+    ChiefStrategist --> Results[Strategic Advice]
+```
+
+**Swarm Architecture**
+
+```mermaid
+graph TD
+    User[User Query] --> StrategicAdvisorSwarm
+    StrategicAdvisorSwarm --> Researcher
+    StrategicAdvisorSwarm --> Planner
+    StrategicAdvisorSwarm --> RiskAnalyst
+    StrategicAdvisorSwarm --> Evaluator
+    StrategicAdvisorSwarm --> BenefitsAnalyst
+    StrategicAdvisorSwarm --> ActionCoach
+    StrategicAdvisorSwarm --> Synthesizer
+    Researcher --> Synthesizer
+    Planner --> Synthesizer
+    RiskAnalyst --> Synthesizer
+    Evaluator --> Synthesizer
+    BenefitsAnalyst --> Synthesizer
+    ActionCoach --> Synthesizer
+    Synthesizer --> Results[Strategic Advice]
+```
+
 ### Strategic Advisor Commands
 
 The tool provides specialized strategic advisor architectures for generating advice:
