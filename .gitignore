@@ -1,1 +1,57 @@
 .env
+
+# Ignore personal documents
+*.docx
+*.pdf
+*.xlsx
+
+# Ignore archive directory
+archive/
+
+# Ignore virtual environment
+venv/
+
+# Ignore log files
+*.log
+
+# Ignore egg-info
+*.egg-info/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE-specific files
+.idea/
+.vscode/
+*.sublime-*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Build directories
+build/
+dist/
+*.so
+*.dylib
+*.dll
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Local configuration files
+config.local.*
+*.local.json
+*.local.yaml
+*.local.yml
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover

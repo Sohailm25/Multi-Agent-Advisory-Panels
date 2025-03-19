@@ -26,7 +26,7 @@ prompts = glob('prompts/*.md')
 
 # Define LLM provider dependencies separately for better organization
 anthropic_deps = ["anthropic>=0.8.0"]
-openai_deps = ["openai>=1.3.0"]
+openai_deps = ["openai>=1.3.0", "langchain-openai>=0.1.0"]
 perplexity_deps = ["PerplexiPy>=1.0.0"]
 
 # All LLM providers together
@@ -65,6 +65,11 @@ setup(
         "tenacity>=8.0.0",
         "regex>=2022.1.18",
         "questionary>=2.0.0",
+        
+        # LangChain dependencies
+        "langchain>=0.1.0",
+        "langchain-core>=0.1.0",
+        "langgraph-swarm>=0.0.7",
         
         # Default LLM provider - Anthropic is included by default
         "anthropic>=0.8.0",

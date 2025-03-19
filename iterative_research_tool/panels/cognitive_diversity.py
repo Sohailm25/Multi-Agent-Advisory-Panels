@@ -308,8 +308,18 @@ Please synthesize these diverse perspectives into a cohesive analysis with the f
 3. Tensions and Trade-offs: Areas where perspectives may conflict
 4. Integrated Recommendations: Recommendations that incorporate multiple perspectives
 5. Meta-analysis: Reflection on the value of cognitive diversity for this query
+6. Original Agent Insights: Key insights from each individual agent, preserving their unique cognitive style and perspective
 
 Format your response as JSON with these sections as keys.
+
+For the "Original Agent Insights" section, extract 3-5 of the most important and unique insights from each agent, organizing them by agent name. This should allow the user to see both your integrated analysis and the original thinking from each cognitive perspective.
+
+Example format for the "Original Agent Insights" section:
+"Original Agent Insights": {
+    "Agent Name 1": ["key insight 1", "key insight 2", "key insight 3"],
+    "Agent Name 2": ["key insight 1", "key insight 2", "key insight 3"],
+    ...
+}
 """
         
         try:

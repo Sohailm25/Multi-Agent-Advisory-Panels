@@ -500,4 +500,18 @@ The tool supports multiple LLM providers, each with their own API keys and model
 
 ### OpenAI
 - Environment variable: `OPENAI_API_KEY`
-- Default model: `
+- Default model: `gpt-4`
+- Installation: `pip install openai`
+
+### Perplexity
+- Environment variable: `PERPLEXITY_API_KEY`
+- Default model: `sonar`
+- Installation: `pip install perplexity-python`
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).

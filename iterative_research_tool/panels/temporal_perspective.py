@@ -368,6 +368,7 @@ class TemporalPerspectivePanel(BasePanel):
         - Develop a strategy that balances immediate needs with long-term vision
         - Create a time-based roadmap with key decision points and transitions
         - Provide guidance on managing temporal trade-offs
+        - Include key original insights from each previous agent
 
         Based on the inputs from all time horizon analysts, synthesize a comprehensive temporal perspective analysis.
         
@@ -376,6 +377,13 @@ class TemporalPerspectivePanel(BasePanel):
             "Executive Summary": "Brief summary of the temporal perspective analysis",
             "Key Insights": ["insight 1", "insight 2", ...],
             "Strategic Recommendations": ["recommendation 1", "recommendation 2", ...],
+            "Original Agent Insights": {
+                "Problem Temporal Mapper": ["key insight 1", "key insight 2", ...],
+                "Immediate Horizon Analyst": ["key insight 1", "key insight 2", ...],
+                "Tactical Horizon Analyst": ["key insight 1", "key insight 2", ...],
+                "Strategic Horizon Analyst": ["key insight 1", "key insight 2", ...],
+                "Visionary Horizon Analyst": ["key insight 1", "key insight 2", ...]
+            },
             "Temporal Alignment Analysis": [
                 {
                     "theme": "Theme across time horizons",
@@ -440,6 +448,8 @@ class TemporalPerspectivePanel(BasePanel):
             ],
             "Success Metrics Across Time Horizons": ["metric 1", "metric 2", ...]
         }
+        
+        For each previous agent, carefully extract 3-5 of their most important and unique insights to include in the "Original Agent Insights" section. These should reflect their distinct perspective and contribution to the overall analysis.
         """
         
     def _build_graph(self) -> StateGraph:

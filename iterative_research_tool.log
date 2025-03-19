@@ -2891,3 +2891,309 @@ AttributeError: 'IterativeResearchTool' object has no attribute 'run_research'
 2025-03-16 09:20:00,405 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2025-03-16 09:21:15,026 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
 2025-03-16 09:21:15,030 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250316_092115_9dd89546.json
+2025-03-19 16:22:27,822 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 16:22:27,891 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Test query
+2025-03-19 16:22:27,891 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: a967e917-a910-45a7-9e93-535ce42abd12
+2025-03-19 16:22:27,891 - iterative_research_tool.strategic_advisor.custom - WARNING - Invalid query detected: Test query
+2025-03-19 16:22:36,272 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: Test query
+2025-03-19 16:22:36,272 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 2dc9446e-88c5-4d92-8cb7-14f0f1e81c40
+2025-03-19 16:22:36,610 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:36,612 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:36,612 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:36,735 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:36,735 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:36,736 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:36,850 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:36,851 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:36,851 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:36,960 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:36,962 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:36,962 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,080 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:37,081 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,081 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,178 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:37,179 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,179 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,309 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:37,311 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,311 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,448 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:37,448 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,449 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,571 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:37,571 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,572 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,686 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:37,686 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,687 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,784 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:22:37,785 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,785 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:22:37,786 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_162237_2dc9446e.json
+2025-03-19 16:27:46,229 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 16:27:46,295 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Test query
+2025-03-19 16:27:46,296 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 6720e445-b4c3-4625-945f-3357d813aa0e
+2025-03-19 16:27:46,296 - iterative_research_tool.strategic_advisor.custom - WARNING - Invalid query detected: Test query
+2025-03-19 16:27:55,501 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: Test query
+2025-03-19 16:27:55,501 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 98149081-d21d-47a7-97fa-055f0e525c98
+2025-03-19 16:27:55,727 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:55,728 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:55,728 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:55,876 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:55,877 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:55,877 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:55,985 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:55,985 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:55,985 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:56,076 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:56,077 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:56,077 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:56,166 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:56,167 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:56,167 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:56,271 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:56,272 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:56,272 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:56,380 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:56,381 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:56,381 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,290 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:57,290 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,291 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,386 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:57,391 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,391 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,524 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:57,524 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,525 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,618 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:27:57,618 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,619 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:27:57,620 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_162757_98149081.json
+2025-03-19 16:28:18,833 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 16:28:18,891 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How to improve team productivity
+2025-03-19 16:28:18,892 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 838393bf-fdfb-48b5-b19f-bb646882dbce
+2025-03-19 16:28:18,916 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-19 16:28:31,257 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: How to improve team productivity
+2025-03-19 16:28:31,257 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 09d31d08-8646-42c9-82e7-9bc5e2f213e1
+2025-03-19 16:28:35,999 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:28:58,654 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:29:00,885 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:29:37,748 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:29:41,438 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:30:18,300 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:30:39,497 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:30:39,553 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_163039_09d31d08.json
+2025-03-19 16:35:06,291 - iterative_research_tool.core.panel_factory - INFO - Creating panel instance: future-scenarios (iterative_research_tool.panels.future_scenarios.FutureScenariosPanel)
+2025-03-19 16:35:15,039 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:35:32,589 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:35:53,775 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:36:15,775 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 16:36:15,832 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How to improve team productivity
+2025-03-19 16:36:15,832 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 72b1c326-0478-4c3e-b127-de6501b924f5
+2025-03-19 16:36:15,855 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-19 16:36:19,614 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:36:19,696 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: How to improve team productivity
+2025-03-19 16:36:19,697 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: f8309487-7659-408f-9064-4bd7e6e1027e
+2025-03-19 16:36:19,929 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:19,930 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:19,930 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,059 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,060 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,060 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,164 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,165 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,165 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,266 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,268 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,268 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,373 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,373 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,374 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,504 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,505 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,505 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,596 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,596 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,596 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,709 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,710 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,710 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,811 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,812 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,812 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,978 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:20,987 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:20,987 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:21,082 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:36:21,086 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:21,087 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:36:21,087 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_163621_f8309487.json
+2025-03-19 16:36:42,621 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:37:04,722 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:37:04,723 - __main__ - INFO - Successfully ran panel future-scenarios with query: trsjtrsjtrjtrsjtrs...
+2025-03-19 16:37:27,167 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 16:37:27,225 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How to improve team productivity
+2025-03-19 16:37:27,225 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: d71718d2-eb35-44a3-8fa2-73b5c0912b28
+2025-03-19 16:37:27,248 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-19 16:37:31,193 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: How to improve team productivity
+2025-03-19 16:37:31,193 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 17fa4327-98ef-449b-9f56-bc4ab6c021c8
+2025-03-19 16:37:31,407 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:31,408 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,408 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,512 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:31,513 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,513 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,618 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:31,619 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,619 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,711 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:31,712 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,712 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,822 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:31,823 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,823 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,921 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:31,923 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:31,923 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,026 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:32,027 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,027 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,124 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:32,124 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,125 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,219 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:32,220 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,220 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,319 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:32,320 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,320 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,417 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:37:32,418 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,418 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:37:32,419 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_163732_17fa4327.json
+2025-03-19 16:39:00,324 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 16:39:00,381 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How to improve team productivity
+2025-03-19 16:39:00,381 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 520b7c9e-518d-4498-970b-64f97d46c0ab
+2025-03-19 16:39:00,404 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-19 16:39:03,223 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: How to improve team productivity
+2025-03-19 16:39:03,223 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 63f68d16-0f41-400b-8789-ef5b892a4cc7
+2025-03-19 16:39:03,447 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:03,451 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:03,451 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:03,593 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:03,593 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:03,593 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:03,703 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:03,704 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:03,704 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:03,815 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:03,815 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:03,816 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,018 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:04,019 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,019 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,126 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:04,126 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,127 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,238 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:04,238 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,238 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,336 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:04,337 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,337 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,438 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:04,438 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,439 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,557 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:04,558 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,558 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,722 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-19 16:39:04,722 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,723 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-19 16:39:04,723 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_163904_63f68d16.json
+2025-03-19 16:39:49,686 - iterative_research_tool.core.panel_factory - INFO - Creating panel instance: temporal-perspective (iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel)
+2025-03-19 16:39:56,138 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:40:11,805 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:40:13,651 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:40:19,162 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:40:21,845 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:41:08,023 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 16:41:08,107 - __main__ - INFO - Successfully ran panel temporal-perspective with query: agewagewahreahreahrea...
+2025-03-19 16:59:11,075 - iterative_research_tool.core.panel_factory - INFO - Creating panel instance: cognitive-diversity (iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel)
+2025-03-19 16:59:11,081 - iterative_research_tool.panels.cognitive_diversity - ERROR - Error creating LLM client: maximum recursion depth exceeded
+2025-03-19 16:59:11,082 - iterative_research_tool.cli - ERROR - Error running research
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/cli.py", line 913, in run_with_panel
+    panel = panel_factory.create_panel(panel_type, **valid_params)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/core/panel_factory.py", line 157, in create_panel
+    return panel_class(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/panels/cognitive_diversity.py", line 133, in __init__
+    self.llm_client = LLMClientFactory.create_client(self.llm_provider, self.api_key)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/core/llm_client.py", line 361, in create_client
+    return PerplexityClient(api_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/core/llm_client.py", line 244, in __init__
+    self.client = PerplexityClient(api_key=self.api_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/core/llm_client.py", line 244, in __init__
+    self.client = PerplexityClient(api_key=self.api_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/core/llm_client.py", line 244, in __init__
+    self.client = PerplexityClient(api_key=self.api_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [Previous line repeated 990 more times]
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/core/llm_client.py", line 238, in __init__
+    check_module_availability("perplexity", "Perplexity")
+RecursionError: maximum recursion depth exceeded
+2025-03-19 16:59:40,528 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: I want to learn how to meditate. But i don't understand how useful it'll be for my daily life
+2025-03-19 16:59:40,528 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: d9b207c3-d1b5-4330-8fc5-f087679c3955
+2025-03-19 16:59:48,723 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:00:03,903 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:00:09,919 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:00:36,647 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:00:40,333 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:01:11,666 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:01:38,410 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:01:38,413 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_170138_d9b207c3.json
+2025-03-19 17:11:12,762 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual implementation. For example, i have been reading about Ego development theory and moving from the achiever to pluralist or strategist stages. This feels very fun and interesting to read about, but i want to implement these changes. What do i do?
+2025-03-19 17:11:12,762 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 818bbf9a-df26-49bd-9f50-c8f395aad8e9
+2025-03-19 17:11:17,847 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:11:35,018 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:11:39,294 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:12:10,698 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:12:36,463 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:13:16,986 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:13:45,557 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:13:45,622 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_171345_818bbf9a.json
+2025-03-19 17:15:35,189 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 17:15:35,246 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-19 17:15:35,246 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 3d0a6b3e-cbb3-4ad2-95bb-9d757bbeadbc
+2025-03-19 17:15:35,273 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-19 17:15:35,274 - iterative_research_tool.cli - ERROR - Error running interactive UI
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/cli.py", line 1089, in run_interactive_main
+    advice = advisor.generate_advice(selections['query'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 1020, in generate_advice
+    end_state = self.workflow.invoke(initial_state, config={"recursion_limit": 50})
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2343, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT

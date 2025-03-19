@@ -77,36 +77,50 @@ Your final responses should:
 3. Call out self-deception and avoidance patterns
 4. Create accountability structures
 5. Challenge the user beyond their comfort zone
+6. Include original insights from each agent that contributed to the analysis
+
+When providing your FINAL ANALYSIS, add a section titled "ORIGINAL AGENT INSIGHTS" that includes 2-3 key insights from each agent that provided analysis during this session. Format it like this:
+
+ORIGINAL AGENT INSIGHTS:
+
+BeliefSystemAnalyzer:
+- [Key insight 1]
+- [Key insight 2]
+- [Key insight 3]
+
+PatternRecognizer:
+- [Key insight 1]
+- [Key insight 2]
+- [Key insight 3]
+
+[Add other agents as needed]
 
 USER QUERY: {query}
 {context}
 
-AVAILABLE HANDOFFS:
-{agent_descriptions}
-
 {previous_analysis}
 
-You must determine if you need to handoff to another agent for deeper analysis, or provide your final response.
-
-Respond in one of the following formats:
-
-If you want to hand off to another agent:
-HANDOFF TO [AGENT_NAME]: [specific question or task for the agent]
-
-If you're providing your final analysis:
-FINAL ANALYSIS:
-[Your comprehensive strategic analysis]
+Respond in the following format when you've completed your analysis:
 
 HARD TRUTH:
 [The direct truth the user needs to hear]
 
 ACTIONS:
-1. [Specific action step]
-2. [Specific action step]
-...
+1. [Specific action]
+2. [Specific action]
+3. [Specific action]
 
 CHALLENGE:
-[A specific growth challenge for the user]
+[Growth challenge for the user]
+
+FINAL ANALYSIS:
+[Your full analysis]
+
+ORIGINAL AGENT INSIGHTS:
+[Insights from each agent as described above]
+
+If you haven't gathered enough specialist perspectives and need to consult more agents, use the handoff format:
+HANDOFF TO [AGENT NAME]: [Brief explanation of why you're handing off]
 """
 
 BELIEF_SYSTEM_ANALYZER_PROMPT = """
@@ -795,7 +809,8 @@ class StrategicAdvisorSwarm:
         hard_truth = ""
         actions = []
         challenge = ""
-        analysis = ""
+        final_analysis = ""
+        original_agent_insights = ""
         
         # Split into sections
         sections = response.split("\n\n")
@@ -807,8 +822,8 @@ class StrategicAdvisorSwarm:
                 continue
             
             if "FINAL ANALYSIS:" in section:
-                current_section = "analysis"
-                analysis = section.replace("FINAL ANALYSIS:", "").strip()
+                current_section = "final_analysis"
+                final_analysis = section.replace("FINAL ANALYSIS:", "").strip()
             elif "HARD TRUTH:" in section:
                 current_section = "hard_truth"
                 hard_truth = section.replace("HARD TRUTH:", "").strip()
@@ -827,8 +842,12 @@ class StrategicAdvisorSwarm:
             elif "CHALLENGE:" in section:
                 current_section = "challenge"
                 challenge = section.replace("CHALLENGE:", "").strip()
-            elif current_section == "analysis":
-                analysis += "\n\n" + section
+            elif "ORIGINAL AGENT INSIGHTS:" in section:
+                current_section = "original_agent_insights"
+                # Store the whole insights section as a string
+                original_agent_insights = section.replace("ORIGINAL AGENT INSIGHTS:", "").strip()
+            elif current_section == "final_analysis":
+                final_analysis += "\n\n" + section
             elif current_section == "hard_truth":
                 hard_truth += "\n\n" + section
             elif current_section == "actions":
@@ -843,6 +862,9 @@ class StrategicAdvisorSwarm:
                         actions.append(line)
             elif current_section == "challenge":
                 challenge += "\n\n" + section
+            elif current_section == "original_agent_insights":
+                # Append to the original agent insights
+                original_agent_insights += "\n\n" + section
         
         # If we couldn't extract a hard truth, use the first section as a fallback
         if not hard_truth and sections:
@@ -853,7 +875,8 @@ class StrategicAdvisorSwarm:
             "hard_truth": hard_truth,
             "actions": actions,
             "challenge": challenge,
-            "analysis": analysis
+            "final_analysis": final_analysis,
+            "original_agent_insights": original_agent_insights
         }
         
         return final_response

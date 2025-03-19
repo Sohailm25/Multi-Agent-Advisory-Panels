@@ -27,18 +27,24 @@ Requires-Dist: tiktoken>=0.4.0
 Requires-Dist: tenacity>=8.0.0
 Requires-Dist: regex>=2022.1.18
 Requires-Dist: questionary>=2.0.0
+Requires-Dist: langchain>=0.1.0
+Requires-Dist: langchain-core>=0.1.0
+Requires-Dist: langgraph-swarm>=0.0.7
 Requires-Dist: anthropic>=0.8.0
 Provides-Extra: openai
 Requires-Dist: openai>=1.3.0; extra == "openai"
+Requires-Dist: langchain-openai>=0.1.0; extra == "openai"
 Provides-Extra: perplexity
 Requires-Dist: PerplexiPy>=1.0.0; extra == "perplexity"
 Provides-Extra: all
 Requires-Dist: anthropic>=0.8.0; extra == "all"
 Requires-Dist: openai>=1.3.0; extra == "all"
+Requires-Dist: langchain-openai>=0.1.0; extra == "all"
 Requires-Dist: PerplexiPy>=1.0.0; extra == "all"
 Provides-Extra: complete
 Requires-Dist: anthropic>=0.8.0; extra == "complete"
 Requires-Dist: openai>=1.3.0; extra == "complete"
+Requires-Dist: langchain-openai>=0.1.0; extra == "complete"
 Requires-Dist: PerplexiPy>=1.0.0; extra == "complete"
 Requires-Dist: pytest>=7.0.0; extra == "complete"
 Requires-Dist: black>=23.0.0; extra == "complete"
@@ -203,6 +209,280 @@ panels --panel cognitive-diversity --llm-provider anthropic --api-key your_api_k
 panels --panel cognitive-diversity --output-dir /path/to/output --llm-provider anthropic --api-key your_api_key "Your query here"
 ```
 
+### Interactive UI with PanelsUI
+
+The tool provides an interactive UI through the `panelsui` command, allowing you to easily select options through a menu-driven interface:
+
+```bash
+# Start the interactive UI (recommended for new users)
+panelsui
+```
+
+The interactive UI guides you through the following steps:
+1. Select your approach (Panel-based, Strategic Advisor Custom, or Strategic Advisor Swarm)
+2. Select the specific panel (if using Panel-based approach)
+3. Enter your query
+4. Choose the LLM provider (Anthropic, OpenAI, or Perplexity)
+5. Choose the specific model
+6. Enter your API key (or it will be read from environment variables if available)
+
+This is the easiest way to use the tool as it handles all the command-line parameters for you.
+
+### Available Panels and Architectures
+
+The tool offers multiple specialized panels and strategic advisor architectures:
+
+#### Panel Architecture Overview
+
+```mermaid
+graph TD
+    User[User Query] --> PanelFactory
+    PanelFactory --> Panels
+    Panels --> CD[Cognitive Diversity]
+    Panels --> CA[Constraint Analysis]
+    Panels --> CC[Contrarian Challenge]
+    Panels --> DI[Decision Intelligence]
+    Panels --> FS[Future Scenarios]
+    Panels --> IE[Implementation Energy]
+    Panels --> PD1[Personal Development]
+    Panels --> PD2[Product Development]
+    Panels --> SI[Stakeholder Impact]
+    Panels --> TP[Temporal Perspective]
+    CD --> Results[Results]
+    CA --> Results
+    CC --> Results
+    DI --> Results
+    FS --> Results
+    IE --> Results
+    PD1 --> Results
+    PD2 --> Results
+    SI --> Results
+    TP --> Results
+```
+
+#### Strategic Advisor Architectures
+
+**Custom Architecture**
+
+```mermaid
+graph TD
+    User[User Query] --> StrategicAdvisorCustom
+    StrategicAdvisorCustom --> ChiefStrategist
+    ChiefStrategist --> LongTermAnalyst
+    ChiefStrategist --> FirstPrinciplesAnalyst
+    ChiefStrategist --> ImplementationAnalyst
+    ChiefStrategist --> FeasibilityAnalyst
+    LongTermAnalyst --> ChiefStrategist
+    FirstPrinciplesAnalyst --> ChiefStrategist
+    ImplementationAnalyst --> ChiefStrategist
+    FeasibilityAnalyst --> ChiefStrategist
+    ChiefStrategist --> Results[Strategic Advice]
+```
+
+**Swarm Architecture**
+
+```mermaid
+graph TD
+    User[User Query] --> StrategicAdvisorSwarm
+    StrategicAdvisorSwarm --> Researcher
+    StrategicAdvisorSwarm --> Planner
+    StrategicAdvisorSwarm --> RiskAnalyst
+    StrategicAdvisorSwarm --> Evaluator
+    StrategicAdvisorSwarm --> BenefitsAnalyst
+    StrategicAdvisorSwarm --> ActionCoach
+    StrategicAdvisorSwarm --> Synthesizer
+    Researcher --> Synthesizer
+    Planner --> Synthesizer
+    RiskAnalyst --> Synthesizer
+    Evaluator --> Synthesizer
+    BenefitsAnalyst --> Synthesizer
+    ActionCoach --> Synthesizer
+    Synthesizer --> Results[Strategic Advice]
+```
+
+### Individual Panel Workflows
+
+Each panel has its own unique workflow and agent structure:
+
+#### Cognitive Diversity Panel
+
+This panel leverages multiple cognitive styles to analyze problems from different perspectives.
+
+```mermaid
+graph TD
+    Query[User Query] --> CognitivePanel[Cognitive Diversity Panel]
+    CognitivePanel --> ParallelAgents[Run Agents in Parallel]
+    ParallelAgents --> SystemsThinker[Systems Thinker]
+    ParallelAgents --> FirstPrinciples[First Principles Thinker]
+    ParallelAgents --> Creative[Creative Thinker]
+    ParallelAgents --> Critical[Critical Thinker]
+    ParallelAgents --> Holistic[Holistic Thinker]
+    SystemsThinker --> Synthesizer[Results Synthesizer]
+    FirstPrinciples --> Synthesizer
+    Creative --> Synthesizer
+    Critical --> Synthesizer
+    Holistic --> Synthesizer
+    Synthesizer --> Output[Cognitive Diversity Analysis]
+```
+
+#### Constraint Analysis Panel
+
+This panel identifies and analyzes different types of constraints, turning perceived limitations into opportunities.
+
+```mermaid
+graph TD
+    Query[User Query] --> ConstraintPanel[Constraint Analysis Panel]
+    ConstraintPanel --> ConstraintIdentifier[Constraint Identifier]
+    ConstraintIdentifier --> ResourceAnalyst[Resource Constraints Analyst]
+    ConstraintIdentifier --> TechnicalAnalyst[Technical Constraints Analyst]
+    ConstraintIdentifier --> RegulatoryAnalyst[Regulatory Constraints Analyst]
+    ConstraintIdentifier --> MarketAnalyst[Market Constraints Analyst]
+    ConstraintIdentifier --> InternalAnalyst[Internal Constraints Analyst]
+    ResourceAnalyst --> Synthesizer[Constraint-Opportunity Synthesizer]
+    TechnicalAnalyst --> Synthesizer
+    RegulatoryAnalyst --> Synthesizer
+    MarketAnalyst --> Synthesizer
+    InternalAnalyst --> Synthesizer
+    Synthesizer --> Output[Constraint Analysis]
+```
+
+#### Contrarian Challenge Panel
+
+This panel deliberately takes contrary positions to stress-test ideas and uncover blind spots.
+
+```mermaid
+graph TD
+    Query[User Query] --> ContrarianPanel[Contrarian Challenge Panel]
+    ContrarianPanel --> AssumptionExplorer[Assumption Explorer]
+    AssumptionExplorer --> DevilsAdvocate[Devil's Advocate]
+    DevilsAdvocate --> AlternativeScenarios[Alternative Scenarios Generator]
+    AlternativeScenarios --> BlackSwan[Black Swan Identifier]
+    BlackSwan --> ContrarianSynthesizer[Contrarian Synthesizer]
+    ContrarianSynthesizer --> Rebuttal[Rebuttal Generator]
+    Rebuttal --> FinalSynth[Final Contrarian Synthesis]
+    FinalSynth --> Output[Contrarian Analysis]
+```
+
+#### Decision Intelligence Panel
+
+This panel applies decision theory to improve decision quality under uncertainty.
+
+```mermaid
+graph TD
+    Query[User Query] --> DecisionPanel[Decision Intelligence Panel]
+    DecisionPanel --> ProblemFramer[Problem Framer]
+    ProblemFramer --> OptionGenerator[Options Generator]
+    OptionGenerator --> CriteriaAnalyst[Decision Criteria Analyst]
+    CriteriaAnalyst --> ModelBuilder[Decision Model Builder]
+    ModelBuilder --> UncertaintyAnalyst[Uncertainty Analyst]
+    UncertaintyAnalyst --> AlternativesEvaluator[Alternatives Evaluator]
+    AlternativesEvaluator --> DecisionSynthesizer[Decision Synthesizer]
+    DecisionSynthesizer --> Output[Decision Analysis]
+```
+
+#### Future Scenarios Panel
+
+This panel explores possible futures to build robust plans that work across multiple scenarios.
+
+```mermaid
+graph TD
+    Query[User Query] --> FuturePanel[Future Scenarios Panel]
+    FuturePanel --> TrendIdentifier[Trend Identifier]
+    TrendIdentifier --> UncertaintyMap[Uncertainty Mapper]
+    UncertaintyMap --> ScenarioBuilder[Scenario Builder]
+    ScenarioBuilder --> Impacts[Impact Analyzer]
+    Impacts --> Signals[Early Signal Detector]
+    Signals --> Strategist[Robust Strategy Developer]
+    Strategist --> Synthesizer[Future Scenarios Synthesizer]
+    Synthesizer --> Output[Future Scenarios Analysis]
+```
+
+#### Implementation Energy Panel
+
+This panel evaluates how much energy and resources are needed to implement different strategies.
+
+```mermaid
+graph TD
+    Query[User Query] --> EnergyPanel[Implementation Energy Panel]
+    EnergyPanel --> RequirementsAnalyst[Requirements Analyst]
+    RequirementsAnalyst --> ResourceEstimator[Resource Estimator]
+    ResourceEstimator --> EffortEvaluator[Effort Evaluator]
+    EffortEvaluator --> TimelineAssessor[Timeline Assessor]
+    TimelineAssessor --> ConstraintAnalyst[Implementation Constraint Analyst]
+    ConstraintAnalyst --> TradeoffAnalyst[Tradeoff Analyst]
+    TradeoffAnalyst --> Synthesizer[Implementation Energy Synthesizer]
+    Synthesizer --> Output[Implementation Energy Analysis]
+```
+
+#### Personal Development Panel
+
+This panel provides personalized growth strategies tailored to individual goals and circumstances.
+
+```mermaid
+graph TD
+    Query[User Query] --> PersonalPanel[Personal Development Panel]
+    PersonalPanel --> GoalAnalyst[Goal Analyst]
+    GoalAnalyst --> StrengthsAnalyst[Strengths Analyst]
+    StrengthsAnalyst --> GapsAnalyst[Gap Analyst]
+    GapsAnalyst --> LearningPathDesigner[Learning Path Designer]
+    LearningPathDesigner --> HabitBuilder[Habit Builder]
+    HabitBuilder --> FeedbackLoop[Feedback Loop Designer]
+    FeedbackLoop --> Synthesizer[Personal Development Synthesizer]
+    Synthesizer --> Output[Personal Development Plan]
+```
+
+#### Product Development Panel
+
+This panel provides strategies for creating and refining products that meet market needs.
+
+```mermaid
+graph TD
+    Query[User Query] --> ProductPanel[Product Development Panel]
+    ProductPanel --> MarketAnalyst[Market Analyst]
+    MarketAnalyst --> UserAnalyst[User Needs Analyst]
+    UserAnalyst --> ConceptGenerator[Concept Generator]
+    ConceptGenerator --> RequirementsSpecifier[Requirements Specifier]
+    RequirementsSpecifier --> Prototyper[Prototyping Strategist]
+    Prototyper --> TestingStrategist[Testing Strategist]
+    TestingStrategist --> MVPDesigner[MVP Designer]
+    MVPDesigner --> Synthesizer[Product Development Synthesizer]
+    Synthesizer --> Output[Product Development Strategy]
+```
+
+#### Stakeholder Impact Panel
+
+This panel assesses how decisions affect different stakeholders and designs strategies for stakeholder management.
+
+```mermaid
+graph TD
+    Query[User Query] --> StakeholderPanel[Stakeholder Impact Panel]
+    StakeholderPanel --> StakeholderIdentifier[Stakeholder Identifier]
+    StakeholderIdentifier --> InterestAnalyst[Interests Analyst]
+    InterestAnalyst --> PowerAnalyst[Power/Influence Analyst]
+    PowerAnalyst --> ImpactAssessor[Impact Assessor]
+    ImpactAssessor --> ConflictIdentifier[Conflict Identifier]
+    ConflictIdentifier --> EngagementStrategist[Engagement Strategist]
+    EngagementStrategist --> Synthesizer[Stakeholder Impact Synthesizer]
+    Synthesizer --> Output[Stakeholder Impact Analysis]
+```
+
+#### Temporal Perspective Panel
+
+This panel analyzes issues across different time horizons to balance short-term and long-term considerations.
+
+```mermaid
+graph TD
+    Query[User Query] --> TemporalPanel[Temporal Perspective Panel]
+    TemporalPanel --> HistoricalAnalyst[Historical Analyst]
+    HistoricalAnalyst --> PresentAnalyst[Present Context Analyst]
+    PresentAnalyst --> ShortTermAnalyst[Short-term Analyst]
+    ShortTermAnalyst --> MidTermAnalyst[Mid-term Analyst]
+    MidTermAnalyst --> LongTermAnalyst[Long-term Analyst]
+    LongTermAnalyst --> TimeHorizonIntegrator[Time Horizon Integrator]
+    TimeHorizonIntegrator --> Synthesizer[Temporal Perspective Synthesizer]
+    Synthesizer --> Output[Temporal Perspective Analysis]
+```
+
 ### Strategic Advisor Commands
 
 The tool provides specialized strategic advisor architectures for generating advice:
@@ -288,4 +568,18 @@ The tool supports multiple LLM providers, each with their own API keys and model
 
 ### OpenAI
 - Environment variable: `OPENAI_API_KEY`
-- Default model: `
+- Default model: `gpt-4`
+- Installation: `pip install openai`
+
+### Perplexity
+- Environment variable: `PERPLEXITY_API_KEY`
+- Default model: `sonar`
+- Installation: `pip install perplexity-python`
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).

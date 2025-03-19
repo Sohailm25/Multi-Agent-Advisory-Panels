@@ -165,6 +165,18 @@ class TerminalVisualizer:
         """
         if not self.show_progress:
             return
+        
+        # Clean up debug messages if possible
+        try:
+            # Import the function if available
+            from iterative_research_tool.cli import _remove_debug_messages
+            message = _remove_debug_messages(message)
+        except ImportError:
+            pass
+        
+        # Skip empty messages after cleaning
+        if not message.strip():
+            return
             
         wrapped_message = self._wrap_text(message, width=80, indent=2)
         
@@ -422,7 +434,24 @@ class Visualizer(TerminalVisualizer):
         Args:
             message: The message to display
         """
-        self.show_message(message)
+        if not self.show_progress:
+            return
+        
+        # Clean up debug messages if possible
+        try:
+            # Import the function if available
+            from iterative_research_tool.cli import _remove_debug_messages
+            message = _remove_debug_messages(message)
+        except ImportError:
+            pass
+        
+        # Skip empty messages after cleaning
+        if not message.strip():
+            return
+            
+        wrapped_message = self._wrap_text(message, width=80, indent=2)
+        
+        print(f"\n{Fore.CYAN}ℹ️ {wrapped_message}{Style.RESET_ALL}")
         
     def collect_feedback(self) -> Dict[str, Any]:
         """Collect feedback.

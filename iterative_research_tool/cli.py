@@ -10,6 +10,7 @@ import subprocess
 from pathlib import Path
 from typing import Optional, Tuple, List
 from dotenv import load_dotenv
+from colorama import Fore, Style
 
 from iterative_research_tool.core.config import ConfigManager, ToolConfig, APIConfig
 from iterative_research_tool.core.logging_utils import setup_logging, ProgressLogger
@@ -22,6 +23,9 @@ from iterative_research_tool.core.panel_factory import panel_factory
 # Import the strategic advisors
 from iterative_research_tool.strategic_advisor import StrategicAdvisorCustom, StrategicAdvisorSwarm
 
+# Add output location config
+CONFIG_FILE = os.path.expanduser("~/.iterative_research_tool_config")
+
 # Import the interactive CLI
 try:
     from iterative_research_tool.core.interactive_cli import run_interactive_cli
@@ -32,12 +36,13 @@ else:
     INTERACTIVE_CLI_IMPORT_ERROR = None
 
 # Import the LLM client factory
+global LLMClientFactory
 try:
     from iterative_research_tool.core.llm_client import LLMClientFactory
 except ImportError as e:
     # This will be handled during runtime
-    LLMClientFactory = None
     LLM_IMPORT_ERROR = str(e)
+    LLMClientFactory = None
 else:
     LLM_IMPORT_ERROR = None
 
@@ -49,6 +54,71 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+# Add functions to manage output directory configuration
+def load_output_config():
+    """Load the output directory configuration."""
+    config = {"output_dir": os.environ.get("ITERATIVE_RESEARCH_TOOL_OUTPUT_DIR")}
+    
+    if os.path.exists(CONFIG_FILE):
+        try:
+            with open(CONFIG_FILE, "r") as f:
+                file_config = json.load(f)
+                config.update(file_config)
+        except Exception as e:
+            logger.warning(f"Error loading config file: {e}")
+    
+    # Default to ~/iterative_research_tool_output if not set
+    if not config.get("output_dir"):
+        config["output_dir"] = os.path.expanduser("~/iterative_research_tool_output")
+    
+    return config
+
+def save_output_config(output_dir):
+    """Save the output directory configuration."""
+    config = {}
+    
+    # Load existing config if it exists
+    if os.path.exists(CONFIG_FILE):
+        try:
+            with open(CONFIG_FILE, "r") as f:
+                config = json.load(f)
+        except Exception as e:
+            logger.warning(f"Error loading existing config file: {e}")
+    
+    # Update with new output dir
+    config["output_dir"] = output_dir
+    
+    # Save config
+    try:
+        with open(CONFIG_FILE, "w") as f:
+            json.dump(config, f, indent=2)
+        return True
+    except Exception as e:
+        logger.error(f"Error saving config file: {e}")
+        return False
+
+def setup_default_output_dir(output_dir):
+    """Set up the default output directory configuration."""
+    visualizer = Visualizer()
+    
+    if not output_dir:
+        visualizer.display_error("No output directory specified")
+        return False
+    
+    # Check if the directory exists or can be created
+    try:
+        os.makedirs(output_dir, exist_ok=True)
+    except Exception as e:
+        visualizer.display_error(f"Could not create output directory: {e}")
+        return False
+    
+    # Save the configuration
+    if save_output_config(output_dir):
+        visualizer.display_success(f"Default output directory set to: {output_dir}")
+        return True
+    else:
+        visualizer.display_error("Failed to save configuration")
+        return False
 
 def install_dependencies(provider: str) -> bool:
     """
@@ -149,7 +219,6 @@ def create_parser() -> argparse.ArgumentParser:
     strat_custom_parser.add_argument('--output-file', help='File to save the plan to')
     strat_custom_parser.add_argument('--output-dir', help='Directory to save outputs to')
     strat_custom_parser.add_argument('--verbose', action='store_true', help='Enable verbose output')
-    strat_custom_parser.add_argument('--show-agent-details', action='store_true', help='Show detailed agent processing steps, prompts, and responses')
     
     # Strategic advisor - swarm architecture
     strat_swarm_parser = subparsers.add_parser('strat-swarm', help='Run strategic advisor with swarm architecture')
@@ -157,52 +226,30 @@ def create_parser() -> argparse.ArgumentParser:
     strat_swarm_parser.add_argument('--output-file', help='File to save the plan to')
     strat_swarm_parser.add_argument('--output-dir', help='Directory to save outputs to')
     strat_swarm_parser.add_argument('--verbose', action='store_true', help='Enable verbose output')
-    strat_swarm_parser.add_argument('--show-agent-details', action='store_true', help='Show detailed agent processing steps, prompts, and responses')
     
-    # Add arguments for the main planner command
-    main_parser.add_argument('query', nargs='?', help='Query to plan')
+    # Add configuration command
+    config_parser = subparsers.add_parser('config', help='Configure default settings')
+    config_parser.add_argument('--set-output-dir', help='Set default output directory')
     
-    # Add panel options
-    main_parser.add_argument('--panel', help='Panel type to use')
-    main_parser.add_argument('--list-panels', action='store_true', help='List available panels')
-    main_parser.add_argument('--panel-info', help='Show information about a specific panel')
-    main_parser.add_argument('--custom-panel-path', action='append', help='Path to custom panel files or directories')
-    
-    # Add time travel options
-    main_parser.add_argument('--time-travel', help='Travel to a specific checkpoint')
-    main_parser.add_argument('--show-checkpoints', action='store_true', help='Show available checkpoints')
-    
-    # Add alternatives options
-    main_parser.add_argument('--alternative', help='Explore an alternative approach')
-    
-    # Add feedback options
-    main_parser.add_argument('--collect-feedback', action='store_true', help='Collect feedback after planning')
-    
-    # Add output options
-    main_parser.add_argument('--output-file', help='File to save the plan to')
-    main_parser.add_argument('--output-dir', help='Directory to save outputs to')
-    
-    # Add model options
-    main_parser.add_argument('--model', help='Model to use')
-    main_parser.add_argument('--memory-file', help='File to use for memory')
-    
-    # Add verbosity options
-    main_parser.add_argument('--verbose', action='store_true', help='Enable verbose output')
-    main_parser.add_argument('--show-agent-details', action='store_true', help='Show detailed agent processing steps, prompts, and responses')
-    
-    # Create LLM provider option group
-    llm_group = main_parser.add_argument_group('LLM provider options')
-    llm_group.add_argument('--llm-provider', default='anthropic', help='LLM provider to use')
-    llm_group.add_argument('--api-key', help='API key for the LLM provider')
-    llm_group.add_argument('--install-deps', action='store_true', help='Install dependencies for the selected LLM provider')
-    
-    # Add LLM provider options to strategic advisor parsers as well
-    for subparser in [strat_custom_parser, strat_swarm_parser]:
-        llm_group = subparser.add_argument_group('LLM provider options')
-        llm_group.add_argument('--llm-provider', default='anthropic', help='LLM provider to use')
-        llm_group.add_argument('--api-key', help='API key for the LLM provider')
-        llm_group.add_argument('--model', help='Model to use')
-        llm_group.add_argument('--install-deps', action='store_true', help='Install dependencies for the selected LLM provider')
+    # Add main arguments
+    parser.add_argument('--panel', help='Panel type to use')
+    parser.add_argument('--list-panels', action='store_true', help='List available panels')
+    parser.add_argument('--panel-info', help='Get information about a specific panel')
+    parser.add_argument('--custom-panel-path', action='append', help='Path to custom panel files or directories')
+    parser.add_argument('--time-travel', help='Travel to a specific checkpoint')
+    parser.add_argument('--show-checkpoints', action='store_true', help='Show available checkpoints')
+    parser.add_argument('--alternative', help='Explore an alternative')
+    parser.add_argument('--collect-feedback', action='store_true', help='Collect feedback after planning')
+    parser.add_argument('--output-file', help='File to save the plan to')
+    parser.add_argument('--output-dir', help='Directory to save outputs to')
+    parser.add_argument('--model', help='Model to use (if not specified, use the default model for the provider)')
+    parser.add_argument('--memory-file', help='File to store user memory')
+    parser.add_argument('--verbose', action='store_true', help='Enable verbose output')
+    parser.add_argument('--show-agent-details', action='store_true', help='Show detailed agent processing steps, prompts, and responses')
+    parser.add_argument('--llm-provider', default='openai', help='LLM provider to use')
+    parser.add_argument('--api-key', help='API key for the LLM provider')
+    parser.add_argument('--install-deps', action='store_true', help='Install missing dependencies')
+    parser.add_argument('query', nargs='?', help='Query to analyze')
     
     return parser
 
@@ -220,19 +267,18 @@ def main() -> int:
     parser = create_parser()
     args = parser.parse_args()
     
-    # Debug: Print all arguments
-    # print("DEBUG - All arguments:")
-    # for arg in vars(args):
-    #     print(f"  {arg}: {getattr(args, arg)}")
-    
-    # Additional debug for subcommands
-    # if args.command:
-    #     print(f"DEBUG - Using command: {args.command}")
-    #     if args.command in ['strat-swarm', 'strat-custom']:
-    #         print(f"DEBUG - Command: {args.command}, Query: {args.query if hasattr(args, 'query') else 'None'}")
-    #         # Print the sys.argv to see what's actually being passed
-    #         import sys
-    #         print(f"DEBUG - sys.argv: {sys.argv}")
+    # Handle config command
+    if args.command == "config":
+        if args.set_output_dir:
+            return 0 if setup_default_output_dir(args.set_output_dir) else 1
+        else:
+            # Display current configuration
+            config = load_output_config()
+            visualizer = Visualizer()
+            visualizer.display_message("\nCurrent Configuration:")
+            visualizer.display_message(f"Output Directory: {config['output_dir']}")
+            visualizer.display_message("\nUse '--set-output-dir' to change the default output directory.")
+            return 0
     
     # Set up logging
     setup_logging(args.verbose, "iterative_research_tool.log")
@@ -367,7 +413,6 @@ def main() -> int:
             # Re-import the LLM client factory after installation
             try:
                 from iterative_research_tool.core.llm_client import LLMClientFactory
-                global LLMClientFactory
             except ImportError as e:
                 visualizer.display_error(f"Failed to import LLM client factory after installation: {e}")
                 return 1
@@ -384,10 +429,16 @@ def main() -> int:
         print("Please set the appropriate environment variable or use the --api-key option")
         return 1
 
-    # Determine the output directory
+    # Determine the output directory from args or config
     output_dir = args.output_dir
     if not output_dir:
-        output_dir = os.path.expanduser("~/iterative_research_tool_output")
+        config = load_output_config()
+        output_dir = config["output_dir"]
+        if args.verbose:
+            logger.info(f"Using configured output directory: {output_dir}")
+    
+    # Ensure the output directory exists
+    os.makedirs(output_dir, exist_ok=True)
     
     # Special handling for command-line arguments
     import sys
@@ -449,26 +500,7 @@ def main() -> int:
             visualizer.display_success("Strategic advice generated (Swarm Architecture)")
             
             # Display a summary of the advice
-            visualizer.display_message("\n" + "="*50)
-            visualizer.display_message("STRATEGIC ADVICE SUMMARY:")
-            
-            if "hard_truth" in advice:
-                visualizer.display_message("\nHARD TRUTH:")
-                visualizer.display_message(advice["hard_truth"])
-                
-            if "actions" in advice:
-                visualizer.display_message("\nACTIONABLE STEPS:")
-                for i, action in enumerate(advice["actions"], 1):
-                    visualizer.display_message(f"{i}. {action}")
-                    
-            if "challenge" in advice:
-                visualizer.display_message("\nSTRATEGIC CHALLENGE:")
-                if isinstance(advice["challenge"], dict):
-                    visualizer.display_message(advice["challenge"].get("description", str(advice["challenge"])))
-                else:
-                    visualizer.display_message(str(advice["challenge"]))
-                    
-            visualizer.display_message("\n" + "="*50)
+            display_strategic_advice(advice)
             
             # Save to file if requested
             if args.output_file:
@@ -538,26 +570,7 @@ def main() -> int:
             visualizer.display_success("Strategic advice generated (Custom Architecture)")
             
             # Display a summary of the advice
-            visualizer.display_message("\n" + "="*50)
-            visualizer.display_message("STRATEGIC ADVICE SUMMARY:")
-            
-            if "hard_truth" in advice:
-                visualizer.display_message("\nHARD TRUTH:")
-                visualizer.display_message(advice["hard_truth"])
-                
-            if "actions" in advice:
-                visualizer.display_message("\nACTIONABLE STEPS:")
-                for i, action in enumerate(advice["actions"], 1):
-                    visualizer.display_message(f"{i}. {action}")
-                    
-            if "challenge" in advice:
-                visualizer.display_message("\nSTRATEGIC CHALLENGE:")
-                if isinstance(advice["challenge"], dict):
-                    visualizer.display_message(advice["challenge"].get("description", str(advice["challenge"])))
-                else:
-                    visualizer.display_message(str(advice["challenge"]))
-                    
-            visualizer.display_message("\n" + "="*50)
+            display_strategic_advice(advice)
             
             # Save to file if requested
             if args.output_file:
@@ -625,6 +638,10 @@ def main() -> int:
                 # Generate plan
                 plan = planner.generate_strategic_plan(args.query)
                 
+                # Display the plan in a pretty format
+                if isinstance(plan, dict):
+                    display_panel_output(plan)
+                
                 # Collect feedback if enabled
                 if args.collect_feedback:
                     feedback = planner.collect_feedback()
@@ -685,26 +702,167 @@ def display_strategic_advice(advice):
     """Display a summary of strategic advice."""
     visualizer = Visualizer()
     
-    visualizer.display_message("\n" + "="*50)
-    visualizer.display_message("STRATEGIC ADVICE SUMMARY:")
+    visualizer.display_message("\n" + "="*80)
+    visualizer.display_message(f"{Fore.CYAN}{Style.BRIGHT}STRATEGIC ADVICE SUMMARY{Style.RESET_ALL}")
+    visualizer.display_message("="*80)
+    
+    # Helper function to clean markdown formatting
+    def clean_markdown(text):
+        if not text:
+            return ""
+        # Remove markdown headers (##)
+        text = text.replace("## ", "").replace("#", "")
+        # Clean up any extra whitespace
+        return text.strip()
     
     if "hard_truth" in advice:
-        visualizer.display_message("\nHARD TRUTH:")
-        visualizer.display_message(advice["hard_truth"])
+        visualizer.display_message(f"\n{Fore.YELLOW}{Style.BRIGHT}HARD TRUTH:{Style.RESET_ALL}")
+        visualizer.display_message(f"{Fore.WHITE}{clean_markdown(advice['hard_truth'])}{Style.RESET_ALL}")
         
     if "actions" in advice:
-        visualizer.display_message("\nACTIONABLE STEPS:")
-        for i, action in enumerate(advice["actions"], 1):
-            visualizer.display_message(f"{i}. {action}")
+        visualizer.display_message(f"\n{Fore.GREEN}{Style.BRIGHT}ACTIONABLE STEPS:{Style.RESET_ALL}")
+        if isinstance(advice["actions"], list):
+            for i, action in enumerate(advice["actions"], 1):
+                visualizer.display_message(f"{Fore.GREEN}{i}.{Style.RESET_ALL} {Fore.WHITE}{clean_markdown(action)}{Style.RESET_ALL}")
+        else:
+            # If actions is a string with numbered items, split and display each line
+            action_text = clean_markdown(advice["actions"])
+            if action_text:
+                for line in action_text.split('\n'):
+                    visualizer.display_message(f"{Fore.WHITE}{line}{Style.RESET_ALL}")
             
     if "challenge" in advice:
-        visualizer.display_message("\nSTRATEGIC CHALLENGE:")
+        visualizer.display_message(f"\n{Fore.MAGENTA}{Style.BRIGHT}STRATEGIC CHALLENGE:{Style.RESET_ALL}")
         if isinstance(advice["challenge"], dict):
-            visualizer.display_message(advice["challenge"].get("description", str(advice["challenge"])))
+            visualizer.display_message(f"{Fore.WHITE}{clean_markdown(advice['challenge'].get('description', str(advice['challenge'])))}{Style.RESET_ALL}")
         else:
-            visualizer.display_message(str(advice["challenge"]))
+            visualizer.display_message(f"{Fore.WHITE}{clean_markdown(str(advice['challenge']))}{Style.RESET_ALL}")
+    
+    # Add the final analysis section        
+    if "final_analysis" in advice:
+        visualizer.display_message(f"\n{Fore.BLUE}{Style.BRIGHT}FINAL ANALYSIS:{Style.RESET_ALL}")
+        analysis_text = clean_markdown(advice["final_analysis"])
+        for line in analysis_text.split('\n'):
+            if line.strip():
+                visualizer.display_message(f"{Fore.WHITE}{line}{Style.RESET_ALL}")
             
-    visualizer.display_message("\n" + "="*50)
+    if "insights" in advice:
+        visualizer.display_message(f"\n{Fore.BLUE}{Style.BRIGHT}KEY INSIGHTS:{Style.RESET_ALL}")
+        if isinstance(advice["insights"], list):
+            for i, insight in enumerate(advice["insights"], 1):
+                visualizer.display_message(f"{Fore.BLUE}{i}.{Style.RESET_ALL} {Fore.WHITE}{clean_markdown(insight)}{Style.RESET_ALL}")
+        else:
+            visualizer.display_message(f"{Fore.WHITE}{clean_markdown(str(advice['insights']))}{Style.RESET_ALL}")
+    
+    # Add original agent insights section
+    if "original_agent_insights" in advice:
+        visualizer.display_message(f"\n{Fore.CYAN}{Style.BRIGHT}AGENT INSIGHTS:{Style.RESET_ALL}")
+        insights_text = clean_markdown(advice["original_agent_insights"])
+        
+        # Process agent insights by agent name
+        current_agent = None
+        for line in insights_text.split('\n'):
+            line = line.strip()
+            if not line:
+                continue
+                
+            # Check if line starts with an agent name indicator
+            if line.startswith("**") and ":**" in line:
+                current_agent = line.replace("**", "").replace(":", "").strip()
+                visualizer.display_message(f"\n{Fore.YELLOW}{Style.BRIGHT}{current_agent}:{Style.RESET_ALL}")
+            else:
+                # It's a bullet point or regular line
+                if line.startswith("-"):
+                    point = line[1:].strip()
+                    visualizer.display_message(f"{Fore.WHITE}  • {point}{Style.RESET_ALL}")
+                else:
+                    visualizer.display_message(f"{Fore.WHITE}  {line}{Style.RESET_ALL}")
+            
+    if "recommendations" in advice:
+        visualizer.display_message(f"\n{Fore.CYAN}{Style.BRIGHT}RECOMMENDATIONS:{Style.RESET_ALL}")
+        if isinstance(advice["recommendations"], list):
+            for i, rec in enumerate(advice["recommendations"], 1):
+                visualizer.display_message(f"{Fore.CYAN}{i}.{Style.RESET_ALL} {Fore.WHITE}{clean_markdown(rec)}{Style.RESET_ALL}")
+        else:
+            visualizer.display_message(f"{Fore.WHITE}{clean_markdown(str(advice['recommendations']))}{Style.RESET_ALL}")
+    
+    visualizer.display_message("\n" + "="*80)
+
+def display_panel_output(output):
+    """Display panel output in a visually appealing format.
+    
+    Args:
+        output: Panel output (dict)
+    """
+    visualizer = Visualizer()
+    
+    visualizer.display_message("\n" + "="*80)
+    visualizer.display_message(f"{Fore.CYAN}{Style.BRIGHT}PANEL ANALYSIS RESULTS{Style.RESET_ALL}")
+    visualizer.display_message("="*80)
+    
+    # Function to recursively display nested dictionaries with formatting
+    def display_section(data, indent=0, title=None):
+        if title:
+            indentation = " " * indent
+            visualizer.display_message(f"\n{indentation}{Fore.YELLOW}{Style.BRIGHT}{title}{Style.RESET_ALL}")
+    
+        if isinstance(data, dict):
+            for key, value in data.items():
+                if isinstance(value, (dict, list)) and value:
+                    indentation = " " * (indent + 2)
+                    visualizer.display_message(f"\n{indentation}{Fore.GREEN}{Style.BRIGHT}{key.replace('_', ' ').title()}{Style.RESET_ALL}")
+                    display_section(value, indent + 4)
+                else:
+                    indentation = " " * (indent + 2)
+                    visualizer.display_message(f"{indentation}{Fore.GREEN}{key.replace('_', ' ').title()}: {Style.RESET_ALL}{Fore.WHITE}{value}{Style.RESET_ALL}")
+        elif isinstance(data, list):
+            for i, item in enumerate(data):
+                if isinstance(item, dict):
+                    if len(data) > 1:
+                        indentation = " " * indent
+                        visualizer.display_message(f"\n{indentation}{Fore.BLUE}Item {i+1}:{Style.RESET_ALL}")
+                    display_section(item, indent + 2)
+                else:
+                    indentation = " " * (indent + 2)
+                    visualizer.display_message(f"{indentation}{Fore.WHITE}• {item}{Style.RESET_ALL}")
+    
+    # Handle common panel output structures
+    if "Temporal Perspectives" in output:
+        visualizer.display_message(f"\n{Fore.MAGENTA}{Style.BRIGHT}TEMPORAL PERSPECTIVES{Style.RESET_ALL}")
+        display_section(output["Temporal Perspectives"], indent=2)
+    
+    if "Temporal Conflicts and Resolutions" in output:
+        visualizer.display_message(f"\n{Fore.MAGENTA}{Style.BRIGHT}TEMPORAL CONFLICTS AND RESOLUTIONS{Style.RESET_ALL}")
+        display_section(output["Temporal Conflicts and Resolutions"], indent=2)
+    
+    if "Temporal Roadmap" in output:
+        visualizer.display_message(f"\n{Fore.MAGENTA}{Style.BRIGHT}TEMPORAL ROADMAP{Style.RESET_ALL}")
+        display_section(output["Temporal Roadmap"], indent=2)
+    
+    if "Temporal Trade-Off Management" in output:
+        visualizer.display_message(f"\n{Fore.MAGENTA}{Style.BRIGHT}TEMPORAL TRADE-OFF MANAGEMENT{Style.RESET_ALL}")
+        display_section(output["Temporal Trade-Off Management"], indent=2)
+    
+    if "Potential Challenges and Mitigations" in output:
+        visualizer.display_message(f"\n{Fore.MAGENTA}{Style.BRIGHT}POTENTIAL CHALLENGES AND MITIGATIONS{Style.RESET_ALL}")
+        display_section(output["Potential Challenges and Mitigations"], indent=2)
+    
+    if "Success Metrics Across Time Horizons" in output:
+        visualizer.display_message(f"\n{Fore.MAGENTA}{Style.BRIGHT}SUCCESS METRICS ACROSS TIME HORIZONS{Style.RESET_ALL}")
+        display_section(output["Success Metrics Across Time Horizons"], indent=2)
+    
+    # Handle generic output structure if the panel output doesn't match the expected format
+    generic_sections = [k for k in output.keys() if k not in [
+        "Temporal Perspectives", "Temporal Conflicts and Resolutions", 
+        "Temporal Roadmap", "Temporal Trade-Off Management",
+        "Potential Challenges and Mitigations", "Success Metrics Across Time Horizons"
+    ]]
+    
+    for section in generic_sections:
+        visualizer.display_message(f"\n{Fore.MAGENTA}{Style.BRIGHT}{section.upper()}{Style.RESET_ALL}")
+        display_section(output[section], indent=2)
+    
+    visualizer.display_message("\n" + "="*80)
 
 def save_output_to_file(output_file, data):
     """Save output data to a file."""
@@ -839,6 +997,13 @@ def run_with_panel(query: str, panel_type: str, llm_provider: str, api_key: Opti
         
         # Display results
         visualizer.display_success("Research completed")
+        
+        # Display the panel output in a pretty format
+        if isinstance(result, dict):
+            display_panel_output(result)
+        else:
+            visualizer.display_message("\nPanel output:")
+            visualizer.display_message(str(result))
         
         # Save to file if requested
         if output_file:
@@ -994,3 +1159,33 @@ def run_interactive_main():
 
 if __name__ == "__main__":
     sys.exit(main()) 
+
+def _remove_debug_messages(text):
+    """Remove debug and log messages from text output.
+    
+    Args:
+        text: The text to clean
+        
+    Returns:
+        Clean text without debug messages
+    """
+    # Define patterns for common debug messages
+    debug_patterns = [
+        r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} - [\w\.]+ - (DEBUG|INFO|WARNING|ERROR) - .*?\n',
+        r'HTTP Request:.*?"HTTP.*?".*?\n',
+        r'Successfully ran panel.*?\n',
+        r'🚀 RUNNING .*?\n',
+        r'==+\n',
+        r'🔄 HANDOFF:.*?\n',
+        r'🤖 PROCESSING WITH AGENT:.*?\n',
+        r'📣 RESPONSE FROM.*?\n',
+        r'✅ FINAL RESPONSE GENERATED\n',
+        r'Response saved to .*?\n',
+    ]
+    
+    # Apply all patterns
+    import re
+    for pattern in debug_patterns:
+        text = re.sub(pattern, '', text)
+    
+    return text 

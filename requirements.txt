@@ -1,7 +1,12 @@
 # Core dependencies
 langgraph>=0.0.19
-langgraph-swarm>=0.0.5
+langgraph-swarm>=0.0.7
 python-dotenv>=1.0.0
+
+# LangChain dependencies
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-openai>=0.1.0
 
 # LLM provider dependencies
 anthropic>=0.8.0  # For Anthropic Claude
@@ -11,7 +16,7 @@ perplexity-python>=0.1.0  # For Perplexity models
 # Utility dependencies
 tqdm>=4.66.1
 rich>=13.6.0
-pydantic>=2.4.2
+pydantic>=2.4.2,<3.0.0
 questionary>=2.0.0  # For interactive command-line interfaces
 
 requests>=2.25.0

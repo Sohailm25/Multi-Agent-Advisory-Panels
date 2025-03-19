@@ -259,11 +259,41 @@ Always format your final response with:
 1. The hard truth the user needs to hear (direct and unfiltered)
 2. Specific, actionable steps to address the situation
 3. A direct challenge or assignment that pushes growth
+4. Original agent insights (key points from each agent that contributed to the analysis)
 
 USER QUERY: {query}
 DIAGNOSTIC INSIGHTS: {diagnosis}
 STRATEGIC PLAN: {strategy}
 CHALLENGE: {challenge}
+
+In addition to your main response sections, include a section titled "ORIGINAL AGENT INSIGHTS" that extracts and presents 2-3 key insights from each of the different agents that contributed to this analysis. Format this section as follows:
+
+ORIGINAL AGENT INSIGHTS:
+
+Belief System Analysis:
+- [Key insight 1]
+- [Key insight 2]
+- [Key insight 3]
+
+Pattern Recognition:
+- [Key insight 1]
+- [Key insight 2]
+- [Key insight 3]
+
+Execution Engineering:
+- [Key insight 1]
+- [Key insight 2]
+- [Key insight 3]
+
+Decision Framework:
+- [Key insight 1]
+- [Key insight 2]
+- [Key insight 3]
+
+Challenge Design:
+- [Key insight 1]
+- [Key insight 2]
+- [Key insight 3]
 
 Your response must be brutally honest, direct, and focused on maximum impact.
 """
@@ -325,137 +355,134 @@ class StrategicAdvisorCustom:
         """Build the LangGraph state machine for the custom architecture."""
         # Define node functions
         def chief_strategist(state: AdvisorState) -> Dict[str, Any]:
-            """Chief Strategist agent that coordinates the overall process.
+            """Process the query with the chief strategist.
             
             Args:
                 state: The current state
                 
             Returns:
-                Updated state
+                Next state and node
             """
-            # Display the agent processing
-            print(f"\n{'='*50}")
-            print(f"🤖 PROCESSING WITH AGENT: Chief Strategist")
-            print(f"{'='*50}")
+            # Add detailed logging
+            print(f"DEBUG: Entering chief_strategist with current_phase: {state['current_phase']}")
+            print(f"DEBUG: Response state: hard_truth: {bool(state['response']['hard_truth'])}, actions: {len(state['response']['actions'])}, challenge: {bool(state['response']['challenge'])}")
             
-            # Check for iteration count to prevent infinite loops
-            if "iteration_count" not in state:
-                state = {**state, "iteration_count": 0}
+            # Get the query
+            query = state["user"]["query"]
+            
+            # Check if we've already run through all phases
+            if state["current_phase"] == "complete":
+                print("DEBUG: Already in complete phase, ending workflow")
+                return {"current_phase": END}
+            
+            # For now, in dev mode we run a simplified analysis  
+            # In the future, we'll add more complex logic
+            prompt = f"""You are a Chief Strategy Officer for a strategic advisory firm. 
+Your job is to deliver brutally honest advice that addresses the root causes of
+issues, not just symptoms.
+            
+USER QUERY: {query}
+            
+I need you to provide a strategic analysis with the following elements:
+
+1. HARD TRUTH: What's the uncomfortable truth this person needs to hear?
+2. ACTIONS: 3-5 specific action steps they should take
+3. CHALLENGE: A growth challenge that will push them out of their comfort zone
+            
+Make your response direct, specific, and focused on high-leverage actions.
+Format your response exactly as:
+
+HARD TRUTH:
+[The direct truth they need to hear]
+
+ACTIONS:
+1. [Specific action]
+2. [Specific action]
+3. [Specific action]
+4. [Specific action]
+5. [Specific action]
+
+CHALLENGE:
+[A specific growth challenge]
+"""
+            
+            # If we've already consulted specialists, add their insights
+            if state.get("phases", {}).get("diagnostics", {}).get("complete"):
+                # Add diagnostic insights to the prompt
+                diagnostics = state["phases"]["diagnostics"]
+                
+                if "beliefs" in diagnostics:
+                    prompt += "\n\nBELIEF ANALYSIS:\n"
+                    for belief in diagnostics["beliefs"]:
+                        prompt += f"- {belief['description']}\n"
+                        
+                if "patterns" in diagnostics:
+                    prompt += "\n\nPATTERN ANALYSIS:\n"
+                    for pattern in diagnostics["patterns"]:
+                        prompt += f"- {pattern['description']}\n"
+                        
+                if "diagnosis" in diagnostics:
+                    prompt += f"\n\nROOT CAUSE DIAGNOSIS:\n{diagnostics['diagnosis']}\n"
+            
+            if state.get("phases", {}).get("planning", {}).get("complete"):
+                # Add planning insights to the prompt
+                planning = state["phases"]["planning"]
+                
+                if "execution" in planning:
+                    prompt += "\n\nIMPLEMENTATION PLAN:\n"
+                    if "steps" in planning["execution"]:
+                        for step in planning["execution"]["steps"]:
+                            prompt += f"- {step}\n"
+                            
+                if "decisions" in planning:
+                    prompt += "\n\nDECISION FRAMEWORK:\n"
+                    if "framework" in planning["decisions"]:
+                        prompt += f"{planning['decisions']['framework']}\n"
+                        
+                if "strategy" in planning:
+                    prompt += f"\n\nSTRATEGY:\n{planning['strategy']}\n"
+            
+            if state.get("phases", {}).get("challenge", {}).get("complete"):
+                # Add challenge to the prompt
+                challenge = state["phases"]["challenge"]
+                
+                if "challenge" in challenge:
+                    prompt += "\n\nGROWTH CHALLENGE:\n"
+                    if "description" in challenge["challenge"]:
+                        prompt += f"{challenge['challenge']['description']}\n"
+            
+            response_text = self._call_llm(prompt)
+            
+            print(f"DEBUG: Got response of length {len(response_text)} from LLM")
+            
+            # Parse the response
+            response = self._parse_chief_strategist_response(response_text)
+            
+            # Log the parsed response
+            print(f"DEBUG: Parsed response: hard_truth: {bool(response.get('hard_truth'))}, actions: {len(response.get('actions', []))}, challenge: {bool(response.get('challenge'))}")
+            
+            # Update the response state
+            state["response"] = response
+            
+            # If we have all the components we need, consider the response complete
+            if response.get("hard_truth") and response.get("actions") and response.get("challenge"):
+                print("DEBUG: Response has all components, setting phase to complete")
+                return {"current_phase": "complete", "response": response}
+            
+            # Otherwise, we need more insights
+            # Decide which phase to go to next
+            if not state.get("phases", {}).get("diagnostics", {}).get("complete"):
+                print("DEBUG: Moving to diagnostics phase")
+                return {"current_phase": "diagnostics", "response": response}
+            elif not state.get("phases", {}).get("planning", {}).get("complete"):
+                print("DEBUG: Moving to planning phase")
+                return {"current_phase": "planning", "response": response}
+            elif not state.get("phases", {}).get("challenge", {}).get("complete"):
+                print("DEBUG: Moving to challenge phase")
+                return {"current_phase": "challenge", "response": response}
             else:
-                state = {**state, "iteration_count": state["iteration_count"] + 1}
-                
-            # Safety check for too many iterations
-            if state["iteration_count"] > 20:
-                self.logger.warning("Exceeded maximum iterations in Chief Strategist, forcing completion")
-                # Force completion with an error message
-                return {
-                    "current_phase": "complete",
-                    "response": {
-                        "hard_truth": "I'm having trouble processing your request due to its complexity or ambiguity.",
-                        "actions": [
-                            "Please provide a clearer, more specific query.",
-                            "Include more context or details about your situation.",
-                            "Break down complex questions into simpler parts."
-                        ],
-                        "challenge": {
-                            "description": "For better results, try to make your query more specific and concrete.",
-                            "question": "What specific aspect of your situation would you like advice on?"
-                        }
-                    }
-                }
-            
-            if state["current_phase"] == "start":
-                # Initial phase - start the diagnostic phase
-                return {
-                    "current_phase": "diagnostic",
-                    "phases": {
-                        **state["phases"],
-                        "diagnostic": {
-                            "complete": False,
-                            "beliefs": [],
-                            "patterns": [],
-                            "diagnosis": ""
-                        }
-                    },
-                    "iteration_count": state["iteration_count"]
-                }
-            
-            elif state["current_phase"] == "diagnostic" and state["phases"]["diagnostic"]["complete"]:
-                # Diagnostic phase complete - start the planning phase
-                return {
-                    "current_phase": "planning",
-                    "phases": {
-                        **state["phases"],
-                        "planning": {
-                            "complete": False,
-                            "execution": {},
-                            "decisions": {},
-                            "strategy": ""
-                        }
-                    },
-                    "iteration_count": state["iteration_count"]
-                }
-            
-            elif state["current_phase"] == "planning" and state["phases"]["planning"]["complete"]:
-                # Planning phase complete - start the challenge phase
-                return {
-                    "current_phase": "challenge",
-                    "phases": {
-                        **state["phases"],
-                        "challenge": {
-                            "complete": False,
-                            "challenge": {}
-                        }
-                    },
-                    "iteration_count": state["iteration_count"]
-                }
-            
-            elif state["current_phase"] == "challenge" and state["phases"]["challenge"]["complete"]:
-                # Challenge phase complete - generate the final response
-                query = state["user"]["query"]
-                context = json.dumps(state["user"]["context"]) if state["user"]["context"] else ""
-                
-                # Display the prompt creation
-                print("\n📝 CREATING FINAL RESPONSE PROMPT")
-                
-                # Format the prompt
-                prompt = FINAL_SYNTHESIS_PROMPT.format(
-                    query=query,
-                    diagnosis=state["phases"]["diagnostic"]["diagnosis"],
-                    strategy=state["phases"]["planning"]["strategy"],
-                    challenge=json.dumps(state["phases"]["challenge"]["challenge"])
-                )
-                
-                # Display the prompt if verbose output is enabled
-                if self.verbose_output:
-                    print(f"\n📝 PROMPT FOR FINAL RESPONSE:")
-                    print("-" * 40)
-                    print(prompt)
-                    print("-" * 40)
-                
-                # Call the LLM
-                response_text = self._call_llm(prompt)
-                
-                # Display the response
-                print(f"\n📣 FINAL RESPONSE:")
-                print("-" * 40)
-                print(response_text)
-                print("-" * 40)
-                
-                # Parse the response
-                response = self._parse_chief_strategist_response(response_text)
-                
-                # Display the final response completion
-                print("\n✅ FINAL RESPONSE GENERATED")
-                
-                return {
-                    "current_phase": "complete",
-                    "response": response,
-                    "iteration_count": state["iteration_count"]
-                }
-            
-            # Default - stay in the current phase with iteration count preserved
-            return {"iteration_count": state["iteration_count"]}
+                print("DEBUG: All phases complete, ending workflow")
+                return {"current_phase": "complete", "response": response}
         
         def root_cause_diagnostician(state: AdvisorState) -> Dict[str, Any]:
             """Root Cause Diagnostician agent that analyzes the root causes.
@@ -1021,6 +1048,7 @@ class StrategicAdvisorCustom:
         hard_truth = ""
         actions = []
         challenge = {}
+        final_analysis = ""
         
         # Split into sections
         sections = response_text.split("\n\n")
@@ -1031,7 +1059,10 @@ class StrategicAdvisorCustom:
             if not section:
                 continue
             
-            if "HARD TRUTH:" in section:
+            if "FINAL ANALYSIS:" in section or "ANALYSIS:" in section:
+                current_section = "final_analysis"
+                final_analysis = section.replace("FINAL ANALYSIS:", "").replace("ANALYSIS:", "").strip()
+            elif "HARD TRUTH:" in section:
                 current_section = "hard_truth"
                 hard_truth = section.replace("HARD TRUTH:", "").strip()
             elif "ACTIONS:" in section:
@@ -1053,6 +1084,8 @@ class StrategicAdvisorCustom:
                     "name": "Strategic Challenge",
                     "description": challenge_text
                 }
+            elif current_section == "final_analysis":
+                final_analysis += "\n\n" + section
             elif current_section == "hard_truth":
                 hard_truth += "\n\n" + section
             elif current_section == "actions":
@@ -1072,7 +1105,8 @@ class StrategicAdvisorCustom:
         response = {
             "hard_truth": hard_truth,
             "actions": actions,
-            "challenge": challenge
+            "challenge": challenge,
+            "final_analysis": final_analysis
         }
         
         return response
