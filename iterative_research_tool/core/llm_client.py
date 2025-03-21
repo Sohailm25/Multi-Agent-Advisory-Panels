@@ -116,7 +116,8 @@ class AnthropicClient(LLMClient):
                       messages: List[Dict[str, str]], 
                       max_tokens: int = 4000,
                       temperature: float = 0.7,
-                      stream: bool = False) -> Any:
+                      stream: bool = False,
+                      system: Optional[str] = None) -> Any:
         """
         Create a message using Anthropic's Claude.
         
@@ -126,6 +127,7 @@ class AnthropicClient(LLMClient):
             max_tokens: Maximum number of tokens to generate
             temperature: Sampling temperature
             stream: Whether to stream the response
+            system: System prompt for Anthropic API (top-level parameter)
             
         Returns:
             Claude's response
@@ -136,7 +138,8 @@ class AnthropicClient(LLMClient):
                 max_tokens=max_tokens,
                 temperature=temperature,
                 messages=messages,
-                stream=stream
+                stream=stream,
+                system=system
             )
             return response
         except Exception as e:

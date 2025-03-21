@@ -1,0 +1,6 @@
+{
+  "query": "How can I build better habits?",
+  "error": "At key 'current_phase': Can receive only one value per step. Use an Annotated key to handle multiple values.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_CONCURRENT_GRAPH_UPDATE",
+  "execution_time": 143.81571793556213,
+  "session_id": "ea1069c9-9e88-43aa-90f7-420d4e99e6b4"
+}

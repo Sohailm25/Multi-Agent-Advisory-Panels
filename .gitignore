@@ -55,3 +55,7 @@ htmlcov/
 .coverage.*
 coverage.xml
 *.cover
+
+# Temporarily exclude panels architecture for initial GitHub deployment
+/iterative_research_tool/panels/
+/my_custom_panels/

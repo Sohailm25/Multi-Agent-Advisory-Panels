@@ -25,7 +25,8 @@ QUESTIONARY_STYLE = questionary.Style([
 
 # Strategy options
 STRATEGY_CHOICES = [
-    questionary.Choice("Panel-based approach (custom panels)", "panels"),
+    # Temporarily removed panel-based approach for initial GitHub deployment
+    # questionary.Choice("Panel-based approach (custom panels)", "panels"),
     questionary.Choice("Strategic Advisor (Custom Architecture)", "strat-custom"),
     questionary.Choice("Strategic Advisor (Swarm Architecture)", "strat-swarm"),
 ]
@@ -95,9 +96,9 @@ class InteractiveCLI:
             # Select strategy
             self._select_strategy()
             
-            # Select panel if 'panels' strategy chosen
-            if self.selected_strategy == "panels":
-                self._select_panel()
+            # Panel selection is temporarily disabled for initial GitHub deployment
+            # if self.selected_strategy == "panels":
+            #     self._select_panel()
             
             # Get query
             self._get_query()
@@ -143,30 +144,31 @@ class InteractiveCLI:
         self.selected_strategy = strategy
         self.visualizer.display_success(f"Selected strategy: {Fore.GREEN}{self._get_strategy_display_name(strategy)}{Style.RESET_ALL}")
     
-    def _select_panel(self) -> None:
-        """Prompt the user to select a panel."""
-        available_panels = panel_factory.list_available_panels()
-        
-        if not available_panels:
-            self.visualizer.display_error("No panels available. Please check your installation.")
-            raise KeyboardInterrupt()
-        
-        panel_choices = [
-            questionary.Choice(panel, panel) for panel in available_panels
-        ]
-        
-        self.visualizer.display_message("\n")
-        panel = questionary.select(
-            "Select a panel:",
-            choices=panel_choices,
-            style=QUESTIONARY_STYLE
-        ).ask()
-        
-        if not panel:
-            raise KeyboardInterrupt()
-        
-        self.selected_panel = panel
-        self.visualizer.display_success(f"Selected panel: {Fore.GREEN}{panel}{Style.RESET_ALL}")
+    # Temporarily commented out for initial GitHub deployment
+    # def _select_panel(self) -> None:
+    #     """Prompt the user to select a panel."""
+    #     available_panels = panel_factory.list_available_panels()
+    #     
+    #     if not available_panels:
+    #         self.visualizer.display_error("No panels available. Please check your installation.")
+    #         raise KeyboardInterrupt()
+    #     
+    #     panel_choices = [
+    #         questionary.Choice(panel, panel) for panel in available_panels
+    #     ]
+    #     
+    #     self.visualizer.display_message("\n")
+    #     panel = questionary.select(
+    #         "Select a panel:",
+    #         choices=panel_choices,
+    #         style=QUESTIONARY_STYLE
+    #     ).ask()
+    #     
+    #     if not panel:
+    #         raise KeyboardInterrupt()
+    #     
+    #     self.selected_panel = panel
+    #     self.visualizer.display_success(f"Selected panel: {Fore.GREEN}{panel}{Style.RESET_ALL}")
     
     def _get_query(self) -> None:
         """Get the user's query."""

@@ -437,12 +437,43 @@ class Visualizer(TerminalVisualizer):
         if not self.show_progress:
             return
         
-        # Clean up debug messages if possible
+        # Skip debug messages completely
+        if message.strip().startswith("DEBUG:"):
+            return
+            
+        # Clean up debug messages
         try:
-            # Import the function if available
-            from iterative_research_tool.cli import _remove_debug_messages
-            message = _remove_debug_messages(message)
-        except ImportError:
+            # Try to use the existing function 
+            try:
+                from iterative_research_tool.cli import _remove_debug_messages
+                message = _remove_debug_messages(message)
+            except ImportError:
+                pass
+                
+            # Additional cleanup for debug messages
+            import re
+            # Remove lines that start with DEBUG:
+            message = re.sub(r'^\s*DEBUG:.*?$', '', message, flags=re.MULTILINE)
+            # Remove lines that contain DEBUG: in the middle 
+            message = re.sub(r'.*DEBUG:.*?\n', '', message)
+            # Remove typical debug markers
+            message = re.sub(r'🚀 INITIALIZING.*?\n', '', message)
+            message = re.sub(r'🔍 DIAGNOSTIC PHASE.*?\n', '', message)
+            message = re.sub(r'🧠 BELIEF SYSTEM ANALYZER.*?\n', '', message)
+            message = re.sub(r'🔄 PATTERN RECOGNITION AGENT.*?\n', '', message)
+            message = re.sub(r'🌱 ROOT CAUSE DIAGNOSTICIAN.*?\n', '', message)
+            message = re.sub(r'📝 STRATEGY PLANNER.*?\n', '', message)
+            message = re.sub(r'⚙️ EXECUTION ENGINEER.*?\n', '', message)
+            message = re.sub(r'🔀 DECISION FRAMEWORK DESIGNER.*?\n', '', message)
+            message = re.sub(r'💎 HARD TRUTH TELLER.*?\n', '', message)
+            message = re.sub(r'🚀 ACTION DESIGNER.*?\n', '', message)
+            message = re.sub(r'🏆 CHALLENGE DESIGNER.*?\n', '', message)
+            message = re.sub(r'📊 FINAL SYNTHESIS PHASE.*?\n', '', message)
+            # Remove "Processing response..." lines
+            message = re.sub(r'^\s*Processing response...\s*\n', '', message, flags=re.MULTILINE)
+            # Remove excess newlines
+            message = re.sub(r'\n{3,}', '\n\n', message)
+        except Exception:
             pass
         
         # Skip empty messages after cleaning
@@ -451,7 +482,33 @@ class Visualizer(TerminalVisualizer):
             
         wrapped_message = self._wrap_text(message, width=80, indent=2)
         
-        print(f"\n{Fore.CYAN}ℹ️ {wrapped_message}{Style.RESET_ALL}")
+        # Determine if this is part of the strategic advice section or another special section
+        is_section_header = False
+        is_advice_section = False
+        
+        # Check if this is a section divider or a header in the strategic advice section
+        if "=" * 10 in message:
+            is_section_header = True
+        elif message.strip().upper() in [
+            "STRATEGIC ADVICE SUMMARY",
+            "HARD TRUTH:",
+            "ACTIONABLE STEPS:",
+            "STRATEGIC CHALLENGE:",
+            "FINAL ANALYSIS:",
+            "AGENT INSIGHTS:"
+        ]:
+            is_advice_section = True
+        
+        # Print differently based on message content
+        if is_section_header:
+            # Section divider - no emoji
+            print(f"\n{Fore.CYAN}{wrapped_message}{Style.RESET_ALL}")
+        elif is_advice_section:
+            # Strategic advice section header - no emoji
+            print(f"\n{Fore.CYAN}{wrapped_message}{Style.RESET_ALL}")
+        else:
+            # Regular message - print without the emoji for cleaner output
+            print(f"\n{Fore.CYAN}{wrapped_message}{Style.RESET_ALL}")
         
     def collect_feedback(self) -> Dict[str, Any]:
         """Collect feedback.

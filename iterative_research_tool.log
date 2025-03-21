@@ -3197,3 +3197,1002 @@ Traceback (most recent call last):
     raise GraphRecursionError(msg)
 langgraph.errors.GraphRecursionError: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
 For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-19 17:18:15,084 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 17:18:15,138 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-19 17:18:15,140 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 533c128e-8dcc-4d61-b9a1-abf1297705ee
+2025-03-19 17:18:26,082 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:18:26,097 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250319_171826_533c128e.json
+2025-03-19 17:21:31,373 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 17:21:31,419 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-19 17:21:31,419 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 46e00391-bb5d-40ac-bc08-273b5e170cae
+2025-03-19 17:21:40,195 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-19 17:21:40,232 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-19 17:21:40,233 - iterative_research_tool.cli - ERROR - Error running interactive UI
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/cli.py", line 1089, in run_interactive_main
+    advice = advisor.generate_advice(selections['query'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 1076, in generate_advice
+    end_state = self.workflow.invoke(initial_state, config={"recursion_limit": 50})
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2343, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 50 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-19 17:27:16,723 - __main__ - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.
+2025-03-19 17:28:24,073 - __main__ - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.
+2025-03-19 17:28:36,458 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-19 17:28:36,459 - iterative_research_tool.cli - ERROR - Error running interactive UI
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/cli.py", line 1078, in run_interactive_main
+    advisor = StrategicAdvisorCustom(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 352, in __init__
+    self.workflow = self._build_graph()
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 1132, in _build_graph
+    workflow = StateGraph()
+               ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/graph/state.py", line 172, in __init__
+    raise ValueError("Must provide state_schema or input and output")
+ValueError: Must provide state_schema or input and output
+2025-03-20 13:40:45,271 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 13:43:31,105 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 13:43:31,216 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 13:43:31,216 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 57ea5715-f557-4719-af83-6140b4c560a3
+2025-03-20 13:43:31,224 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: 'hard_truth'
+2025-03-20 13:43:31,224 - iterative_research_tool.strategic_advisor.custom - ERROR - 'hard_truth'
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2323, in stream
+    for _ in runner.tick(
+             ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/runner.py", line 146, in tick
+    run_with_retry(
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/retry.py", line 40, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/utils/runnable.py", line 546, in invoke
+    input = step.invoke(input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/utils/runnable.py", line 310, in invoke
+    ret = context.run(self.func, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 526, in chief_strategist
+    print(f"DEBUG: Response state: hard_truth: {bool(state['response']['hard_truth'])}, actions: {len(state['response']['actions'])}, challenge: {bool(state['response'].get('challenge', False))}")
+                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'hard_truth'
+During task with name 'chief_strategist' and id '630e596b-65fc-4905-f2bc-644727ccb3fa'
+2025-03-20 13:43:31,230 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_134331_57ea5715.json
+2025-03-20 13:43:55,748 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 13:43:55,860 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 13:43:55,860 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: efdd2a60-e048-4ecf-8c3d-0f6294ea08fb
+2025-03-20 13:43:55,864 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: 'OpenAIClient' object has no attribute 'generate_content'
+2025-03-20 13:43:55,864 - iterative_research_tool.strategic_advisor.custom - ERROR - 'OpenAIClient' object has no attribute 'generate_content'
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2323, in stream
+    for _ in runner.tick(
+             ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/runner.py", line 146, in tick
+    run_with_retry(
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/retry.py", line 40, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/utils/runnable.py", line 546, in invoke
+    input = step.invoke(input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/utils/runnable.py", line 310, in invoke
+    ret = context.run(self.func, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 561, in chief_strategist
+    response_text = self._call_llm(prompt)
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 1745, in _call_llm
+    response = self.llm_client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OpenAIClient' object has no attribute 'generate_content'
+During task with name 'chief_strategist' and id '62ea7d47-4118-ad02-b6f8-25851aee6591'
+2025-03-20 13:43:55,868 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_134355_efdd2a60.json
+2025-03-20 13:44:28,447 - iterative_research_tool.core.logging_utils - DEBUG - Logging initialized
+2025-03-20 13:44:28,447 - iterative_research_tool.core.panel_factory - INFO - Discovering panels in package: iterative_research_tool.panels
+2025-03-20 13:44:28,448 - iterative_research_tool.core.panel_factory - INFO - Registering panel: cognitive-diversity -> iterative_research_tool.panels.cognitive_diversity.CognitiveDiversityPanel
+2025-03-20 13:44:28,449 - iterative_research_tool.core.panel_factory - INFO - Registering panel: constraint-analysis -> iterative_research_tool.panels.constraint_analysis.ConstraintAnalysisPanel
+2025-03-20 13:44:28,449 - iterative_research_tool.core.panel_factory - INFO - Registering panel: contrarian-challenge -> iterative_research_tool.panels.contrarian_challenge.ContrarianChallengePanel
+2025-03-20 13:44:28,450 - iterative_research_tool.core.panel_factory - INFO - Registering panel: decision-intelligence -> iterative_research_tool.panels.decision_intelligence.DecisionIntelligencePanel
+2025-03-20 13:44:28,451 - iterative_research_tool.core.panel_factory - INFO - Registering panel: future-scenarios -> iterative_research_tool.panels.future_scenarios.FutureScenariosPanel
+2025-03-20 13:44:28,451 - iterative_research_tool.core.panel_factory - INFO - Registering panel: implementation-energy -> iterative_research_tool.panels.implementation_energy.ImplementationEnergyPanel
+2025-03-20 13:44:28,452 - iterative_research_tool.core.panel_factory - INFO - Registering panel: personal-development -> iterative_research_tool.panels.personal_development.PersonalDevelopmentPanel
+2025-03-20 13:44:28,452 - iterative_research_tool.core.panel_factory - INFO - Registering panel: product-development -> iterative_research_tool.panels.product_development.ProductDevelopmentPanel
+2025-03-20 13:44:28,453 - iterative_research_tool.core.panel_factory - INFO - Registering panel: stakeholder-impact -> iterative_research_tool.panels.stakeholder_impact.StakeholderImpactPanel
+2025-03-20 13:44:28,453 - iterative_research_tool.core.panel_factory - INFO - Registering panel: temporal-perspective -> iterative_research_tool.panels.temporal_perspective.TemporalPerspectivePanel
+2025-03-20 13:44:28,454 - __main__ - INFO - Using configured output directory: ./test_output
+2025-03-20 13:44:28,543 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 13:44:28,657 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 13:44:28,657 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: e31ee0bf-9b50-45ab-838e-775828d654ab
+2025-03-20 13:44:28,661 - iterative_research_tool.strategic_advisor.custom - DEBUG - Prompt: You are a Chief Strategy Officer for a strategic advisory firm. 
+Your job is to deliver brutally honest advice that addresses the root causes of
+issues, not just symptoms.
+            
+USER QUERY: Sim...
+2025-03-20 13:44:28,668 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a strategic advisor providing insightful and actionable guidance.'}, {'role': 'user', 'content': 'You are a Chief Strategy Officer for a strategic advisory firm. \nYour job is to deliver brutally honest advice that addresses the root causes of\nissues, not just symptoms.\n            \nUSER QUERY: Simple test query\n            \nI need you to provide some initial thoughts on this query that will help guide a comprehensive analysis.\nWhat might be the underlying issues and potential directions for analysis?\n\nPlease provide brief preliminary insights that other specialist agents can build upon.\n'}], 'model': 'gpt-4', 'max_tokens': 4000, 'stream': False, 'temperature': 0.2}}
+2025-03-20 13:44:28,725 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-03-20 13:44:28,726 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-03-20 13:44:28,820 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10afd5760>
+2025-03-20 13:44:28,821 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x10b21fdd0> server_hostname='api.openai.com' timeout=5.0
+2025-03-20 13:44:28,876 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10b313710>
+2025-03-20 13:44:28,876 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-03-20 13:44:28,877 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-03-20 13:44:28,877 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-03-20 13:44:28,877 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-03-20 13:44:28,877 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-03-20 13:44:28,989 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 20 Mar 2025 18:44:28 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'258'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_052aa12c610e24bc1f082507581fe8cb'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=ZSOFLspSx.bslalbqmLHvEfoeoVPO4L8nvVHzaclXSg-1742496268-1.0.1.1-wvW99sxwEBCScW9JMr2k1RMNR7qt8Jr6PvFzIeQ.b3gInI0p4zJMvmXQgHSGvBIJ3As8KnZfHRR4rGzvNsXodjmxcaFr8vT9b1nAv9k.kyA; path=/; expires=Thu, 20-Mar-25 19:14:28 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=Ys.kwCKL4skd2aYpXp_3ZpsxD5qslluh7iE2YeLSiQI-1742496268023-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'92375c6aac1aeab9-DFW'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-03-20 13:44:28,991 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:44:28,992 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-03-20 13:44:28,993 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-03-20 13:44:28,994 - httpcore.http11 - DEBUG - response_closed.started
+2025-03-20 13:44:28,994 - httpcore.http11 - DEBUG - response_closed.complete
+2025-03-20 13:44:28,994 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Thu, 20 Mar 2025 18:44:28 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '258'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_052aa12c610e24bc1f082507581fe8cb'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=ZSOFLspSx.bslalbqmLHvEfoeoVPO4L8nvVHzaclXSg-1742496268-1.0.1.1-wvW99sxwEBCScW9JMr2k1RMNR7qt8Jr6PvFzIeQ.b3gInI0p4zJMvmXQgHSGvBIJ3As8KnZfHRR4rGzvNsXodjmxcaFr8vT9b1nAv9k.kyA; path=/; expires=Thu, 20-Mar-25 19:14:28 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=Ys.kwCKL4skd2aYpXp_3ZpsxD5qslluh7iE2YeLSiQI-1742496268023-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '92375c6aac1aeab9-DFW'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-03-20 13:44:28,994 - openai._base_client - DEBUG - request_id: req_052aa12c610e24bc1f082507581fe8cb
+2025-03-20 13:44:28,995 - openai._base_client - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/openai/_base_client.py", line 1002, in _request
+    response.raise_for_status()
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-03-20 13:44:29,001 - openai._base_client - DEBUG - Not retrying
+2025-03-20 13:44:29,001 - openai._base_client - DEBUG - Re-raising status error
+2025-03-20 13:44:29,005 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:44:29,005 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:44:29,005 - iterative_research_tool.strategic_advisor.custom - ERROR - Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2323, in stream
+    for _ in runner.tick(
+             ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/runner.py", line 146, in tick
+    run_with_retry(
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/retry.py", line 40, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/utils/runnable.py", line 546, in invoke
+    input = step.invoke(input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/utils/runnable.py", line 310, in invoke
+    ret = context.run(self.func, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 561, in chief_strategist
+    response_text = self._call_llm(prompt)
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 1751, in _call_llm
+    response = self.llm_client.create_message(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/core/llm_client.py", line 200, in create_message
+    response = self.client.chat.completions.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/openai/_utils/_utils.py", line 279, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py", line 914, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/openai/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/openai/_base_client.py", line 919, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/openai/_base_client.py", line 1023, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+During task with name 'chief_strategist' and id '76064e5f-9be5-b3e7-6d87-ff39ef929c9d'
+2025-03-20 13:44:29,011 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_134429_e31ee0bf.json
+2025-03-20 13:44:29,071 - httpcore.connection - DEBUG - close.started
+2025-03-20 13:44:29,072 - httpcore.connection - DEBUG - close.complete
+2025-03-20 13:45:03,610 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 13:45:03,727 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 13:45:03,728 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: a38baa52-0a80-457c-bcef-1f14f93270b4
+2025-03-20 13:45:04,084 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:45:04,088 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,089 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,241 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:45:04,242 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,242 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,374 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:45:04,375 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,375 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,505 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:45:04,505 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,506 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,629 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:45:04,630 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,630 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:45:04,642 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 13:45:04,642 - iterative_research_tool.strategic_advisor.custom - ERROR - Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2343, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 13:45:04,644 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_134504_a38baa52.json
+2025-03-20 13:49:02,060 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 13:49:02,181 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 13:49:02,181 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 4ccb8e25-c849-4d7c-8fd7-784601145980
+2025-03-20 13:49:02,575 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:49:02,579 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:02,580 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:02,725 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:49:02,726 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:02,726 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:02,829 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:49:02,829 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:02,829 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:02,946 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:49:02,947 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:02,947 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:49:03,059 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,059 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,178 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:49:03,179 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,179 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,319 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:49:03,320 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,320 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,461 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:49:03,462 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,462 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:49:03,463 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 1.28 seconds
+2025-03-20 13:49:03,463 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_134903_4ccb8e25.json
+2025-03-20 13:50:55,135 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 13:50:55,238 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 13:50:55,238 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: f47622a2-8f63-4ec1-8c6b-bc9a560a5aac
+2025-03-20 13:50:55,524 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 13:50:55,526 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,526 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,634 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 13:50:55,635 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,635 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,732 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 13:50:55,733 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,733 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,836 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 13:50:55,836 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,837 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,942 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 13:50:55,942 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:55,943 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:56,046 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 13:50:56,047 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:56,047 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:56,159 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 13:50:56,159 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:56,160 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:56,278 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 13:50:56,279 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:56,279 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "system". The Messages API accepts a top-level `system` parameter, not "system" as an input message role.'}}
+2025-03-20 13:50:56,281 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 1.04 seconds
+2025-03-20 13:50:56,281 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_135056_f47622a2.json
+2025-03-20 13:52:47,114 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 13:52:47,226 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 13:52:47,227 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 5cb63c95-9527-47b2-ad6d-281dbdc612e1
+2025-03-20 13:52:47,473 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:47,475 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:47,475 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:47,728 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:47,729 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:47,729 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:47,812 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:47,813 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:47,813 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:47,922 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:47,923 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:47,923 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,023 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:48,024 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,024 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,129 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:48,130 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,130 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,224 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:48,225 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,225 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,321 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:48,321 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,322 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 13:52:48,323 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 1.10 seconds
+2025-03-20 13:52:48,324 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_135248_5cb63c95.json
+2025-03-20 13:52:55,710 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 13:52:55,818 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 13:52:55,818 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 2e662ade-5e60-4641-879b-70c911947a76
+2025-03-20 13:52:56,259 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:56,265 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,265 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,411 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:56,412 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,412 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,522 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:56,523 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,523 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,650 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:56,651 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,651 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,762 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:56,762 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,762 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,883 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:56,884 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:56,884 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:57,000 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:57,001 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:57,001 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:57,123 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 13:52:57,124 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:57,124 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 13:52:57,125 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 1.31 seconds
+2025-03-20 13:52:57,126 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_135257_2e662ade.json
+2025-03-20 13:53:14,411 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 13:53:14,508 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 13:53:14,509 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: c546e2fd-13e0-4bf9-85fc-459cdc0b42a3
+2025-03-20 13:53:21,479 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 13:53:36,838 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 13:53:50,975 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 13:54:04,795 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 13:54:25,686 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 13:54:46,884 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 13:55:10,539 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 13:55:22,521 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 13:55:22,524 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 128.02 seconds
+2025-03-20 13:55:22,525 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_135522_c546e2fd.json
+2025-03-20 15:01:09,361 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:01:09,468 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 15:01:09,468 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: fffa4994-8c3d-4b9a-ba99-c5d70ed5869f
+2025-03-20 15:01:09,781 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:09,783 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:09,783 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:09,923 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:09,923 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:09,923 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,032 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,033 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,033 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,161 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,162 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,162 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,271 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,272 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,272 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,391 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,392 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,392 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,508 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,508 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,509 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,623 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,623 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,623 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,724 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,725 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,725 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,836 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,837 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,837 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,936 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:10,936 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:10,936 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:11,052 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:11,052 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:11,052 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}}
+2025-03-20 15:01:11,065 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:01:11,065 - iterative_research_tool.strategic_advisor.custom - ERROR - Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2343, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:01:11,069 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_150111_fffa4994.json
+2025-03-20 15:01:28,804 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 15:01:28,920 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Simple test query
+2025-03-20 15:01:28,920 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 2e7a669a-cab4-4ada-adc1-294628fe148f
+2025-03-20 15:01:29,277 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:29,281 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,282 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,388 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:29,388 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,388 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,517 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:29,519 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,519 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,633 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:29,634 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,634 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,751 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:29,752 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,752 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,897 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:29,898 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:29,898 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,024 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:30,028 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,028 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,144 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:30,145 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,145 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,257 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:30,258 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,258 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,378 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:30,379 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,379 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,501 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:30,502 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,502 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,642 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:01:30,642 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,643 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:01:30,657 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:01:30,657 - iterative_research_tool.strategic_advisor.custom - ERROR - Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2343, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:01:30,659 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_150130_2e7a669a.json
+2025-03-20 15:01:41,579 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:01:41,682 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 15:01:41,682 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: d8defc54-9d96-42f6-9d75-1fda2ef98682
+2025-03-20 15:01:50,264 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:02:05,469 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:02:20,522 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:02:34,963 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:03:04,146 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:03:29,396 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:03:57,294 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:04:20,200 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:04:46,141 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:05:03,039 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:05:42,981 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:06:10,881 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:06:10,897 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:06:10,897 - iterative_research_tool.strategic_advisor.custom - ERROR - Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2343, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:06:10,902 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_150610_d8defc54.json
+2025-03-20 15:07:45,783 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 15:07:45,886 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Test query to verify workflow fixes
+2025-03-20 15:07:45,887 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 03356707-b1fa-4fd1-974d-e23d374b22e8
+2025-03-20 15:07:46,164 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:46,170 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,170 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,281 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:46,283 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,283 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,402 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:46,402 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,403 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,519 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:46,519 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,520 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,620 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:46,620 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,620 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,739 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:46,740 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,740 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,838 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:46,839 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,839 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,950 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:46,951 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:46,951 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:47,059 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,059 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,174 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:47,175 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,175 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,305 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:47,305 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,305 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,445 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:07:47,446 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,446 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:07:47,458 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:07:47,459 - iterative_research_tool.strategic_advisor.custom - ERROR - Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2343, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:07:47,463 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_150747_03356707.json
+2025-03-20 15:08:01,238 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 15:08:01,343 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: Final test
+2025-03-20 15:08:01,343 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: ee32e15c-f717-47e7-9ad1-3c93d6fd3898
+2025-03-20 15:08:01,603 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:01,609 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:01,609 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:01,732 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:01,733 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:01,734 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:01,858 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:01,858 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:01,858 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:01,998 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:01,999 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,000 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,132 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:02,133 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,134 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,297 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:02,297 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,298 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,427 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:02,427 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,427 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,569 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:02,570 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,570 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,692 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:02,692 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,692 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,806 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:02,807 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,807 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,958 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:02,958 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:02,958 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:03,091 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-03-20 15:08:03,091 - iterative_research_tool.core.llm_client - ERROR - Error calling OpenAI API: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:03,092 - iterative_research_tool.strategic_advisor.custom - ERROR - Error calling LLM: Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-03-20 15:08:03,105 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:08:03,105 - iterative_research_tool.strategic_advisor.custom - ERROR - Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 467, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2343, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT
+2025-03-20 15:08:03,109 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_150803_ee32e15c.json
+2025-03-20 15:09:36,469 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: openai with model: gpt-4
+2025-03-20 15:15:48,364 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-opus-20240229
+2025-03-20 15:16:32,355 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-opus-20240229
+2025-03-20 15:21:20,554 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-opus-20240229
+2025-03-20 15:22:48,441 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-opus-20240229
+2025-03-20 15:23:15,911 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:23:15,916 - iterative_research_tool.cli - ERROR - Error running interactive UI
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/cli.py", line 1083, in run_interactive_main
+    advisor = StrategicAdvisorCustom(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 448, in __init__
+    self.workflow = self._build_graph()
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 572, in _build_graph
+    workflow.add_edge("chief_strategist", "diagnostic",
+TypeError: StateGraph.add_edge() got an unexpected keyword argument 'condition'
+2025-03-20 15:25:09,649 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:25:45,220 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:26:19,906 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:26:38,612 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:26:38,729 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-7-sonnet-20250219
+2025-03-20 15:26:38,730 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How can I build better habits?
+2025-03-20 15:26:38,730 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: dc7e3a9e-0a61-4c8c-9cdf-5e311241ba40
+2025-03-20 15:26:45,997 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:26:57,132 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:27:07,134 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:27:20,035 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:27:47,509 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:28:09,424 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:28:36,532 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:28:58,037 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:29:09,109 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:29:09,112 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: At key 'current_phase': Can receive only one value per step. Use an Annotated key to handle multiple values.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_CONCURRENT_GRAPH_UPDATE
+2025-03-20 15:29:09,113 - iterative_research_tool.strategic_advisor.custom - ERROR - At key 'current_phase': Can receive only one value per step. Use an Annotated key to handle multiple values.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_CONCURRENT_GRAPH_UPDATE
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 494, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2322, in stream
+    while loop.tick(input_keys=self.input_channels):
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/loop.py", line 430, in tick
+    mv_writes = apply_writes(
+                ^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/algo.py", line 305, in apply_writes
+    if channels[chan].update(vals) and get_next_version is not None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/channels/last_value.py", line 52, in update
+    raise InvalidUpdateError(msg)
+langgraph.errors.InvalidUpdateError: At key 'current_phase': Can receive only one value per step. Use an Annotated key to handle multiple values.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_CONCURRENT_GRAPH_UPDATE
+2025-03-20 15:29:09,120 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_152909_dc7e3a9e.json
+2025-03-20 15:29:50,853 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:29:51,006 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-7-sonnet-20250219
+2025-03-20 15:29:51,006 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How can I build better habits?
+2025-03-20 15:29:51,007 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: ea1069c9-9e88-43aa-90f7-420d4e99e6b4
+2025-03-20 15:29:58,416 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:30:11,320 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:30:25,758 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:30:43,306 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:31:06,311 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:31:28,424 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:31:45,320 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:32:06,518 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:32:14,811 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:32:14,814 - iterative_research_tool.strategic_advisor.custom - ERROR - Error generating advice: At key 'current_phase': Can receive only one value per step. Use an Annotated key to handle multiple values.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_CONCURRENT_GRAPH_UPDATE
+2025-03-20 15:32:14,815 - iterative_research_tool.strategic_advisor.custom - ERROR - At key 'current_phase': Can receive only one value per step. Use an Annotated key to handle multiple values.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_CONCURRENT_GRAPH_UPDATE
+Traceback (most recent call last):
+  File "/Users/sohailmohammad/iterative_research_tool/iterative_research_tool/strategic_advisor/custom.py", line 494, in generate_advice
+    result = self.workflow.invoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2669, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/__init__.py", line 2322, in stream
+    while loop.tick(input_keys=self.input_channels):
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/loop.py", line 430, in tick
+    mv_writes = apply_writes(
+                ^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/pregel/algo.py", line 305, in apply_writes
+    if channels[chan].update(vals) and get_next_version is not None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Caskroom/miniconda/base/lib/python3.12/site-packages/langgraph/channels/last_value.py", line 52, in update
+    raise InvalidUpdateError(msg)
+langgraph.errors.InvalidUpdateError: At key 'current_phase': Can receive only one value per step. Use an Annotated key to handle multiple values.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_CONCURRENT_GRAPH_UPDATE
+2025-03-20 15:32:14,823 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_153214_ea1069c9.json
+2025-03-20 15:33:35,457 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:33:35,578 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-7-sonnet-20250219
+2025-03-20 15:33:35,579 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: How can I build better habits?
+2025-03-20 15:33:35,579 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 63851143-1c79-4bc2-b2fb-3c2ea3bd0ec6
+2025-03-20 15:33:41,752 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:33:54,653 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:34:07,624 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:34:23,835 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:34:45,339 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:35:04,403 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:35:29,533 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:35:58,132 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:36:22,679 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:36:49,403 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 15:36:49,407 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 193.83 seconds
+2025-03-20 15:36:49,408 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to ./test_output/strategic_advice_20250320_153649_63851143.json
+2025-03-20 15:37:12,454 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:37:12,523 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 15:37:12,523 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 06461fc0-6fff-4d48-a323-5c17bc48f061
+2025-03-20 15:37:12,541 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 0.02 seconds
+2025-03-20 15:37:12,542 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_153712_06461fc0.json
+2025-03-20 15:38:55,944 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 15:38:55,944 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 5872f859-aa78-4a4e-a769-efedb8f3d9f6
+2025-03-20 15:38:56,209 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:56,210 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,211 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,319 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:56,321 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,322 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,434 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:56,435 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,435 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,547 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:56,547 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,548 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,672 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:56,673 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,673 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,799 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:56,801 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,801 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,903 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:56,904 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:56,904 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,016 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:57,016 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,017 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,136 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:57,141 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,141 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,253 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:57,253 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,254 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,372 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:38:57,373 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,373 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:38:57,374 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_153857_5872f859.json
+2025-03-20 15:39:58,360 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: eiwagiewajgioweajgioewjagiewjagioe
+2025-03-20 15:39:58,362 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: df8dc24d-8671-44ef-b5a6-3c5608b87bc9
+2025-03-20 15:39:58,579 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:58,580 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:58,580 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:58,681 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:58,681 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:58,681 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:58,788 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:58,788 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:58,789 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:58,894 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:58,895 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:58,895 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,000 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:59,001 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,001 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,114 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:59,115 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,115 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,228 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:59,229 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,229 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,409 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:59,410 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,410 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,516 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:59,516 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,516 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,623 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:59,624 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,625 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,752 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:39:59,753 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,753 - iterative_research_tool.strategic_advisor.swarm - ERROR - Error calling LLM: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: Input should be a valid list'}}
+2025-03-20 15:39:59,754 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_153959_df8dc24d.json
+2025-03-20 15:44:05,546 - __main__ - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.
+2025-03-20 15:44:38,798 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 15:44:38,913 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-7-sonnet-20250219
+2025-03-20 15:44:38,913 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 15:44:38,914 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: ab974434-70b4-4e86-b10f-6ade0d4ae572
+2025-03-20 15:44:39,139 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:39,140 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,140 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,256 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:39,257 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,257 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,362 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:39,363 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,363 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,464 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:39,465 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,465 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,673 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:39,674 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,674 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,809 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:39,810 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,810 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,943 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:39,944 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:39,944 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:40,073 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:40,073 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:40,074 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:40,190 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:40,191 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:40,191 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:40,344 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:40,344 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:40,345 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:40,347 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 1.43 seconds
+2025-03-20 15:44:40,348 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_154440_ab974434.json
+2025-03-20 15:44:49,967 - iterative_research_tool.strategic_advisor.swarm - INFO - Creating agent swarm...
+2025-03-20 15:44:50,443 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-7-sonnet-20250219
+2025-03-20 15:44:50,443 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 15:44:50,444 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 22d38762-1270-47e4-82fc-3b8ebc5a15ac
+2025-03-20 15:44:50,747 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:50,748 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:50,749 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:50,860 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:50,861 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:50,861 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:50,984 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:50,985 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:50,985 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,097 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:51,097 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,098 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,208 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:51,208 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,209 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,350 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:51,351 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,351 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,468 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:51,469 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,469 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,660 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:51,661 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,661 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,772 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:51,772 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,773 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,891 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:51,892 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:51,892 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:52,002 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-03-20 15:44:52,003 - iterative_research_tool.core.llm_client - ERROR - Error calling Anthropic API: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:52,003 - iterative_research_tool.core.llm_component - ERROR - Error generating text: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system.0: Input does not match the expected shape.'}}
+2025-03-20 15:44:52,004 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_154452_22d38762.json
+2025-03-20 16:18:51,454 - iterative_research_tool.strategic_advisor.custom - INFO - Strategic Advisor (Custom) using LLM provider: anthropic with model: claude-3-7-sonnet-20250219
+2025-03-20 16:18:51,576 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-7-sonnet-20250219
+2025-03-20 16:18:51,576 - iterative_research_tool.strategic_advisor.custom - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 16:18:51,576 - iterative_research_tool.strategic_advisor.custom - INFO - Session ID: 9fe7db34-4c01-469e-8229-4d5ec0b70183
+2025-03-20 16:18:59,969 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:19:14,100 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:19:27,309 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:19:42,056 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:20:06,324 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:20:31,721 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:20:53,020 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:21:21,897 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:21:48,935 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:22:17,501 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:22:17,508 - iterative_research_tool.strategic_advisor.custom - INFO - Advice generation completed in 205.93 seconds
+2025-03-20 16:22:17,509 - iterative_research_tool.strategic_advisor.custom - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_162217_9fe7db34.json
+2025-03-20 16:23:12,249 - iterative_research_tool.strategic_advisor.swarm - INFO - Creating agent swarm...
+2025-03-20 16:23:12,811 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-7-sonnet-20250219
+2025-03-20 16:23:12,811 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 16:23:12,812 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 5240e06e-cce1-4605-aea2-8c503707ccfe
+2025-03-20 16:23:15,770 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:23:31,538 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:23:34,317 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:24:04,425 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:24:52,961 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:25:26,955 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:25:56,656 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:25:56,661 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_162556_5240e06e.json
+2025-03-20 16:31:33,487 - __main__ - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.
+2025-03-20 16:32:19,524 - iterative_research_tool.strategic_advisor.swarm - INFO - Creating agent swarm...
+2025-03-20 16:32:20,038 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-7-sonnet-20250219
+2025-03-20 16:32:20,038 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: I'm having a hard time moving past intellectualizing and actual
+  implementation. For example, i have been reading about Ego development theory
+  and moving from the achiever to pluralist or strategist stages. This feels
+  very fun and interesting to read about, but i want to implement these changes.
+  What do i do?
+2025-03-20 16:32:20,038 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: a9895c0f-9c90-42ec-b866-1049e94c931b
+2025-03-20 16:33:04,479 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:33:32,125 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:34:55,748 - iterative_research_tool.strategic_advisor.swarm - INFO - Creating agent swarm...
+2025-03-20 16:34:56,207 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-opus-20240229
+2025-03-20 16:34:56,207 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: "how many times a day should i work out"
+2025-03-20 16:34:56,207 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 6d2e251d-436f-4d7c-b32b-3047214d2904
+2025-03-20 16:34:59,763 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:35:18,111 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:35:21,490 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:35:51,905 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:35:54,396 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:36:34,776 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:37:47,373 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:38:27,964 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:39:52,754 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:40:24,089 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:41:20,306 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-03-20 16:41:20,310 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_164120_6d2e251d.json
+2025-03-20 16:44:20,794 - __main__ - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.
+2025-03-20 16:45:24,428 - iterative_research_tool.strategic_advisor.swarm - INFO - Creating agent swarm...
+2025-03-20 16:45:24,970 - iterative_research_tool.core.llm_component - INFO - Initialized LLM Component with provider: anthropic and model: claude-3-opus-20240229
+2025-03-20 16:45:24,971 - iterative_research_tool.strategic_advisor.swarm - INFO - Generating strategic advice for query: ℹI want to know how to jump higher.
+2025-03-20 16:45:24,971 - iterative_research_tool.strategic_advisor.swarm - INFO - Session ID: 64f87e9f-16d7-46a3-84f3-9abb60b2751a
+2025-03-20 16:50:59,645 - iterative_research_tool.strategic_advisor.swarm - INFO - Response saved to /Users/sohailmohammad/iterative_research_tool_output/strategic_advice_20250320_165059_64f87e9f.json
+2025-03-20 17:09:54,501 - __main__ - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.
+2025-03-21 11:44:59,407 - __main__ - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.
+2025-03-21 12:36:19,527 - __main__ - ERROR - No API key found for openai. Please set OPENAI_API_KEY environment variable or use --api-key.

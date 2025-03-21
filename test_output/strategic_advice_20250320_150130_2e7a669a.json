@@ -1,0 +1,6 @@
+{
+  "query": "Simple test query",
+  "error": "Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT",
+  "execution_time": 1.7386670112609863,
+  "session_id": "2e7a669a-cab4-4ada-adc1-294628fe148f"
+}

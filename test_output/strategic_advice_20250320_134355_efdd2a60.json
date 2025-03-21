@@ -1,0 +1,6 @@
+{
+  "query": "Simple test query",
+  "error": "'OpenAIClient' object has no attribute 'generate_content'",
+  "execution_time": 0.0072939395904541016,
+  "session_id": "efdd2a60-e048-4ecf-8c3d-0f6294ea08fb"
+}

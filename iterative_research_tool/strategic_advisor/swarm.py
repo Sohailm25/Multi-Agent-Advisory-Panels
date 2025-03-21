@@ -353,21 +353,34 @@ class StrategicAdvisorSwarm:
         # Set up caching
         self.use_cache = use_cache
         self.cache = {}
+        self.max_cache_size = max_cache_size
         self.cache_hits = 0
         self.cache_misses = 0
-        self.max_cache_size = max_cache_size
+        
+        # Initialize LLM component to None
+        self.llm_component = None
         
         # Set up the output directory
         if output_dir is None:
             output_dir = os.path.expanduser("~/iterative_research_tool_output")
         self.output_dir = output_dir
         
-        # Create agent prompts
+        # Create prompts for each agent
         self.prompts = self._create_agent_prompts()
         
         # Create the swarm
+        logger.info("Creating agent swarm...")
         self.swarm = self._create_swarm()
     
+    def link_llm_component(self, llm_component):
+        """Link an LLM component to this advisor.
+        
+        Args:
+            llm_component: An object that has a generate method
+        """
+        self.llm_component = llm_component
+        # print(f"DEBUG: Linked LLM component of type {type(llm_component).__name__}")
+
     def _get_cache_key(self, prompt: str, model: str) -> str:
         """Generate a unique cache key for the prompt and model.
         
@@ -402,18 +415,47 @@ class StrategicAdvisorSwarm:
                 logger.info(f"Cache miss. Key: {cache_key[:8]}... (Hit rate: {self.cache_hits/(self.cache_hits+self.cache_misses):.2f})")
         
         try:
-            # Make the actual API call
-            response = self.llm_client.create_message(
-                model=self.model,
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=4000
-            )
+            # Show a progress indicator
+            # print("  Processing response...", end="", flush=True)
             
-            # Extract the text based on the provider's response format
-            if hasattr(response, 'content') and isinstance(response.content, list):
-                result = response.content[0].text
+            # Temporarily disable httpx logging to console
+            httpx_logger = logging.getLogger('httpx')
+            original_level = httpx_logger.level
+            httpx_logger.setLevel(logging.ERROR)  # Only show errors
+            
+            # Forward to linked LLM component if available
+            if self.llm_component:
+                result = self.llm_component.generate(prompt)
             else:
-                result = response.choices[0].message.content
+                # Otherwise make the actual API call
+                print("WARN: No LLM component linked, falling back to direct client call")
+                
+                # Check if using Anthropic and add system message
+                if self.llm_provider == "anthropic":
+                    response = self.llm_client.create_message(
+                        model=self.model,
+                        messages=[{"role": "user", "content": prompt}],
+                        max_tokens=4000,
+                        system="You are a strategic advisor providing insightful and actionable guidance."
+                    )
+                else:
+                    response = self.llm_client.create_message(
+                        model=self.model,
+                        messages=[{"role": "user", "content": prompt}],
+                        max_tokens=4000
+                    )
+                
+                # Extract the text based on the provider's response format
+                if hasattr(response, 'content') and isinstance(response.content, list):
+                    result = response.content[0].text
+                else:
+                    result = response.choices[0].message.content
+            
+            # Restore httpx logging level
+            httpx_logger.setLevel(original_level)
+            
+            # Clear the thinking indicator
+            print("\r" + " " * 25 + "\r", end="", flush=True)
             
             # Cache the result if caching is enabled
             if self.use_cache:
@@ -428,6 +470,12 @@ class StrategicAdvisorSwarm:
             return result
                 
         except Exception as e:
+            # Restore httpx logging level
+            httpx_logger = logging.getLogger('httpx')
+            httpx_logger.setLevel(logging.INFO)
+            
+            # Clear the thinking indicator and show error
+            print("\r" + " " * 25 + "\r", end="", flush=True)
             logger.error(f"Error calling LLM: {str(e)}")
             return f"Error generating response: {str(e)}"
     
@@ -531,10 +579,18 @@ class StrategicAdvisorSwarm:
         Returns:
             Updated state
         """
-        # Always log which agent is processing
-        print(f"\n{'='*50}")
-        print(f"🤖 PROCESSING WITH AGENT: {agent_name}")
-        print(f"{'='*50}")
+        # Provide a clean stage header with emoji and agent name
+        agent_emojis = {
+            "StrategicAdvisor": "🧠",
+            "BeliefSystemAnalyzer": "🔍",
+            "PatternRecognizer": "🔄",
+            "ExecutionEngineer": "⚙️",
+            "DecisionFramer": "🛠️",
+            "ChallengeDesigner": "🏆"
+        }
+        emoji = agent_emojis.get(agent_name, "🤖")
+        
+        print(f"\n{emoji} {agent_name.upper()}")
         
         if self.verbose:
             logger.info(f"Processing with agent: {agent_name}")
@@ -579,11 +635,12 @@ class StrategicAdvisorSwarm:
         # Call the LLM
         response = self._call_llm(prompt)
         
-        # Display the response
-        print(f"\n📣 RESPONSE FROM {agent_name}:")
-        print("-" * 40)
-        print(response)
-        print("-" * 40)
+        # Only display the response in verbose mode
+        if self.verbose_output:
+            print(f"\n📣 RESPONSE FROM {agent_name}:")
+            print("-" * 40)
+            print(response)
+            print("-" * 40)
         
         # Process the response
         if "HANDOFF TO" in response:
@@ -602,9 +659,9 @@ class StrategicAdvisorSwarm:
             # Update the active agent
             state["active_agent"] = target_agent
             
-            # Display the handoff information
-            print(f"\n🔄 HANDOFF: {agent_name} -> {target_agent}")
-            print(f"Handoff query: {handoff_query[:100]}{'...' if len(handoff_query) > 100 else ''}")
+            # Display a simplified handoff message
+            next_emoji = agent_emojis.get(target_agent, "🤖")
+            print(f"  Consulting with {next_emoji} {target_agent}...")
             
             return {"active_agent": target_agent, "conversation": state["conversation"]}
         
@@ -623,8 +680,8 @@ class StrategicAdvisorSwarm:
             # Update the state with the final response
             state["final_response"] = final_response
             
-            # Display the final response information
-            print("\n✅ FINAL RESPONSE GENERATED")
+            # Simple completion message
+            print("  Generating final strategic advice...")
             
             return {"conversation": state["conversation"], "final_response": final_response}
         
@@ -638,7 +695,7 @@ class StrategicAdvisorSwarm:
             
             # If we're not the strategic advisor, hand back
             if agent_name != "StrategicAdvisor":
-                print(f"\n🔄 HANDOFF BACK TO: StrategicAdvisor")
+                print(f"  Analysis complete, returning to 🧠 Strategic Advisor")
                 return {"active_agent": "StrategicAdvisor", "conversation": state["conversation"]}
             
             return {"conversation": state["conversation"]}
@@ -881,26 +938,28 @@ class StrategicAdvisorSwarm:
         
         return final_response
     
-    def generate_advice(self, query: str, context: Optional[str] = None) -> Dict[str, Any]:
-        """Generate strategic advice based on a query.
-        
+    def generate_advice(self, query: str, context: Optional[Dict[str, Any]] = None, max_iterations: int = 6) -> Dict[str, Any]:
+        """
+        Generate strategic advice based on the user query.
+
         Args:
             query: The user's query
-            context: Optional context to include
-            
+            context: Optional context dictionary
+            max_iterations: Maximum number of swarm iterations
+
         Returns:
-            A dictionary containing the strategic advice
+            Dictionary containing the strategic advice
         """
-        # Initialize session
+        # Initialize
         session_id = str(uuid.uuid4())
         start_time = time.time()
         
-        self.logger.info(f"Generating strategic advice for query: {query}")
-        self.logger.info(f"Session ID: {session_id}")
-        
+        # Announce the start
         print(f"\n📋 STARTING STRATEGIC ADVISOR (SWARM ARCHITECTURE)")
         print(f"Query: {query}")
-        print(f"Session ID: {session_id}")
+        
+        # Only print the query (not the debug info)
+        # print("\n🚀 STARTING STRATEGIC ANALYSIS")
         
         # Create the initial state
         state = {
@@ -914,9 +973,6 @@ class StrategicAdvisorSwarm:
             state["context"] = {"provided_context": context}
         
         try:
-            # Run a simplified version using direct agent calls
-            print("\n🚀 RUNNING AGENT SWARM...")
-            
             # Start with the strategic advisor
             result = self._agent_handler(state, "StrategicAdvisor")
             state.update(result)
@@ -932,7 +988,7 @@ class StrategicAdvisorSwarm:
                 
                 # If we've been through too many iterations, stop
                 if len(state.get("conversation", [])) > 10:
-                    print("\n⚠️ Reached maximum number of iterations, stopping")
+                    print("\n⚠️ Analysis completed with maximum iterations")
                     break
             
             # Extract the final response
@@ -958,7 +1014,8 @@ class StrategicAdvisorSwarm:
             # Save the response
             self._save_response(response)
             
-            print(f"\n⏱️ EXECUTION TIME: {response['execution_time']:.2f} seconds")
+            # Print completion message with timing
+            print(f"\n✅ ANALYSIS COMPLETE ({response['execution_time']:.1f}s)")
             
             return response
             

@@ -1,0 +1,6 @@
+{
+  "query": "Simple test query",
+  "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: test_key. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+  "execution_time": 0.3532559871673584,
+  "session_id": "e31ee0bf-9b50-45ab-838e-775828d654ab"
+}
